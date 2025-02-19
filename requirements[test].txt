@@ -24,3 +24,6 @@ ucimlrepo
 plotly
 docker
 PySide6
+matplotlib
+converge
+sklearn
