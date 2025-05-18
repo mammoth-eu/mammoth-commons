@@ -95,8 +95,11 @@
 <a href='#facex-regions'>Facex regions</a>
 <a href='#facex-embeddings'>Facex embeddings</a>
 <a href='#multi-objective-report'>Multi objective report</a>
+<a href='#viz-fairness-plots'>Viz fairness plots</a>
+<a href='#viz-fairness-report'>Viz fairness report</a>
 <a href='#exposure-distance-comparison'>Exposure distance comparison</a>
 <a href='#augmentation-report'>Augmentation report</a>
+<a href='#text-debias'>Text debias</a>
 
     </div>
 
@@ -409,6 +412,10 @@
 <br>
 <h2 id='multi-objective-report'>Multi objective report</h2>
 <p><p>This module presents an interactive <a href="https://plotly.com/python/3d-charts/" target=" blank">Plotly 3D plot</a> visualizing multiple objectives to evaluate model fairness and performance trade-offs. The report highlights three primary objectives: <b>accuracy loss</b>, <b>balanced accuracy loss</b>, and <b>discrimination (MMM-fairness) loss</b>. Each point plotted within the 3D space represents a <i>Pareto-optimal</i> solution, which achieves an optimal balance between these objectives where no single objective can improve without worsening another.</p>  <p>Users can hover over any solution point to display the corresponding loss values for each objective. Additionally, each point includes a <b>theta</b> value, indicating up to which sequence in the ONNX ensemble the particular solution is achieved. This allows users to observe performance changes throughout different stages of the ensemble, helping them better understand the trade-offs involved in each model configuration.</p>  <p><span class="alert alert-warning alert-dismissible fade show" role="alert" style="display: inline-block; padding: 10px;"> <i class="bi bi-exclamation-triangle-fill"></i> The multi-objective report generates predictions at each step of the partial ensemble. This may result in slower processing times when the number of Pareto solutions is high.</span></p> </p>
+<h2 id='viz-fairness-plots'>Viz fairness plots</h2>
+<p><p>This module generates a detailed fairness plots using <a href="https://fairlearn.org/" target=" blank">Fairlearn</a>, providing both group-wise and scalar fairness metrics across sensitive attributes such as sex or race.</p> </p>
+<h2 id='viz-fairness-report'>Viz fairness report</h2>
+<p><p>This module generates a detailed fairness report using <a href="https://fairlearn.org/" target=" blank">Fairlearn</a>, providing both group-wise and scalar fairness metrics across sensitive attributes such as sex or race.</p> </p>
 <h2 id='exposure-distance-comparison'>Exposure distance comparison</h2>
 <p><p>Compute the exposure distance between the protected and non-protected groups in the dataset and ranking. Sensitive attributes is a comma-separated list of the attributes relevant for fairness analysis. Currently, only <em>Gender</em> is supported.</p> </p>
 <b>Parameters</b><br><button
@@ -447,6 +454,8 @@
 <br>
 <h2 id='augmentation-report'>Augmentation report</h2>
 <p><p>This module generates an interactive HTML report featuring a <a href="https://plotly.com/python/sunburst-charts/" target=" blank">Plotly sunburst pie chart</a> visualization to explore imbalances in the dataset based on subgroups defined by sensitive attributes and the target variable. This helps to quickly identify any potential imbalances in the dataset, allowing users to assess fairness and identify areas that may require intervention, such augmentation.</p>  <p>Furthermore, the report visually presents different augmentation strategies designed to mitigate data imbalances, per sensitive attribute, as an interactive <a href="https://plotly.com/python/bar-charts/." target=" blank">Plotly bar chart</a>. These strategies adjust the distribution of the dataset by oversampling specific subgroups with synthetic samples, ensuring more equitable representation of sensitive attributes and target classes. The following augmentation strategies are visualized:</p>  <ul> <li><strong>Class:</strong> Balances the class distribution within each subgroup by sampling the minority class.</li> <li><strong>Class &amp; Protected:</strong> Ensures equal sample distribution across all subgroups by sampling both majority and minority classes.</li> <li><strong>Protected:</strong> Balances the number of instances across different groups without considering class labels.</li> <li><strong>Class (Ratio):</strong> Maintains the same class ratio across all groups as found in the largest group.</li> </ul>  <p>These visualizations allow users to observe the effects of each strategy on the data distribution, helping to understand how the dataset is being augmented.</p>  <p>For more information, refer to our full paper: <strong>"Synthetic Tabular Data Generation for Class Imbalance and Fairness: A Comparative Study"</strong> <a href="https://arxiv.org/pdf/2409.05215">Link to paper</a>.</p> </p>
+<h2 id='text-debias'>Text debias</h2>
+<p><p> This module uses <a href="https://github.com/dreji18/Fairness-in-AI">DBias</a> library to perform unsupervised auditing of text biases in text resembling article titles. If library identifies biases, it is used to mitigate them with a more neutral phrasing. Results show a judgement and prediction confidence for the original and adjusted text, as well as potentially offending keywords. </p>  <p> The DBias library employs three transformer models, one pretrained for the English language and two trained on the <a href="https://github.com/Media-Bias-Group/Neural-Media-Bias-Detection-Using-Distant-Supervision-With-BABE">MBIC dataset</a>. </p> </p>
 
             </div>
         </div>
