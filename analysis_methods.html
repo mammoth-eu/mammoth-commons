@@ -322,7 +322,7 @@
                         </button>
 <br>
 <h2 id='bias-scan'>Bias scan</h2>
-<p><p>Performs a scan for the most biased attribute intersection in the dataset. Any sensitive attributes that are already known will be <b>excluded</b> from the scan. That is, you can condition the scan to discover more attributes other than those declared as sensitive (these may not be actually sensitive, but set so because you are trying to find more subtle biases). To start a scan for the first time, do not set any sensitive attributes. A paper describing how this approach is implemented to estimate the intersection in linear rather than exponential time is available <a href="https://arxiv.org/pdf/1611.08292">here</a>.</p> </p>
+<p><p>Performs a scan for the most biased attribute intersection in the dataset. Any sensitive attributes that are already known will be <b>excluded</b> from the scan. That is, you can condition the scan to discover more attributes other than those declared as sensitive. These may not be actually sensitive, but set so because you are trying to find more subtle biases. A paper describing how this approach is implemented to estimate the intersection in linear rather than exponential time is available <a href="https://arxiv.org/pdf/1611.08292">here</a>.</p>  <p>To start a scan for the first time, do not set any sensitive attributes. As a typical use case, you can rerun the analysis by adding problematic attributes from the previous run to those already known to be biased. This process will let you discover more potential issues, though now of lesser importance. To help with this process, this module can partially automate it by enabling the discovery mode. This removes all problematic attributes in the intersection and retries, Discovery is less informed than a human investigator that knows when to exclude intersections from the dataset</p> </p>
 <b>Parameters</b><br><button
                           type="button"
                           class="btn btn-light"
@@ -339,11 +339,22 @@
                           class="btn btn-light"
                           data-bs-toggle="tooltip"
                           data-bs-placement="top"
-                          title=" The distribution used to computer p-values."
-                          data-description=" The distribution used to computer p-values."
+                          title=" The distribution used to compute p-values. Can be Bernoulli, Gaussian, Poisson, or BerkJones."
+                          data-description=" The distribution used to compute p-values. Can be Bernoulli, Gaussian, Poisson, or BerkJones."
                           data-name="Scoring"
                           onclick="showDescriptionModal(this)">
                           <i class="bi bi-info-circle"></i> Scoring
+                        </button>
+<button
+                          type="button"
+                          class="btn btn-light"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title=" Whether the scan should attempt to create a list of problematic attribute combinations in decreasing order of importance. That list will contain only non-overlapping attribute intersections."
+                          data-description=" Whether the scan should attempt to create a list of problematic attribute combinations in decreasing order of importance. That list will contain only non-overlapping attribute intersections."
+                          data-name="Discovery"
+                          onclick="showDescriptionModal(this)">
+                          <i class="bi bi-info-circle"></i> Discovery
                         </button>
 <br>
 <h2 id='image-bias-analysis'>Image bias analysis</h2>
