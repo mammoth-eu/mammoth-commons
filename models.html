@@ -86,6 +86,7 @@
     <!-- Side Menu -->
     <div class="side-menu">
         <a href='#no-model'>No model</a>
+<a href='#trivial-predictor'>Trivial predictor</a>
 <a href='#onnx'>Onnx</a>
 <a href='#onnx-ensemble'>Onnx ensemble</a>
 <a href='#torch'>Torch</a>
@@ -102,6 +103,8 @@
 <h1 class='display-4 text-center my-4'>Models</h1>
 <h2 id='no-model'>No model</h2>
 <p><p>Signifies that the analysis should focus solely on the fairness of the dataset.</p> </p>
+<h2 id='trivial-predictor'>Trivial predictor</h2>
+<p><p>Creates a trivial predictor that returns the most common predictive label value among provided data. If the label is numeric, the median is computed instead. This model servers as an informed baseline of what happens even for an uninformed predictor. Several kinds of class biases may exist, for example due to different class imbalances for each sensitive attribute dimension (e.g., for old white men compared to young hispanic women).</p> </p>
 <h2 id='onnx'>Onnx</h2>
 <p><p>Loads an inference model stored in <a href="https://onnx.ai/">ONNx</a> format. This is a generic cross-platform format for representing machine learning models with a common set of operations. Several machine learning frameworks can export to this format. The loaded model should be compatible with the dataset being analysed. For example, the same data columns as in the dataset should be used for training on tabular data.</p>  <p>ONNx supports several different runtimes, but this loader's implementation selects the <code>CPUExecutionProvider</code> runtime to run on, therefore maintaining compatibility with most machines. For inference in GPUs, prefer storing and loading models in formats that are guaranteed to maintain all features that could be included in the architectures of respective frameworks; this can be achieved with different model loaders.</p>  <p>Here are some quick links on how to export ONNx models from popular frameworks:</p>  <ul> <li><a href="https://onnx.ai/sklearn-onnx">scikit-learn</a></li> <li><a href="https://pytorch.org/tutorials/beginner/onnx/export simple model to onnx tutorial.html">PyTorch</a></li> <li><a href="https://onnxruntime.ai/docs/tutorials/tf-get-started.html">TensorFlow</a></li> </ul> </p>
 <b>Parameters</b><br><button
@@ -114,6 +117,17 @@
                           data-name="Path"
                           onclick="showDescriptionModal(this)">
                           <i class="bi bi-info-circle"></i> Path
+                        </button>
+<button
+                          type="button"
+                          class="btn btn-light"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title=" Whether model training included the sensitive attributes that will be analysed in the next step or not. Including those attributes could help mitigate bias for some bias-aware training algorithms. Leave checked if you just trained the model with all available attributes."
+                          data-description=" Whether model training included the sensitive attributes that will be analysed in the next step or not. Including those attributes could help mitigate bias for some bias-aware training algorithms. Leave checked if you just trained the model with all available attributes."
+                          data-name="Trained with sensitive"
+                          onclick="showDescriptionModal(this)">
+                          <i class="bi bi-info-circle"></i> Trained with sensitive
                         </button>
 <br>
 <h2 id='onnx-ensemble'>Onnx ensemble</h2>

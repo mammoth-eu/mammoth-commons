@@ -144,9 +144,28 @@
 <br>
 <h2 id='read-any'>Read any</h2>
 <p><p>Loads a dataset for analysis from either a pre-loaded pandas DataFrame or a file in one of the supported formats: <code>.csv</code>, <code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>, <code>.xlsb</code>, <code>.odf</code>, <code>.ods</code>, <code>.json</code>, <code>.html</code>, or <code>.htm</code>.</p>  <p>The module accepts either a raw DataFrame or a file path (local or URL). If a file path is provided, the data is automatically loaded using the appropriate pandas function based on the file extension. Basic preprocessing is applied to infer column types, and the specified target column is treated as the predictive label.</p>  <p>To customize the loading process (e.g., load a subset of columns, handle missing values, or change column type inference), additional parameters or a custom loader function may be provided.</p>  <p>The Data loader module is recommended to load and process local data also while training models which are intented to be tested using the ONNXEnsemble module.</p> </p>
-<b>Parameters</b><br>Raw data
-Dataset name
-Target
+<b>Parameters</b><br><button
+                          type="button"
+                          class="btn btn-light"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title=" Path or URL to the dataset file. Must have one of the supported extensions."
+                          data-description=" Path or URL to the dataset file. Must have one of the supported extensions."
+                          data-name="Dataset path"
+                          onclick="showDescriptionModal(this)">
+                          <i class="bi bi-info-circle"></i> Dataset path
+                        </button>
+<button
+                          type="button"
+                          class="btn btn-light"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title=" The name of the column to treat as the predictive label."
+                          data-description=" The name of the column to treat as the predictive label."
+                          data-name="Target"
+                          onclick="showDescriptionModal(this)">
+                          <i class="bi bi-info-circle"></i> Target
+                        </button>
 <br>
 <h2 id='custom-csv'>Custom csv</h2>
 <p><p>Loads a CSV file that contains numeric, categorical, and predictive data columns separated by a user-defined delimiter. Each row corresponds to a different data sample, with the first one sometimes holding column names (this is automatically detected). To use all data in the file and automate discovery of numerical and categorical columns, as well as of delimiters, use the <code>auto csv</code> loader instead. Otherwise, set here all loading parameters. A <a href="https://pandas.pydata.org/">pandas</a> CSV reader is employed internally.</p> </p>
