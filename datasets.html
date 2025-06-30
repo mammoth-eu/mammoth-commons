@@ -104,443 +104,465 @@
             <div class="container">
 <h1 class='display-4 text-center my-4'>Datasets</h1>
 <h2 id='auto-csv'>Auto csv</h2>
-<p><p>Loads a CSV file that contains numeric, categorical, and predictive data columns. This automatically detects the characteristics of the dataset being loaded, namely the delimiter that separates the columns, and whether each column contains numeric or categorical data. A <a href="https://pandas.pydata.org/">pandas</a> CSV reader is employed internally. The last categorical column is used as the dataset label. To load the file using different options (e.g., a subset of columns, a different label column) use the custom csv loader instead.</p> </p>
+<p>Loads a CSV file that contains numeric, categorical, and predictive data columns. This automatically detects the characteristics of the dataset being loaded, namely the delimiter that separates the columns, and whether each column contains numeric or categorical data. A <a href="https://pandas.pydata.org/">pandas</a> CSV reader is employed internally. The last categorical column is used as the dataset label. To load the file using different options (e.g., a subset of columns, a different label column) use the custom csv loader instead.<br><br>If you want to train a model while using the same loading mechanism as this dataset, run the following Python script. This uses supporting methods from the lightweight mammoth-commons core to retrieve <a href="https://numpy.org/">numpy</a> arrays <i>X,y</i> of dataset features and of categorical labels respectively.<br><br><pre>
+% pip install --upgrade pandas
+% pip install --upgrade mammoth_commons
+import pandas as pd
+from mammoth_commons.externals import pd_read_csv
+from mammoth_commons.datasets import CSV
+
+# set parameters and load data (modify max_discrete as needed)
+path = ...
+max_discrete = 10
+df = pd_read_csv(path, on_bad_lines="skip")
+
+# identify numeric and categorical columns
+num = [col for col in df if pd.api.types.is_any_real_numeric_dtype(df[col])]
+num = [col for col in num if len(set(df[col])) > max_discrete]
+num_set = set(num)
+cat = [col for col in df if col not in num_set]
+
+# convert to numpy data
+csv_dataset = CSV(df, num=num, cat=cat[:-1], labels=cat[-1])
+X = X.astype(np.float32)
+y = df[cat[-1]]
+</pre><br><br><br><br></p>
 <b>Parameters</b><br><button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The local file path or a web URL of the file."
-                          data-description=" The local file path or a web URL of the file."
-                          data-name="Path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The local file path or a web URL of the file."
+                              data-description=" The local file path or a web URL of the file."
+                              data-name="Path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Path
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" If a numeric column has a number of discrete entries than is less than this number (e.g., if it contains binary numeric values) then it is considered to hold categorical instead of numeric data. Minimum accepted value is 2."
-                          data-description=" If a numeric column has a number of discrete entries than is less than this number (e.g., if it contains binary numeric values) then it is considered to hold categorical instead of numeric data. Minimum accepted value is 2."
-                          data-name="Max discrete"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Max discrete
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" If a numeric column has a number of discrete entries than is less than this number (e.g., if it contains binary numeric values) then it is considered to hold categorical instead of numeric data. Minimum accepted value is 2."
+                              data-description=" If a numeric column has a number of discrete entries than is less than this number (e.g., if it contains binary numeric values) then it is considered to hold categorical instead of numeric data. Minimum accepted value is 2."
+                              data-name="Max discrete"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Max discrete
+                            </button>
 <br>
 <h2 id='uci'>Uci</h2>
-<p><p>Loads a dataset from the UCI Machine Learning Repository (<a href="https://archive.ics.uci.edu/ml/index.php" target=" blank">www.uci.org</a>) containing numeric, categorical, and predictive data columns. The dataset is automatically downloaded from the repository, and basic preprocessing is applied to identify the column types. The specified target column is treated as the predictive label. To customize the loading process (e.g., use a different target column, load a subset of features, or handle missing data differently), additional parameters or a custom loader can be used.</p> </p>
+<p>Loads a dataset from the UCI Machine Learning Repository (<a href="https://archive.ics.uci.edu/ml/index.php" target=" blank">www.uci.org</a>) containing numeric, categorical, and predictive data columns. The dataset is automatically downloaded from the repository, and basic preprocessing is applied to identify the column types. The specified target column is treated as the predictive label. To customize the loading process (e.g., use a different target column, load a subset of features, or handle missing data differently), additional parameters or a custom loader can be used.<br><br> </p>
 <b>Parameters</b><br><button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The name of the dataset."
-                          data-description=" The name of the dataset."
-                          data-name="Dataset name"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Dataset name
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The name of the dataset."
+                              data-description=" The name of the dataset."
+                              data-name="Dataset name"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Dataset name
+                            </button>
 <br>
 <h2 id='read-any'>Read any</h2>
-<p><p>Loads a dataset for analysis from either a pre-loaded pandas DataFrame or a file in one of the supported formats: <code>.csv</code>, <code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>, <code>.xlsb</code>, <code>.odf</code>, <code>.ods</code>, <code>.json</code>, <code>.html</code>, or <code>.htm</code>.</p>  <p>The module accepts either a raw DataFrame or a file path (local or URL). If a file path is provided, the data is automatically loaded using the appropriate pandas function based on the file extension. Basic preprocessing is applied to infer column types, and the specified target column is treated as the predictive label.</p>  <p>To customize the loading process (e.g., load a subset of columns, handle missing values, or change column type inference), additional parameters or a custom loader function may be provided.</p>  <p>The Data loader module is recommended to load and process local data also while training models which are intented to be tested using the ONNXEnsemble module.</p> </p>
+<p> Loads a dataset for analysis from either a pre-loaded pandas DataFrame or a file in one of the supported formats: <code>.csv</code>, <code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>, <code>.xlsb</code>, <code>.odf</code>, <code>.ods</code>, <code>.json</code>, <code>.html</code>, or <code>.htm</code>.<br><br>The module accepts either a raw DataFrame or a file path (local or URL). If a file path is provided, the data is automatically loaded using the appropriate pandas function based on the file extension. Basic preprocessing is applied to infer column types, and the specified target column is treated as the predictive label.<br><br>To customize the loading process (e.g., load a subset of columns, handle missing values, or change column type inference), additional parameters or a custom loader function may be provided.<br><br>The Data loader module is recommended to load and process local data also while training models which are intented to be tested using the ONNXEnsemble module.<br><br> </p>
 <b>Parameters</b><br><button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Path or URL to the dataset file. Must have one of the supported extensions."
-                          data-description=" Path or URL to the dataset file. Must have one of the supported extensions."
-                          data-name="Dataset path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Dataset path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Path or URL to the dataset file. Must have one of the supported extensions."
+                              data-description=" Path or URL to the dataset file. Must have one of the supported extensions."
+                              data-name="Dataset path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Dataset path
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The name of the column to treat as the predictive label."
-                          data-description=" The name of the column to treat as the predictive label."
-                          data-name="Target"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Target
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The name of the column to treat as the predictive label."
+                              data-description=" The name of the column to treat as the predictive label."
+                              data-name="Target"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Target
+                            </button>
 <br>
 <h2 id='custom-csv'>Custom csv</h2>
-<p><p>Loads a CSV file that contains numeric, categorical, and predictive data columns separated by a user-defined delimiter. Each row corresponds to a different data sample, with the first one sometimes holding column names (this is automatically detected). To use all data in the file and automate discovery of numerical and categorical columns, as well as of delimiters, use the <code>auto csv</code> loader instead. Otherwise, set here all loading parameters. A <a href="https://pandas.pydata.org/">pandas</a> CSV reader is employed internally.</p> </p>
+<p>Loads a CSV file that contains numeric, categorical, and predictive data columns separated by a user-defined delimiter. Each row corresponds to a different data sample, with the first one sometimes holding column names (this is automatically detected). To use all data in the file and automate discovery of numerical and categorical columns, as well as of delimiters, use the <code>auto csv</code> loader instead. Otherwise, set here all loading parameters. A <a href="https://pandas.pydata.org/">pandas</a> CSV reader is employed internally.<br><br> </p>
 <b>Parameters</b><br><button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The local file path or a web URL of the file."
-                          data-description=" The local file path or a web URL of the file."
-                          data-name="Path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The local file path or a web URL of the file."
+                              data-description=" The local file path or a web URL of the file."
+                              data-name="Path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Path
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Which character to split loaded csv rows with."
-                          data-description=" Which character to split loaded csv rows with."
-                          data-name="Delimiter"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Delimiter
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Which character to split loaded csv rows with."
+                              data-description=" Which character to split loaded csv rows with."
+                              data-name="Delimiter"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Delimiter
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" A list of comma-separated column names that hold numeric data."
-                          data-description=" A list of comma-separated column names that hold numeric data."
-                          data-name="Numeric"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Numeric
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" A list of comma-separated column names that hold numeric data."
+                              data-description=" A list of comma-separated column names that hold numeric data."
+                              data-name="Numeric"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Numeric
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" A list of comma-separated column names that hold categorical data."
-                          data-description=" A list of comma-separated column names that hold categorical data."
-                          data-name="Categorical"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Categorical
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" A list of comma-separated column names that hold categorical data."
+                              data-description=" A list of comma-separated column names that hold categorical data."
+                              data-name="Categorical"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Categorical
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The name of the categorical column that holds predictive label for each data sample."
-                          data-description=" The name of the categorical column that holds predictive label for each data sample."
-                          data-name="Label"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Label
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The name of the categorical column that holds predictive label for each data sample."
+                              data-description=" The name of the categorical column that holds predictive label for each data sample."
+                              data-name="Label"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Label
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Whether to skip invalid lines being read instead of creating an error."
-                          data-description=" Whether to skip invalid lines being read instead of creating an error."
-                          data-name="Skip invalid lines"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Skip invalid lines
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Whether to skip invalid lines being read instead of creating an error."
+                              data-description=" Whether to skip invalid lines being read instead of creating an error."
+                              data-name="Skip invalid lines"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Skip invalid lines
+                            </button>
 <br>
 <h2 id='csv-rankings'>Csv rankings</h2>
-<p><p>This is a Loader to load .csv files with information about researchers The <code>Path</code> should be given relative to your locally running instance (e.g.: <em>./data/researchers/Top&#95;researchers.csv</em>) The <code>Delimiter</code> should match the CSV file you have (e.g.: '|')</p> </p>
+<p> This is a Loader to load .csv files with information about researchers The <code>Path</code> should be given relative to your locally running instance (e.g.: <i>./data/researchers/Top&#95;researchers.csv</i>) The <code>Delimiter</code> should match the CSV file you have (e.g.: '|')<br><br></p>
 <b>Parameters</b><br>Path
 Delimiter
 <br>
 <h2 id='researchers'>Researchers</h2>
-<p><p>This is a Loader to load .csv files with information about researchers The <code>papers path</code> and <code>papers affiliations</code> should be given relative to your locally running instance (e.g.: <em>./data/researchers/Top&#95;researchers.csv</em>) The <code>Delimiter</code> should match the CSV file you have (e.g.: '|')</p> </p>
+<p><br><br>This is a Loader to load .csv files with information about researchers The <code>papers path</code> and <code>papers affiliations</code> should be given relative to your locally running instance (e.g.: <i>./data/researchers/Top&#95;researchers.csv</i>) The <code>Delimiter</code> should match the CSV file you have (e.g.: '|')<br><br> </p>
 <b>Parameters</b><br><button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The path to the paper citation graph."
-                          data-description=" The path to the paper citation graph."
-                          data-name="Paper graph path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Paper graph path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The path to the paper citation graph."
+                              data-description=" The path to the paper citation graph."
+                              data-name="Paper graph path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Paper graph path
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The delimiter in the paper graph file."
-                          data-description=" The delimiter in the paper graph file."
-                          data-name="Paper graph delimiter"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Paper graph delimiter
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The delimiter in the paper graph file."
+                              data-description=" The delimiter in the paper graph file."
+                              data-name="Paper graph delimiter"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Paper graph delimiter
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The path to the paper affiliation map."
-                          data-description=" The path to the paper affiliation map."
-                          data-name="Paper affiliations path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Paper affiliations path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The path to the paper affiliation map."
+                              data-description=" The path to the paper affiliation map."
+                              data-name="Paper affiliations path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Paper affiliations path
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The delimiter of the paper affiliation map file."
-                          data-description=" The delimiter of the paper affiliation map file."
-                          data-name="Paper affiliation delimiter"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Paper affiliation delimiter
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The delimiter of the paper affiliation map file."
+                              data-description=" The delimiter of the paper affiliation map file."
+                              data-name="Paper affiliation delimiter"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Paper affiliation delimiter
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Metadata mapping countries to respective codes found in researcher profilers. Prefer the default value."
-                          data-description=" Metadata mapping countries to respective codes found in researcher profilers. Prefer the default value."
-                          data-name="Country codes path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Country codes path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Metadata mapping countries to respective codes found in researcher profilers. Prefer the default value."
+                              data-description=" Metadata mapping countries to respective codes found in researcher profilers. Prefer the default value."
+                              data-name="Country codes path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Country codes path
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Metadata of country divisions. Prefer the default value."
-                          data-description=" Metadata of country divisions. Prefer the default value."
-                          data-name="Country divisions path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Country divisions path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Metadata of country divisions. Prefer the default value."
+                              data-description=" Metadata of country divisions. Prefer the default value."
+                              data-name="Country divisions path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Country divisions path
+                            </button>
 <br>
 <h2 id='graph'>Graph</h2>
-<p><p>Loads the edges of a graph organized as rows of a comma-delimited file.</p> </p>
+<p>Loads the edges of a graph organized as rows of a comma-delimited file.<br><br> </p>
 <b>Parameters</b><br><button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" A url from which to load the edges, or a pygrank dataset name to be automatically downloaded, preprocessed and loaded."
-                          data-description=" A url from which to load the edges, or a pygrank dataset name to be automatically downloaded, preprocessed and loaded."
-                          data-name="Path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" A url from which to load the edges, or a pygrank dataset name to be automatically downloaded, preprocessed and loaded."
+                              data-description=" A url from which to load the edges, or a pygrank dataset name to be automatically downloaded, preprocessed and loaded."
+                              data-name="Path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Path
+                            </button>
 <br>
 <h2 id='images'>Images</h2>
-<p><p>Loads image data from a CSV file holding their sensitive and predictive attribute data, as well as paths relative to a root directory. Loaded images are subjected to a Python transformation.</p> </p>
+<p> Loads image data from a CSV file holding their sensitive and predictive attribute data, as well as paths relative to a root directory. Loaded images are subjected to a Python transformation.<br><br> </p>
 <b>Parameters</b><br><button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The path to the CSV file containing information about the dataset."
-                          data-description=" The path to the CSV file containing information about the dataset."
-                          data-name="Path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The path to the CSV file containing information about the dataset."
+                              data-description=" The path to the CSV file containing information about the dataset."
+                              data-name="Path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Path
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The root directory where the actual image files are stored."
-                          data-description=" The root directory where the actual image files are stored."
-                          data-name="Image root dir"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Image root dir
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The root directory where the actual image files are stored."
+                              data-description=" The root directory where the actual image files are stored."
+                              data-name="Image root dir"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Image root dir
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Indicates the predictive attribute in the dataset."
-                          data-description=" Indicates the predictive attribute in the dataset."
-                          data-name="Target"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Target
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Indicates the predictive attribute in the dataset."
+                              data-description=" Indicates the predictive attribute in the dataset."
+                              data-name="Target"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Target
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The batch size at which images should be loaded."
-                          data-description=" The batch size at which images should be loaded."
-                          data-name="Batch size"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Batch size
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The batch size at which images should be loaded."
+                              data-description=" The batch size at which images should be loaded."
+                              data-name="Batch size"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Batch size
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Whether to shuffle the loaded images."
-                          data-description=" Whether to shuffle the loaded images."
-                          data-name="Shuffle"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Shuffle
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Whether to shuffle the loaded images."
+                              data-description=" Whether to shuffle the loaded images."
+                              data-name="Shuffle"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Shuffle
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" A path or implementation of a torchvision data transform. Alternatively, paste the transformation code here."
-                          data-description=" A path or implementation of a torchvision data transform. Alternatively, paste the transformation code here."
-                          data-name="Transform path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Transform path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" A path or implementation of a torchvision data transform. Alternatively, paste the transformation code here."
+                              data-description=" A path or implementation of a torchvision data transform. Alternatively, paste the transformation code here."
+                              data-name="Transform path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Transform path
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The transformation target variable that should be extracted after the namesake code runs."
-                          data-description=" The transformation target variable that should be extracted after the namesake code runs."
-                          data-name="Transform variable"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Transform variable
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The transformation target variable that should be extracted after the namesake code runs."
+                              data-description=" The transformation target variable that should be extracted after the namesake code runs."
+                              data-name="Transform variable"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Transform variable
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Number of subprocesses to use for data loading."
-                          data-description=" Number of subprocesses to use for data loading."
-                          data-name="Num workers"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Num workers
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Number of subprocesses to use for data loading."
+                              data-description=" Number of subprocesses to use for data loading."
+                              data-name="Num workers"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Num workers
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" A comma-separated list of safe libraries that are allowed in the transformation code. As a safety measure against code injection attacks, an error will be created if libraries other than those are encountered."
-                          data-description=" A comma-separated list of safe libraries that are allowed in the transformation code. As a safety measure against code injection attacks, an error will be created if libraries other than those are encountered."
-                          data-name="Safe libraries"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Safe libraries
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" A comma-separated list of safe libraries that are allowed in the transformation code. As a safety measure against code injection attacks, an error will be created if libraries other than those are encountered."
+                              data-description=" A comma-separated list of safe libraries that are allowed in the transformation code. As a safety measure against code injection attacks, an error will be created if libraries other than those are encountered."
+                              data-name="Safe libraries"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Safe libraries
+                            </button>
 <br>
 <h2 id='image-pairs'>Image pairs</h2>
-<p><p>Loads image pairs declared in a CSV file. The expected format is to have the first image's identifier in the first column, and the second image's identifier in the second column, Sensitive attributes can be selected from the rest of the columns. The images identifiers read from the columns are transformed to loading paths by string specifications that can contain the symbols: {root} to refer to the root directory, {col} to refer to the column name, and {id} to refer to the column entry.</p> </p>
+<p> Loads image pairs declared in a CSV file. The expected format is to have the first image's identifier in the first column, and the second image's identifier in the second column, Sensitive attributes can be selected from the rest of the columns. The images identifiers read from the columns are transformed to loading paths by string specifications that can contain the symbols: {root} to refer to the root directory, {col} to refer to the column name, and {id} to refer to the column entry.<br><br> </p>
 <b>Parameters</b><br><button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The path to the CSV file containing information about the dataset."
-                          data-description=" The path to the CSV file containing information about the dataset."
-                          data-name="Path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The path to the CSV file containing information about the dataset."
+                              data-description=" The path to the CSV file containing information about the dataset."
+                              data-name="Path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Path
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The root directory where the actual image files are stored."
-                          data-description=" The root directory where the actual image files are stored."
-                          data-name="Image root dir"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Image root dir
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The root directory where the actual image files are stored."
+                              data-description=" The root directory where the actual image files are stored."
+                              data-name="Image root dir"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Image root dir
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Indicates the predictive attribute in the dataset."
-                          data-description=" Indicates the predictive attribute in the dataset."
-                          data-name="Target"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Target
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Indicates the predictive attribute in the dataset."
+                              data-description=" Indicates the predictive attribute in the dataset."
+                              data-name="Target"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Target
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The number of image pairs in each batch."
-                          data-description=" The number of image pairs in each batch."
-                          data-name="Batch size"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Batch size
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The number of image pairs in each batch."
+                              data-description=" The number of image pairs in each batch."
+                              data-name="Batch size"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Batch size
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Whether to shuffle the dataset."
-                          data-description=" Whether to shuffle the dataset."
-                          data-name="Shuffle"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Shuffle
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Whether to shuffle the dataset."
+                              data-description=" Whether to shuffle the dataset."
+                              data-name="Shuffle"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Shuffle
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" A path or implementation of a torchvision data transform. Alternatively, paste the transformation code here."
-                          data-description=" A path or implementation of a torchvision data transform. Alternatively, paste the transformation code here."
-                          data-name="Transform path"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Transform path
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" A path or implementation of a torchvision data transform. Alternatively, paste the transformation code here."
+                              data-description=" A path or implementation of a torchvision data transform. Alternatively, paste the transformation code here."
+                              data-name="Transform path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Transform path
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The transformation target variable that should be extracted after the namesake code runs."
-                          data-description=" The transformation target variable that should be extracted after the namesake code runs."
-                          data-name="Transform variable"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Transform variable
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The transformation target variable that should be extracted after the namesake code runs."
+                              data-description=" The transformation target variable that should be extracted after the namesake code runs."
+                              data-name="Transform variable"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Transform variable
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" Number of subprocesses to use for data loading."
-                          data-description=" Number of subprocesses to use for data loading."
-                          data-name="Num workers"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Num workers
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Number of subprocesses to use for data loading."
+                              data-description=" Number of subprocesses to use for data loading."
+                              data-name="Num workers"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Num workers
+                            </button>
 <button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" A comma-separated list of safe libraries that are allowed in the transformation code. As a safety measure against code injection attacks, an error will be created if libraries other than those are encountered."
-                          data-description=" A comma-separated list of safe libraries that are allowed in the transformation code. As a safety measure against code injection attacks, an error will be created if libraries other than those are encountered."
-                          data-name="Safe libraries"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Safe libraries
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" A comma-separated list of safe libraries that are allowed in the transformation code. As a safety measure against code injection attacks, an error will be created if libraries other than those are encountered."
+                              data-description=" A comma-separated list of safe libraries that are allowed in the transformation code. As a safety measure against code injection attacks, an error will be created if libraries other than those are encountered."
+                              data-name="Safe libraries"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Safe libraries
+                            </button>
 <br>
 <h2 id='free-text'>Free text</h2>
-<p><p>Sets a free text that can be used by text-based AI to perform various kinds of analysis, such as detecting biases and sentiment. Some modules may also use this text as a prompt to feed into large language models (LLMs). You may optionally provide a website's URL (starting with http: or https: to retrieve its textual contents.</p> </p>
+<p>Sets a free text that can be used by text-based AI to perform various kinds of analysis, such as detecting biases and sentiment. Some modules may also use this text as a prompt to feed into large language models (LLMs). You may optionally provide a website's URL (starting with http: or https: to retrieve its textual contents.<br><br> </p>
 <b>Parameters</b><br><button
-                          type="button"
-                          class="btn btn-light"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title=" The text to be analyzed."
-                          data-description=" The text to be analyzed."
-                          data-name="Text"
-                          onclick="showDescriptionModal(this)">
-                          <i class="bi bi-info-circle"></i> Text
-                        </button>
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The text to be analyzed."
+                              data-description=" The text to be analyzed."
+                              data-name="Text"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Text
+                            </button>
 <br>
 
             </div>
