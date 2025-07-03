@@ -102,11 +102,40 @@
             <div class="container">
 <h1 class='display-4 text-center my-4'>Models</h1>
 <h2 id='no-model'>No model</h2>
-<p>Signifies that the analysis should focus solely on the fairness of the dataset. </p>
+<p><p>Signifies that the analysis should focus solely on the fairness of the dataset.
+Not treating bias at early steps may irrevocably embed it in the dataflow in ways that are hard to catch and quantify later.</p>
+</p>
 <h2 id='trivial-predictor'>Trivial predictor</h2>
-<p>Creates a trivial predictor that returns the most common predictive label value among provided data. If the label is numeric, the median is computed instead. This model servers as an informed baseline of what happens even for an uninformed predictor. Several kinds of class biases may exist, for example due to different class imbalances for each sensitive attribute dimension (e.g., for old white men compared to young hispanic women). </p>
+<p><p>Creates a trivial predictor that returns the most common predictive label value among provided data.
+If the label is numeric, the median is computed instead. This model servers as an informed baseline
+of what happens even for an uninformed predictor. Several kinds of class biases may exist, for example
+due to different class imbalances for each sensitive attribute dimension (e.g., for old white men
+compared to young hispanic women).</p>
+</p>
 <h2 id='onnx'>Onnx</h2>
-<p>Loads an inference model stored in <a href="https://onnx.ai/">ONNx</a> format. This is a generic cross-platform format for representing machine learning models with a common set of operations. Several machine learning frameworks can export to this format. The loaded model should be compatible with the dataset being analysed. For example, the same data columns as in the dataset should be used for training on tabular data.<br><br>ONNx supports several different runtimes, but this loader's implementation selects the <code>CPUExecutionProvider</code> runtime to run on, therefore maintaining compatibility with most machines. For inference in GPUs, prefer storing and loading models in formats that are guaranteed to maintain all features that could be included in the architectures of respective frameworks; this can be achieved with different model loaders.<br><br>Here are some quick links on how to export ONNx models from popular frameworks: <ul> <li><a href="https://onnx.ai/sklearn-onnx">scikit-learn</a></li> <li><a href="https://pytorch.org/tutorials/beginner/onnx/export simple model to onnx tutorial.html">PyTorch</a></li> <li><a href="https://onnxruntime.ai/docs/tutorials/tf-get-started.html">TensorFlow</a></li> </ul><br><br> </p>
+<p><p><img src="https://onnx.ai/images/ONNX-Logo.svg" alt="Based on ONNX" style="background-color: #000055; float: left; margin-right: 15px; margin-top: 5px; margin-bottom: 5px; height: 40px;"/></p>
+
+<p>Loads an inference model stored in <a href="https://onnx.ai/">ONNx</a> format.
+This is a generic cross-platform format for representing machine learning models with a common set of operations.
+Several machine learning frameworks can export to this format.
+The loaded model should be compatible with the dataset being analysed. For example,
+the same data columns as in the dataset should be used for training on tabular data.</p>
+
+<p>ONNx supports several different runtimes, but this loader's implementation selects
+the <code>CPUExecutionProvider</code> runtime to run on, therefore maintaining compatibility
+with most machines.
+For inference in GPUs, prefer storing and loading models in formats
+that are guaranteed to maintain all features that could be included in the architectures
+of respective frameworks; this can be achieved with different model loaders.</p>
+
+<p>Here are some quick links on how to export ONNx models from popular frameworks:</p>
+
+<ul>
+<li><a href="https://onnx.ai/sklearn-onnx">scikit-learn</a></li>
+<li><a href="https://pytorch.org/tutorials/beginner/onnx/export_simple_model_to_onnx_tutorial.html">PyTorch</a></li>
+<li><a href="https://onnxruntime.ai/docs/tutorials/tf-get-started.html">TensorFlow</a></li>
+</ul>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -131,7 +160,17 @@
                             </button>
 <br>
 <h2 id='onnx-ensemble'>Onnx ensemble</h2>
-<p><p>This ONNX Ensemble Module enables predictions using a <a href="https://scikit-learn.org/stable/modules/ensemble.html" target=" blank">boosting ensemble</a> mechanism, ideal for combining multiple weak learners to improve prediction accuracy. Boosting, a powerful technique in machine learning, focuses on training a series of simple models (weak learners) – often single-depth <a href="https://scikit-learn.org/stable/modules/tree.html#classification" target=" blank">decision trees</a> – and combining them into a strong ensemble model. However, the model loader module allows any model converted to <a href="https://onnxruntime.ai/docs/tutorials/traditional-ml.html#convert-model-to-onnx">ONNX</a> format and zipped inside a directory path along with other meta-informations (if any) stored in <a href="https://numpy.org/doc/2.1/reference/generated/numpy.save.html">.npy</a> format.</p> <p><b>Usage Instructions:</b> To load a model, users need to supply a zip file path. This zip file should include at least one or possibly many trained models, each saved in the ONNX format, as well as parameters, such as weights (often denoted as ‘alphas’), that define each learner’s contribution to the final model. For an example of preparing this file, please see <a href="https://github.com/mammoth-eu/mammoth-commons/blob/dev/tests/test-mfppb-onnx-ensemble.ipynb" target=" blank">our notebook</a>.</p> <p>The module recomends using the <a href="https://pypi.org/project/mmm-fair/"> MMM-Fair models</a>. MMM-Fair is a fairness-aware machine learning framework designed to support high-stakes AI decision-making under competing fairness and accuracy demands. The three M’s stand for: • Multi-Objective: Optimizes across classification accuracy, balanced accuracy, and fairness (specifically, maximum group-level discrimination). • Multi-Attribute: Supports multiple protected groups (e.g., race, gender, age) simultaneously, analyzing group-specific disparities. • Multi-Definition: Evaluates and compares fairness under multiple definitions—Demographic Parity (DP), Equal Opportunity (EP), and Equalized Odds (EO). MMM-Fair enables developers, researchers, and decision-makers to explore the full spectrum of possible trade-offs and select the model configuration that aligns with their social or organizational goals. For theoretical understanding of MMM-Fair, it is recomended to read the <a href="https://link.springer.com/chapter/10.1007/978-3-031-18840-4 21" target=" blank">published scientific article</a> that introduced the foundation of the MMM-algorithms.</p><br><br><p><b>Train and upload: </b> To create and integrate your own MMM-Fair model trained on your intended data, please follow the instructions given in the <a href="https://pypi.org/project/mmm-fair/" target=" blank">Pypi package guidance</a>.</p><br><br> </p>
+<p><p><img src="https://raw.githubusercontent.com/arjunroyihrpa/MMM_fair/main/images/mmm-fair.png" alt="Based on MMM-Fair" style="float: left; margin-right: 5px; margin-bottom: 5px; height: 80px;"/></p>
+
+<p>This ONNX Ensemble Module enables predictions using a <a href="https://scikit-learn.org/stable/modules/ensemble.html" target="_blank">boosting ensemble</a> mechanism, ideal for combining multiple weak learners to improve prediction accuracy. Boosting, a powerful technique in machine learning, focuses on training a series of simple models (weak learners) – often single-depth <a href="https://scikit-learn.org/stable/modules/tree.html#classification" target="_blank">decision trees</a> – and combining them into a strong ensemble model. However, the model loader module allows any model converted to <a href="https://onnxruntime.ai/docs/tutorials/traditional-ml.html#convert-model-to-onnx">ONNX</a> format and zipped inside a directory path along with other meta-informations (if any) stored in <a href="https://numpy.org/doc/2.1/reference/generated/numpy.save.html">.npy</a> format.</p>
+
+<p><b>Usage Instructions:</b> To load a model, users need to supply a zip file path. This zip file should include at least one or possibly many trained models, each saved in the ONNX format, as well as parameters, such as weights (often denoted as ‘alphas’), that define each learner’s contribution to the final model. For an example of preparing this file, please see <a href="https://github.com/mammoth-eu/mammoth-commons/blob/dev/tests/test-mfppb-onnx-ensemble.ipynb" target="_blank">our notebook</a>.</p>
+
+<p>The module recomends using the <a href="https://pypi.org/project/mmm-fair/"> MMM-Fair models</a>. MMM-Fair is a fairness-aware machine learning framework designed to support high-stakes AI decision-making under competing fairness and accuracy demands. The three M’s stand for: • Multi-Objective: Optimizes across classification accuracy, balanced accuracy, and fairness (specifically, maximum group-level discrimination). • Multi-Attribute: Supports multiple protected groups (e.g., race, gender, age) simultaneously, analyzing group-specific disparities. • Multi-Definition: Evaluates and compares fairness under multiple definitions—Demographic Parity (DP), Equal Opportunity (EP), and Equalized Odds (EO).
+MMM-Fair enables developers, researchers, and decision-makers to explore the full spectrum of possible trade-offs and select the model configuration that aligns with their social or organizational goals. For theoretical understanding of MMM-Fair, it is recomended to read the <a href="https://link.springer.com/chapter/10.1007/978-3-031-18840-4_21" target="_blank">published scientific article</a> that introduced the foundation of the MMM-algorithms.</p>
+
+<p><b>Train and upload: </b> To create and integrate your own MMM-Fair model trained on your intended data, please follow the instructions given in the <a href="https://pypi.org/project/mmm-fair/" target="_blank">Pypi package guidance</a>.</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -145,7 +184,12 @@
                             </button>
 <br>
 <h2 id='torch'>Torch</h2>
-<p>Loads a pytorch model that comprises a Python code initializing the architecture and a file of trained parameters. For safety, the architecture's definition is allowed to directly import only specified libraries.<br><br> </p>
+<p><p><img src="https://github.com/pytorch/pytorch/raw/main/docs/source/_static/img/pytorch-logo-dark.png" alt="Based on PyTorch" style="float: left; margin-right: 5px; margin-bottom: 5px; margin-top: 10px; height: 30px;"/></p>
+
+<p>Loads a <a href="https://pytorch.org/">pytorch</a> model that comprises a Python code initializing the
+architecture and a file of trained parameters. For safety, the architecture's
+definition is allowed to directly import only specified libraries.</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -203,7 +247,13 @@
                             </button>
 <br>
 <h2 id='torch2onnx'>Torch2onnx</h2>
-<p>Loads a ONNX model that comprises a Python code initializing the architecture and a file of trained parameters. For safety, the architecture's definition is allowed to directly import only specified libraries.<br><br> </p>
+<p><p><img src="https://github.com/pytorch/pytorch/raw/main/docs/source/_static/img/pytorch-logo-dark.png" alt="Based on PyTorch" style="float: left; margin-right: 5px; margin-bottom: 5px; margin-top: 10px; height: 30px;"/></p>
+
+<p>Loads a <a href="https://pytorch.org/">pytorch</a> model that comprises a Python code initializing the
+architecture and a file of trained parameters, and converts into ONNX format to support processing by
+modules not supporting GPU compute. For safety, the architecture's
+definition is allowed to directly import only specified libraries.</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -283,7 +333,28 @@
                             </button>
 <br>
 <h2 id='fair-node-ranking'>Fair node ranking</h2>
-<p> Constructs a node ranking algorithm that is a variation non-personalized PageRank. The base algorithm is often computes a notion of centrality/structural importance for each node in the graph, and employs a diffusion parameter in the range [0, 1). Find more details on how the algorithm works based on the following seminal paper:<br><br><i>Page, L. (1999). The PageRank citation ranking: Bringing order to the web. Technical Report.</i><br><br>The base node ranking algorithm is enriched by fairness-aware interventions implemented by the <a href="https://pygrank.readthedocs.io/en/latest/">pygrank</a> library. The latter may run on various computational backends, but <code>numpy</code> is selected due to its compatibility with a broad range of software and hardware. All implemented algorithms transfer node score mass from over-represented groups of nodes to those with lesser average mass using different strategies that determine the redistribution details. Fairness is imposed in terms of centrality scores achieving similar score mass between groups. The three available strategies are described here:<br><br><ul> <li><code>none</code> does not employ any fairness intervention and runs the base algorithm.</li> <li><code>uniform</code> applies a uniform rank redistribution strategy.</li> <li><code>original</code> tries to preserve the order of original node ranks by distributing more score mass to those.</li> </ul><br><br> </p>
+<p><p>Constructs a node ranking algorithm that is a variation non-personalized PageRank.
+The base algorithm is often computes a notion of centrality/structural
+importance for each node in the graph, and employs a diffusion parameter in the range [0, 1).
+Find more details on how the algorithm works based on the following seminal paper:</p>
+
+<p><i>Page, L. (1999). The PageRank citation ranking: Bringing order to the web. Technical Report.</i></p>
+
+<p>The base node ranking algorithm is enriched by fairness-aware interventions implemented
+by the <a href="https://pygrank.readthedocs.io/en/latest/">pygrank</a> library. The latter
+may run on various computational backends, but <code>numpy</code> is selected due to its compatibility
+with a broad range of software and hardware. All implemented algorithms transfer node score
+mass from over-represented groups of nodes to those with lesser average mass using different
+strategies that determine the redistribution details. Fairness is imposed in terms of centrality
+scores achieving similar score mass between groups. The three available strategies are
+described here:</p>
+
+<ul>
+<li><code>none</code> does not employ any fairness intervention and runs the base algorithm.</li>
+<li><code>uniform</code> applies a uniform rank redistribution strategy.</li>
+<li><code>original</code> tries to preserve the order of original node ranks by distributing more score mass to those.</li>
+</ul>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -308,7 +379,17 @@
                             </button>
 <br>
 <h2 id='mitigation-ranking'>Mitigation ranking</h2>
-<p> Load the researcher ranking model incorporating a mitigation strategy.<br><br>This function implements a fair ranking mechanism utilizing a sampling technique. It applies a mitigation strategy based on Statistical Parity, which aims to ensure equitable treatment across different groups by mitigating bias in the ranking process. Additionally, it compares the results of this fair ranking with a standard ranking derived from one of the numerical columns.<br><br>Returns: ResearcherRanking: An instance of ResearcherRanking that contains both the mitigation-based ranking and the standard ranking for comparison.<br><br></p>
+<p><p>Load the researcher ranking model incorporating a mitigation strategy.</p>
+
+<p>This function implements a fair ranking mechanism utilizing a sampling technique. It applies a
+mitigation strategy based on Statistical Parity, which aims to ensure equitable treatment
+across different groups by mitigating bias in the ranking process. Additionally, it compares
+the results of this fair ranking with a standard ranking derived from one of the numerical columns.</p>
+
+<p>Returns:
+ResearcherRanking: An instance of ResearcherRanking that contains both the mitigation-based
+ranking and the standard ranking for comparison.</p>
+</p>
 
             </div>
         </div>

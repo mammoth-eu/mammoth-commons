@@ -104,7 +104,25 @@
             <div class="container">
 <h1 class='display-4 text-center my-4'>Datasets</h1>
 <h2 id='auto-csv'>Auto csv</h2>
-<p>Loads a CSV file that contains numeric, categorical, and predictive data columns. This automatically detects the characteristics of the dataset being loaded, namely the delimiter that separates the columns, and whether each column contains numeric or categorical data. A <a href="https://pandas.pydata.org/">pandas</a> CSV reader is employed internally. The last categorical column is used as the dataset label. To load the file using different options (e.g., a subset of columns, a different label column) use the custom csv loader instead.<br><br>If you want to train a model while using the same loading mechanism as this dataset, run the following Python script. This uses supporting methods from the lightweight mammoth-commons core to retrieve <a href="https://numpy.org/">numpy</a> arrays <i>X,y</i> of dataset features and of categorical labels respectively.<br><br><pre>
+<p><p><img src="https://pandas.pydata.org/static/img/pandas_white.svg" alt="Based on Pandas" style="background-color: #000099; float: left; margin-right: 15px; margin-top: 5px; margin-bottom: 5px; height: 60px;"/></p>
+
+<p>Loads a CSV file that contains numeric, categorical, and predictive data columns.
+This automatically detects the characteristics of the dataset being loaded,
+namely the delimiter that separates the columns, and whether each column contains
+numeric or categorical data. A <a href="https://pandas.pydata.org/">pandas</a>
+CSV reader is employed internally.
+The last categorical column is used as the dataset label. To load the file using
+different options (e.g., a subset of columns, a different label column) use the
+custom csv loader instead.</p>
+
+<p>If you want to train a model while using the same loading mechanism as this dataset,
+run the following Python script. This uses supporting methods from the lightweight
+mammoth-commons core to retrieve <a href="https://numpy.org/">numpy</a>
+arrays <i>X,y</i> of dataset features and of categorical labels respectively.</p>
+
+<p><small></p>
+
+<pre>
 % pip install --upgrade pandas
 % pip install --upgrade mammoth_commons
 import pandas as pd
@@ -126,7 +144,10 @@ cat = [col for col in df if col not in num_set]
 csv_dataset = CSV(df, num=num, cat=cat[:-1], labels=cat[-1])
 X = X.astype(np.float32)
 y = df[cat[-1]]
-</pre><br><br><br><br></p>
+</pre>
+
+<p></small></p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -151,7 +172,11 @@ y = df[cat[-1]]
                             </button>
 <br>
 <h2 id='uci'>Uci</h2>
-<p>Loads a dataset from the UCI Machine Learning Repository (<a href="https://archive.ics.uci.edu/ml/index.php" target=" blank">www.uci.org</a>) containing numeric, categorical, and predictive data columns. The dataset is automatically downloaded from the repository, and basic preprocessing is applied to identify the column types. The specified target column is treated as the predictive label. To customize the loading process (e.g., use a different target column, load a subset of features, or handle missing data differently), additional parameters or a custom loader can be used.<br><br> </p>
+<p><p><img src="https://storage.googleapis.com/kaggle-datasets-images/2417096/4083793/85e682cbc981e5214668824a9b0415c3/dataset-cover.jpg?t=2022-08-17-05-14-29" alt="Based on UCI" style="float: left; margin-right: 5px; margin-top: 10px; margin-bottom: 5px; height: 80px;"/></p>
+
+<p>Loads a dataset from the UCI Machine Learning Repository (<a href="https://archive.ics.uci.edu/ml/index.php" target="_blank">www.uci.org</a>) containing numeric, categorical, and predictive data columns. The dataset is automatically downloaded from the repository, and basic preprocessing is applied to identify the column types. The specified target column is treated as the predictive label.
+To customize the loading process (e.g., use a different target column, load a subset of features, or handle missing data differently), additional parameters or a custom loader can be used.</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -165,7 +190,19 @@ y = df[cat[-1]]
                             </button>
 <br>
 <h2 id='read-any'>Read any</h2>
-<p> Loads a dataset for analysis from either a pre-loaded pandas DataFrame or a file in one of the supported formats: <code>.csv</code>, <code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>, <code>.xlsb</code>, <code>.odf</code>, <code>.ods</code>, <code>.json</code>, <code>.html</code>, or <code>.htm</code>.<br><br>The module accepts either a raw DataFrame or a file path (local or URL). If a file path is provided, the data is automatically loaded using the appropriate pandas function based on the file extension. Basic preprocessing is applied to infer column types, and the specified target column is treated as the predictive label.<br><br>To customize the loading process (e.g., load a subset of columns, handle missing values, or change column type inference), additional parameters or a custom loader function may be provided.<br><br>The Data loader module is recommended to load and process local data also while training models which are intented to be tested using the ONNXEnsemble module.<br><br> </p>
+<p><p><img src="https://raw.githubusercontent.com/arjunroyihrpa/MMM_fair/main/images/mmm-fair.png" alt="Based on MMM-Fair" style="float: left; margin-right: 5px; margin-bottom: 5px; height: 80px;"/></p>
+
+<p>Loads a dataset for analysis from either a pre-loaded pandas DataFrame or a file in one of the supported formats:
+<code>.csv</code>, <code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>, <code>.xlsb</code>, <code>.odf</code>, <code>.ods</code>, <code>.json</code>, <code>.html</code>, or <code>.htm</code>.
+The module accepts either a raw DataFrame or a file path (local or URL). If a file path is provided, the data is
+automatically loaded using the appropriate pandas function based on the file extension. Basic preprocessing is applied
+to infer column types, and the specified target column is treated as the predictive label.</p>
+
+<p>To customize the loading process (e.g., load a subset of columns, handle missing values, or change column type inference),
+additional parameters or a custom loader function may be provided.
+The Data loader module is recommended to load and process local data also while training models which are intended to be tested
+using the ONNXEnsemble module.</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -190,7 +227,16 @@ y = df[cat[-1]]
                             </button>
 <br>
 <h2 id='custom-csv'>Custom csv</h2>
-<p>Loads a CSV file that contains numeric, categorical, and predictive data columns separated by a user-defined delimiter. Each row corresponds to a different data sample, with the first one sometimes holding column names (this is automatically detected). To use all data in the file and automate discovery of numerical and categorical columns, as well as of delimiters, use the <code>auto csv</code> loader instead. Otherwise, set here all loading parameters. A <a href="https://pandas.pydata.org/">pandas</a> CSV reader is employed internally.<br><br> </p>
+<p><p><img src="https://pandas.pydata.org/static/img/pandas_white.svg" alt="Based on Pandas" style="background-color: #000099; float: left; margin-right: 15px; margin-top: 5px; margin-bottom: 5px; height: 60px;"/></p>
+
+<p>Loads a CSV file that contains numeric, categorical, and predictive data columns
+separated by a user-defined delimiter. Each row corresponds to a different data sample,
+with the first one sometimes holding column names (this is automatically detected).
+To use all data in the file and automate discovery of numerical and categorical columns,
+as well as of delimiters, use the <code>auto csv</code> loader instead. Otherwise, set here all loading
+parameters.
+A <a href="https://pandas.pydata.org/">pandas</a> CSV reader is employed internally.</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -259,12 +305,19 @@ y = df[cat[-1]]
                             </button>
 <br>
 <h2 id='csv-rankings'>Csv rankings</h2>
-<p> This is a Loader to load .csv files with information about researchers The <code>Path</code> should be given relative to your locally running instance (e.g.: <i>./data/researchers/Top&#95;researchers.csv</i>) The <code>Delimiter</code> should match the CSV file you have (e.g.: '|')<br><br></p>
+<p><p>This is a Loader to load .csv files with information about researchers
+The <code>Path</code> should be given relative to your locally running instance (e.g.: <i>./data/researchers/Top&#95;researchers.csv</i>)
+The <code>Delimiter</code> should match the CSV file you have (e.g.: '|')</p>
+</p>
 <b>Parameters</b><br>Path
 Delimiter
 <br>
 <h2 id='researchers'>Researchers</h2>
-<p><br><br>This is a Loader to load .csv files with information about researchers The <code>papers path</code> and <code>papers affiliations</code> should be given relative to your locally running instance (e.g.: <i>./data/researchers/Top&#95;researchers.csv</i>) The <code>Delimiter</code> should match the CSV file you have (e.g.: '|')<br><br> </p>
+<p><p>This is a Loader to load .csv files with information about researchers
+The <code>papers<em>path</code> and <code>papers</em>affiliations</code> should be given relative to your locally running instance
+(e.g.: <i>./data/researchers/Top&#95;researchers.csv</i>)
+The <code>Delimiter</code> should match the CSV file you have (e.g.: '|')</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -333,7 +386,8 @@ Delimiter
                             </button>
 <br>
 <h2 id='graph'>Graph</h2>
-<p>Loads the edges of a graph organized as rows of a comma-delimited file.<br><br> </p>
+<p><p>Loads the edges of a graph organized as rows of a comma-delimited file.</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -347,7 +401,9 @@ Delimiter
                             </button>
 <br>
 <h2 id='images'>Images</h2>
-<p> Loads image data from a CSV file holding their sensitive and predictive attribute data, as well as paths relative to a root directory. Loaded images are subjected to a Python transformation.<br><br> </p>
+<p><p>Loads image data from a CSV file holding their sensitive and predictive attribute
+data, as well as paths relative to a root directory. Loaded images are subjected to a Python transformation.</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -449,7 +505,14 @@ Delimiter
                             </button>
 <br>
 <h2 id='image-pairs'>Image pairs</h2>
-<p> Loads image pairs declared in a CSV file. The expected format is to have the first image's identifier in the first column, and the second image's identifier in the second column, Sensitive attributes can be selected from the rest of the columns. The images identifiers read from the columns are transformed to loading paths by string specifications that can contain the symbols: {root} to refer to the root directory, {col} to refer to the column name, and {id} to refer to the column entry.<br><br> </p>
+<p><p>Loads image pairs declared in a CSV file.
+The expected format is to have the first image's identifier in the first column,
+and the second image's identifier in the second column, Sensitive attributes
+can be selected from the rest of the columns. The images identifiers read from the columns
+are transformed to loading paths by string specifications that can contain the
+symbols: {root} to refer to the root directory, {col} to refer to the column name, and {id}
+to refer to the column entry.</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
@@ -551,7 +614,11 @@ Delimiter
                             </button>
 <br>
 <h2 id='free-text'>Free text</h2>
-<p>Sets a free text that can be used by text-based AI to perform various kinds of analysis, such as detecting biases and sentiment. Some modules may also use this text as a prompt to feed into large language models (LLMs). You may optionally provide a website's URL (starting with http: or https: to retrieve its textual contents.<br><br> </p>
+<p><p>Sets a free text that can be used by text-based AI to perform various kinds of analysis,
+such as detecting biases and sentiment. Some modules may also use this text as a prompt
+to feed into large language models (LLMs). You may optionally provide a website's URL (starting
+with http: or https: to retrieve its textual contents.</p>
+</p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
