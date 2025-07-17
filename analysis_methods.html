@@ -97,6 +97,7 @@
 <a href='#multi-objective-report'>Multi objective report</a>
 <a href='#viz-fairness-plots'>Viz fairness plots</a>
 <a href='#viz-fairness-report'>Viz fairness report</a>
+<a href='#croissant'>Croissant</a>
 <a href='#exposure-distance-comparison'>Exposure distance comparison</a>
 <a href='#augmentation-report'>Augmentation report</a>
 <a href='#text-debias'>Text debias</a>
@@ -684,6 +685,21 @@ This module is particularly useful in evaluation pipelines, audit reports, and m
 It helps teams assess group-level equity in model behavior using interpretable, tabular summaries.
 </p>
 </p>
+<h2 id='croissant'>Croissant</h2>
+<p><p>Generate some json dataset metadata that boostraps conversion of your datasets into the
+<a href="https://github.com/mlcommons/croissant">Croissant</a> format. That format is used to
+standardized how datasets may be indexed and loaded. If your dataset is stored locally, such as
+in minio instances, you can consider either sharing the metadata to explain to others what you
+are working with, or using publicly hosted data by providing https links for files.
+Metadata are displayed as HTML to help you get an overview and are presented as a copy-able block of json.</p>
+</p>
+<b>Parameters</b><br>Language
+License
+Name
+Description
+Citation
+Qualitative creators
+<br>
 <h2 id='exposure-distance-comparison'>Exposure distance comparison</h2>
 <p><p>Compute the exposure distance between the protected and non-protected groups in the dataset and ranking.
 Sensitive attributes is a comma-separated list of the attributes relevant for fairness analysis. Currently, only <i>Gender</i> is supported.</p>
