@@ -86,6 +86,7 @@
     <!-- Side Menu -->
     <div class="side-menu">
         <a href='#no-model'>No model</a>
+<a href='#manual-predictor'>Manual predictor</a>
 <a href='#trivial-predictor'>Trivial predictor</a>
 <a href='#onnx'>Onnx</a>
 <a href='#onnx-ensemble'>Onnx ensemble</a>
@@ -105,6 +106,26 @@
 <p><p>Signifies that the analysis should focus solely on the fairness of the dataset.
 Not treating bias at early steps may irrevocably embed it in the dataflow in ways that are hard to catch and quantify later.</p>
 </p>
+<h2 id='manual-predictor'>Manual predictor</h2>
+<p><p>Lets you input comma-separated list of predictions that correspond to the data you are processing.
+This is useful so that you can export the predictions directly from your testing code. If there are no
+commas provided, this module's argument is considered to be the URL to a CSV file whose last column contains
+the predictions. Other columns are ignored, but are allowed to give you flexibility. If your dataset also
+has the last column as the prediction label (e.g., if it is loaded with auto csv) you will obtain analysis
+for a perfect predictor.</p>
+</p>
+<b>Parameters</b><br><button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" A comma-separated list of predictions, or a URL to a CSV file whose last column contains them."
+                              data-description=" A comma-separated list of predictions, or a URL to a CSV file whose last column contains them."
+                              data-name="Path or predictions"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Path or predictions
+                            </button>
+<br>
 <h2 id='trivial-predictor'>Trivial predictor</h2>
 <p><p>Creates a trivial predictor that returns the most common predictive label value among provided data.
 If the label is numeric, the median is computed instead. This model servers as an informed baseline
