@@ -335,11 +335,11 @@ ignored in the analysis. The report may also include information about built-in 
                               class="btn btn-light"
                               data-bs-toggle="tooltip"
                               data-bs-placement="top"
-                              title=" Whether to consider all non-empty group intersections during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected."
-                              data-description=" Whether to consider all non-empty group intersections during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected."
-                              data-name="Intersectional"
+                              title=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected."
+                              data-description=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected."
+                              data-name="Intersections"
                               onclick="showDescriptionModal(this)">
-                              <i class="bi bi-info-circle"></i> Intersectional
+                              <i class="bi bi-info-circle"></i> Intersections
                             </button>
 <button
                               type="button"
@@ -390,8 +390,8 @@ ignored in the analysis. The report may also include information about built-in 
 <p><p><img src="https://ai-fairness-360.org/" alt="Based on AIF360" style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
 
 <p>This module evaluates fairness using IBM's <a href="https://aif360.readthedocs.io">AIF360</a> library.
-It computes standard group fairness metrics for each sensitive attribute provided. IF attributes are non-binary, they are
-binarized into one-hot encoded columns.</p>
+It computes standard group fairness metrics for each sensitive attribute provided. If attributes are non-binary, they are
+binarized into one-hot encoded columns. Only categorical attributes are allowed.</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
