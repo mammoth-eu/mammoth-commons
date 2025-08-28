@@ -102,6 +102,7 @@
 <a href='#exposure-distance-comparison'>Exposure distance comparison</a>
 <a href='#augmentation-report'>Augmentation report</a>
 <a href='#text-debias'>Text debias</a>
+<a href='#llm-audit'>Llm audit</a>
 
     </div>
 
@@ -809,6 +810,25 @@ one pretrained for the English language and two trained
 on the <a href="https://github.com/Media-Bias-Group/Neural-Media-Bias-Detection-Using-Distant-Supervision-With-BABE">MBIC dataset</a>.
 </p>
 </p>
+<h2 id='llm-audit'>Llm audit</h2>
+<p><p>This assessment methodology sets an LLM at the role of fairness auditory and asks it to provide
+a sequence of votes, obtaining an assessment of whether given text is biased or neutral.
+Then, it follows a chain-of-thought approach for summarizing the reasoning associated with all
+valid votes (some votes may be invalid due to erroneous formatting) and eventually identifying
+actionable insights or explanations.</p>
+</p>
+<b>Parameters</b><br><button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" How many votes should be casted."
+                              data-description=" How many votes should be casted."
+                              data-name="Chain of votes"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Chain of votes
+                            </button>
+<br>
 
             </div>
         </div>

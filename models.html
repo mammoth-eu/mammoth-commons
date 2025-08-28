@@ -86,6 +86,7 @@
     <!-- Side Menu -->
     <div class="side-menu">
         <a href='#no-model'>No model</a>
+<a href='#ollama-model'>Ollama model</a>
 <a href='#manual-predictor'>Manual predictor</a>
 <a href='#trivial-predictor'>Trivial predictor</a>
 <a href='#onnx'>Onnx</a>
@@ -106,6 +107,63 @@
 <p><p>Signifies that the analysis should focus solely on the fairness of the dataset.
 Not treating bias at early steps may irrevocably embed it in the dataflow in ways that are hard to catch and quantify later.</p>
 </p>
+<h2 id='ollama-model'>Ollama model</h2>
+<p><p>References a locally provided <a href="https://ollama.com" target="_blank">ollama</a> model.
+Set up this up in the machine where MAI-BIAS runs. Here, information required to prompt that model is provided.</p>
+
+<div class="wrap">
+<h2>1) Install Ollama</h2>
+<div class="grid">
+<div class="card">
+<h3>macOS (Homebrew)</h3>
+<pre><code>brew install ollama
+ollama --version</code></pre>
+</div>
+<div class="card">
+<h3>Linux (install script)</h3>
+<pre><code>curl -fsSL https://ollama.com/install.sh | sh
+ollama --version</code></pre>
+</div>
+<div class="card">
+<h3>Windows (winget)</h3>
+<pre><code>winget install Ollama.Ollama</code></pre>
+</div>
+</div>
+<h2>2) Start the service</h2>
+<div class="card">
+<p>Start the local service and keep it running while you work.</p>
+<pre><code>ollama serve</code></pre>
+</div>
+<h2>3) Pull a model</h2>
+<div class="card">
+<p>You only need to pull a model once; updates reuse most weights via deltas.</p>
+<pre><code>ollama pull llama3</code></pre>
+</div>
+</div>
+</p>
+<b>Parameters</b><br><button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The model name, as pulled in the ollama endpoint."
+                              data-description=" The model name, as pulled in the ollama endpoint."
+                              data-name="Name"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Name
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The url of the ollama endpoint. Default is <code>http"
+                              data-description=" The url of the ollama endpoint. Default is <code>http"
+                              data-name="Url"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Url
+                            </button>
+<br>
 <h2 id='manual-predictor'>Manual predictor</h2>
 <p><p>Lets you input comma-separated list of predictions that correspond to the data you are processing.
 This is useful so that you can export the predictions directly from your testing code. If there are no
