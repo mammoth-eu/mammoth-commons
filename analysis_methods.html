@@ -112,7 +112,8 @@
             <div class="container">
 <h1 class='display-4 text-center my-4'>Analysis</h1>
 <h2 id='card'>Card</h2>
-<p><p><img src="https://fairbench.readthedocs.io/fairbench.png" alt="Based on FairBench" style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
+<p><p><img src="https://fairbench.readthedocs.io/fairbench.png" alt="Based on FairBench"
+style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
 
 <p>Generates a fairness and bias report using the <a href="https://github.com/mever-team/FairBench">FairBench</a>
 library. This explores many kinds of bias to paint a broad picture and help you decide on what is problematic
@@ -412,9 +413,15 @@ ignored in the analysis. The report may also include information about built-in 
 <h2 id='aif360'>Aif360</h2>
 <p><p><img src="https://ai-fairness-360.org/" alt="Based on AIF360" style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
 
-<p>This module evaluates fairness using IBM's <a href="https://aif360.readthedocs.io">AIF360</a> library.
+<p>This module evaluates fairness using IBM's <a href="https://aif360.readthedocs.io" target="_blank">AIF360</a> library.
 It computes standard group fairness metrics for each sensitive attribute provided. If attributes are non-binary, they are
 binarized into one-hot encoded columns. Only categorical attributes are allowed.</p>
+
+<p><span class="alert alert-warning alert-dismissible fade show" role="alert"
+style="display: inline-block; padding: 10px;"> <i class="bi bi-exclamation-triangle-fill"></i>
+This module is based on AIF360, which does not support generalized intersectional analysis.
+When needed, generate sensitive intersectional group labels in your dataset. However, these
+will always be computed against the rest of the population.</span></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
