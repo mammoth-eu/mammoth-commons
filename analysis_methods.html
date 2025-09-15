@@ -483,6 +483,7 @@ which is licensed under Apache License 2.0.</i></p></p>
 <br>
 <h2 id='bias-scan'>Bias scan</h2>
 <p><p>This module scans your dataset to estimate the most biased attributes or combinations of attributes.
+You can use those as inputs to other modules.
 For example, gender may only show bias when combined with socioeconomic status, despite the latter not
 bein inherently sensitive. If you have already marked some
 attributes as sensitive (such as race or gender), the module will <b>exclude</b> them from the scan. This allows
@@ -715,9 +716,6 @@ Two sets of visual outputs are processed:
 <p>
 Interactive charts allow users to hover for precise values, compare metrics between groups, and quickly identify fairness gaps.
 An explanation panel is included to define each metric and guide interpretation.
-</p>
-
-<p>
 This module is well suited for exploratory analysis, presentations, and fairness monitoring.
 It makes group disparities visible and intuitive, helping identify where further scrutiny or mitigation may be needed.
 </p>
@@ -739,9 +737,6 @@ Two types of fairness metrics are considered:
 <p>
 Results are presented in aligned tables with clear formatting, allowing users to compare outcomes across groups at a glance.
 Each metric is briefly explained to help interpret whether the model exhibits performance or outcome disparities for different groups.
-</p>
-
-<p>
 This module is particularly useful in evaluation pipelines, audit reports, and model reviews where transparency and fairness are essential.
 It helps teams assess group-level equity in model behavior using interpretable, tabular summaries.
 </p>
@@ -763,7 +758,8 @@ Qualitative creators
 <br>
 <h2 id='exposure-distance-comparison'>Exposure distance comparison</h2>
 <p><p>Compute the exposure distance between the protected and non-protected groups in the dataset and ranking.
-Sensitive attributes is a comma-separated list of the attributes relevant for fairness analysis. WCurrently, only <i>Gender</i> is supported.</p>
+Sensitive attributes is a comma-separated list of the attributes relevant for fairness analysis. Currently,
+only <i>Gender</i> is supported.</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
