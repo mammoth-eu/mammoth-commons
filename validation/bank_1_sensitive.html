@@ -1,0 +1,222 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>MAI-BIAS run</title>
+            
+        </head>
+        <body>
+            
+    <div class="container mt-4">
+        <h1 class="text-success">Croissant metadata</h1>
+        <b>Title:</b> Bank dataset with marital sensitive attribute<br/>
+        <b>Description:</b> The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.<br/>
+        <b>Citation:</b> A data-driven approach to predict the success of bank telemarketing, By Sérgio Moro, P. Cortez, P. Rita. 2014, Published in Decision Support Systems<br/>
+        <b>License:</b> Creative Commons Attribution 4.0 International (CC BY 4.0)<br/>
+        <b>Creators:</b> Sérgio Moro,  P. Cortez,  P. Rita<br/>
+
+        <button class="btn btn-primary mb-2" onclick="copyPre()">Copy json metadata</button>
+        <pre id="json-block" style="background:#f8f9fa; border:1px solid #ccc; padding:1em; border-radius:0.5em; overflow:auto;">{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "arrayShape": "cr:arrayShape",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isArray": "cr:isArray",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "distribution": [
+    "https://archive.ics.uci.edu/dataset/222/bank+marketing"
+  ],
+  "@language": "en",
+  "@vocab": "https://schema.org/",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "name": "Bank dataset with marital sensitive attribute",
+  "description": "The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "citeAs": "A data-driven approach to predict the success of bank telemarketing, By S\u00e9rgio Moro, P. Cortez, P. Rita. 2014, Published in Decision Support Systems",
+  "creator": [
+    {
+      "name": "S\u00e9rgio Moro"
+    },
+    {
+      "name": " P. Cortez"
+    },
+    {
+      "name": " P. Rita"
+    }
+  ],
+  "data": [],
+  "columns": [
+    {
+      "name": "age",
+      "description": "Column 'age' in the dataset. Contains 67 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "job",
+      "description": "Column 'job' in the dataset. Contains 12 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "marital",
+      "description": "Column 'marital' in the dataset. Contains 3 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": true
+    },
+    {
+      "name": "education",
+      "description": "Column 'education' in the dataset. Contains 4 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "default",
+      "description": "Column 'default' in the dataset. Contains 2 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "balance",
+      "description": "Column 'balance' in the dataset. Contains 2353 distinct values out of 4521 entries. It is used for data loading and does not serve as metadata. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "housing",
+      "description": "Column 'housing' in the dataset. Contains 2 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "loan",
+      "description": "Column 'loan' in the dataset. Contains 2 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "contact",
+      "description": "Column 'contact' in the dataset. Contains 3 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "day",
+      "description": "Column 'day' in the dataset. Contains 31 distinct values out of 4521 entries. It is used for data loading and does not serve as metadata. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "month",
+      "description": "Column 'month' in the dataset. Contains 12 distinct values out of 4521 entries. It is used for data loading and does not serve as metadata. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "duration",
+      "description": "Column 'duration' in the dataset. Contains 875 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "campaign",
+      "description": "Column 'campaign' in the dataset. Contains 32 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "pdays",
+      "description": "Column 'pdays' in the dataset. Contains 292 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "previous",
+      "description": "Column 'previous' in the dataset. Contains 24 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "poutcome",
+      "description": "Column 'poutcome' in the dataset. Contains 4 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "y",
+      "description": "Column 'y' in the dataset. Contains 2 distinct values out of 4521 entries. It is used for data loading and does not serve as metadata. ",
+      "datatype": "string",
+      "isSensitive": false
+    }
+  ]
+}</pre>
+    </div>
+
+    <script>function copyPre() {
+        const pre = document.getElementById("json-block");
+        const text = pre.innerText;
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand("copy");
+            //alert("Copied!");
+        } catch (err) {
+            //alert("Failed to copy");
+        }
+        document.body.removeChild(textarea);
+    }</script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+        </body>
+        </html>
+        

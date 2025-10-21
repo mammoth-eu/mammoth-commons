@@ -1,0 +1,828 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Data</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .main-content {
+            margin-top: 60px;
+        }
+        .side-menu {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            padding-top: 70px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+        }
+        .side-menu a {
+            display: block;
+            padding: 5px 20px;
+            color: #495057;
+            text-decoration: none;
+        }
+        .side-menu a:hover {
+            background-color: #e9ecef;
+        }
+        .content-wrapper {
+            margin-left: 220px;
+            margin-right: 220px;
+            padding: 20px;
+        }
+        h2 {
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+        
+        /* Hide navbar on small screens */
+        @media (max-width: 576px) {
+            .side-menu {
+                display: none;
+            }
+    
+            .content-wrapper {
+                margin-left: 0;
+                margin-right: 0;
+                padding: 0;
+            }
+            .main-content {
+                margin-top: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="mx-auto">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="datasets.html">Datasets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="models.html">Models</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="analysis_methods.html">Analysis</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <a href='#bank_1_sensitive'>Bank 1 Sensitive</a>
+<a href='#bank_2_sensitive'>Bank 2 Sensitive</a>
+<a href='#credit_2_sensitive'>Credit 2 Sensitive</a>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <div class="main-content container">
+            <div class="container">
+<h1 class='display-4 text-center my-4'>Validation Data</h1>
+<h2 id='bank_1_sensitive'>Bank 1 Sensitive</h2>
+<div><!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>MAI-BIAS run</title>
+            
+        </head>
+        <body>
+            
+    <div class="container mt-4">
+        
+        <b>Title:</b> Bank dataset with marital sensitive attribute<br/>
+        <b>Description:</b> The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.<br/>
+        <b>Citation:</b> A data-driven approach to predict the success of bank telemarketing, By Sérgio Moro, P. Cortez, P. Rita. 2014, Published in Decision Support Systems<br/>
+        <b>License:</b> Creative Commons Attribution 4.0 International (CC BY 4.0)<br/>
+        <b>Creators:</b> Sérgio Moro,  P. Cortez,  P. Rita<br/>
+
+        <button class="btn btn-primary mb-2" onclick="copyPre()">Copy json metadata</button>
+        <pre id="json-block" style="background:#f8f9fa; border:1px solid #ccc; padding:1em; border-radius:0.5em; overflow:auto;">{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "arrayShape": "cr:arrayShape",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isArray": "cr:isArray",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "distribution": [
+    "https://archive.ics.uci.edu/dataset/222/bank+marketing"
+  ],
+  "@language": "en",
+  "@vocab": "https://schema.org/",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "name": "Bank dataset with marital sensitive attribute",
+  "description": "The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "citeAs": "A data-driven approach to predict the success of bank telemarketing, By S\u00e9rgio Moro, P. Cortez, P. Rita. 2014, Published in Decision Support Systems",
+  "creator": [
+    {
+      "name": "S\u00e9rgio Moro"
+    },
+    {
+      "name": " P. Cortez"
+    },
+    {
+      "name": " P. Rita"
+    }
+  ],
+  "data": [],
+  "columns": [
+    {
+      "name": "age",
+      "description": "Column 'age' in the dataset. Contains 67 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "job",
+      "description": "Column 'job' in the dataset. Contains 12 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "marital",
+      "description": "Column 'marital' in the dataset. Contains 3 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": true
+    },
+    {
+      "name": "education",
+      "description": "Column 'education' in the dataset. Contains 4 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "default",
+      "description": "Column 'default' in the dataset. Contains 2 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "balance",
+      "description": "Column 'balance' in the dataset. Contains 2353 distinct values out of 4521 entries. It is used for data loading and does not serve as metadata. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "housing",
+      "description": "Column 'housing' in the dataset. Contains 2 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "loan",
+      "description": "Column 'loan' in the dataset. Contains 2 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "contact",
+      "description": "Column 'contact' in the dataset. Contains 3 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "day",
+      "description": "Column 'day' in the dataset. Contains 31 distinct values out of 4521 entries. It is used for data loading and does not serve as metadata. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "month",
+      "description": "Column 'month' in the dataset. Contains 12 distinct values out of 4521 entries. It is used for data loading and does not serve as metadata. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "duration",
+      "description": "Column 'duration' in the dataset. Contains 875 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "campaign",
+      "description": "Column 'campaign' in the dataset. Contains 32 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "pdays",
+      "description": "Column 'pdays' in the dataset. Contains 292 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "previous",
+      "description": "Column 'previous' in the dataset. Contains 24 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "poutcome",
+      "description": "Column 'poutcome' in the dataset. Contains 4 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "y",
+      "description": "Column 'y' in the dataset. Contains 2 distinct values out of 4521 entries. It is used for data loading and does not serve as metadata. ",
+      "datatype": "string",
+      "isSensitive": false
+    }
+  ]
+}</pre>
+    </div>
+
+    <script>function copyPre() {
+        const pre = document.getElementById("json-block");
+        const text = pre.innerText;
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand("copy");
+            //alert("Copied!");
+        } catch (err) {
+            //alert("Failed to copy");
+        }
+        document.body.removeChild(textarea);
+    }</script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+        </body>
+        </html></div>
+<h2 id='bank_2_sensitive'>Bank 2 Sensitive</h2>
+<div><!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>MAI-BIAS run</title>
+            
+        </head>
+        <body>
+            
+    <div class="container mt-4">
+        
+        <b>Title:</b> Bank dataset with marital and age sensitive attributes<br/>
+        <b>Description:</b> The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.<br/>
+        <b>Citation:</b> A data-driven approach to predict the success of bank telemarketing, By Sérgio Moro, P. Cortez, P. Rita. 2014, Published in Decision Support Systems<br/>
+        <b>License:</b> Creative Commons Attribution 4.0 International (CC BY 4.0)<br/>
+        <b>Creators:</b> Sérgio Moro,  P. Cortez,  P. Rita<br/>
+
+        <button class="btn btn-primary mb-2" onclick="copyPre()">Copy json metadata</button>
+        <pre id="json-block" style="background:#f8f9fa; border:1px solid #ccc; padding:1em; border-radius:0.5em; overflow:auto;">{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "arrayShape": "cr:arrayShape",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isArray": "cr:isArray",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "distribution": [
+    "https://archive.ics.uci.edu/dataset/222/bank+marketing"
+  ],
+  "@language": "en",
+  "@vocab": "https://schema.org/",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "name": "Bank dataset with marital and age sensitive attributes",
+  "description": "The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "citeAs": "A data-driven approach to predict the success of bank telemarketing, By S\u00e9rgio Moro, P. Cortez, P. Rita. 2014, Published in Decision Support Systems",
+  "creator": [
+    {
+      "name": "S\u00e9rgio Moro"
+    },
+    {
+      "name": " P. Cortez"
+    },
+    {
+      "name": " P. Rita"
+    }
+  ],
+  "data": [],
+  "columns": [
+    {
+      "name": "age",
+      "description": "Column 'age' in the dataset. Contains 67 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "job",
+      "description": "Column 'job' in the dataset. Contains 12 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "marital",
+      "description": "Column 'marital' in the dataset. Contains 3 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": true
+    },
+    {
+      "name": "education",
+      "description": "Column 'education' in the dataset. Contains 4 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "default",
+      "description": "Column 'default' in the dataset. Contains 2 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "balance",
+      "description": "Column 'balance' in the dataset. Contains 2353 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "housing",
+      "description": "Column 'housing' in the dataset. Contains 2 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "loan",
+      "description": "Column 'loan' in the dataset. Contains 2 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "contact",
+      "description": "Column 'contact' in the dataset. Contains 3 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "day",
+      "description": "Column 'day' in the dataset. Contains 31 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "month",
+      "description": "Column 'month' in the dataset. Contains 12 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "duration",
+      "description": "Column 'duration' in the dataset. Contains 875 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "campaign",
+      "description": "Column 'campaign' in the dataset. Contains 32 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "pdays",
+      "description": "Column 'pdays' in the dataset. Contains 292 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "previous",
+      "description": "Column 'previous' in the dataset. Contains 24 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "poutcome",
+      "description": "Column 'poutcome' in the dataset. Contains 4 distinct values out of 4521 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "y",
+      "description": "Column 'y' in the dataset. Contains 2 distinct values out of 4521 entries. It is used for data loading and does not serve as metadata. ",
+      "datatype": "string",
+      "isSensitive": false
+    }
+  ]
+}</pre>
+    </div>
+
+    <script>function copyPre() {
+        const pre = document.getElementById("json-block");
+        const text = pre.innerText;
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand("copy");
+            //alert("Copied!");
+        } catch (err) {
+            //alert("Failed to copy");
+        }
+        document.body.removeChild(textarea);
+    }</script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+        </body>
+        </html></div>
+<h2 id='credit_2_sensitive'>Credit 2 Sensitive</h2>
+<div><!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>MAI-BIAS run</title>
+            
+        </head>
+        <body>
+            
+    <div class="container mt-4">
+        
+        <b>Title:</b> Credit dataset with sex (X2) and marital status (X4) sensitive attributes<br/>
+        <b>Description:</b> This research aimed at the case of customers' default payments in Taiwan and compares the predictive accuracy of probability of default among six data mining methods. From the perspective of risk management, the result of predictive accuracy of the estimated probability of default will be more valuable than the binary result of classification - credible or not credible clients. Because the real probability of default is unknown, this study presented the novel Sorting Smoothing Method to estimate the real probability of default. With the real probability of default as the response variable (Y), and the predictive probability of default as the independent variable (X), the simple linear regression result (Y = A + BX) shows that the forecasting model produced by artificial neural network has the highest coefficient of determination; its regression intercept (A) is close to zero, and regression coefficient (B) to one. Therefore, among the six data mining techniques, artificial neural network is the only one that can accurately estimate the real probability of default.<br/>
+        <b>Citation:</b> The comparisons of data mining techniques for the predictive accuracy of probability of default of credit card clients, By I. Yeh, Che-hui Lien. 2009, Published in Expert systems with applications<br/>
+        <b>License:</b> Creative Commons Attribution 4.0 International (CC BY 4.0)<br/>
+        <b>Creators:</b> I. Yeh,  Che-hui Lien<br/>
+
+        <button class="btn btn-primary mb-2" onclick="copyPre()">Copy json metadata</button>
+        <pre id="json-block" style="background:#f8f9fa; border:1px solid #ccc; padding:1em; border-radius:0.5em; overflow:auto;">{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "arrayShape": "cr:arrayShape",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isArray": "cr:isArray",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "distribution": [
+    "https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients"
+  ],
+  "@language": "en",
+  "@vocab": "https://schema.org/",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "name": "Credit dataset with sex (X2) and marital status (X4) sensitive attributes",
+  "description": "This research aimed at the case of customers' default payments in Taiwan and compares the predictive accuracy of probability of default among six data mining methods. From the perspective of risk management, the result of predictive accuracy of the estimated probability of default will be more valuable than the binary result of classification - credible or not credible clients. Because the real probability of default is unknown, this study presented the novel Sorting Smoothing Method to estimate the real probability of default. With the real probability of default as the response variable (Y), and the predictive probability of default as the independent variable (X), the simple linear regression result (Y = A + BX) shows that the forecasting model produced by artificial neural network has the highest coefficient of determination; its regression intercept (A) is close to zero, and regression coefficient (B) to one. Therefore, among the six data mining techniques, artificial neural network is the only one that can accurately estimate the real probability of default.",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "citeAs": "The comparisons of data mining techniques for the predictive accuracy of probability of default of credit card clients, By I. Yeh, Che-hui Lien. 2009, Published in Expert systems with applications",
+  "creator": [
+    {
+      "name": "I. Yeh"
+    },
+    {
+      "name": " Che-hui Lien"
+    }
+  ],
+  "data": [],
+  "columns": [
+    {
+      "name": "X1",
+      "description": "Column 'X1' in the dataset. Contains 81 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X2",
+      "description": "Column 'X2' in the dataset. Contains 2 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "X3",
+      "description": "Column 'X3' in the dataset. Contains 7 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "X4",
+      "description": "Column 'X4' in the dataset. Contains 4 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "X5",
+      "description": "Column 'X5' in the dataset. Contains 56 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X6",
+      "description": "Column 'X6' in the dataset. Contains 11 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X7",
+      "description": "Column 'X7' in the dataset. Contains 11 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X8",
+      "description": "Column 'X8' in the dataset. Contains 11 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X9",
+      "description": "Column 'X9' in the dataset. Contains 11 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X10",
+      "description": "Column 'X10' in the dataset. Contains 10 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "X11",
+      "description": "Column 'X11' in the dataset. Contains 10 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "X12",
+      "description": "Column 'X12' in the dataset. Contains 22723 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X13",
+      "description": "Column 'X13' in the dataset. Contains 22346 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X14",
+      "description": "Column 'X14' in the dataset. Contains 22026 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X15",
+      "description": "Column 'X15' in the dataset. Contains 21548 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X16",
+      "description": "Column 'X16' in the dataset. Contains 21010 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X17",
+      "description": "Column 'X17' in the dataset. Contains 20604 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X18",
+      "description": "Column 'X18' in the dataset. Contains 7943 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X19",
+      "description": "Column 'X19' in the dataset. Contains 7899 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X20",
+      "description": "Column 'X20' in the dataset. Contains 7518 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X21",
+      "description": "Column 'X21' in the dataset. Contains 6937 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X22",
+      "description": "Column 'X22' in the dataset. Contains 6897 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X23",
+      "description": "Column 'X23' in the dataset. Contains 6939 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    }
+  ]
+}</pre>
+    </div>
+
+    <script>function copyPre() {
+        const pre = document.getElementById("json-block");
+        const text = pre.innerText;
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand("copy");
+            //alert("Copied!");
+        } catch (err) {
+            //alert("Failed to copy");
+        }
+        document.body.removeChild(textarea);
+    }</script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+        </body>
+        </html></div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Description Modal -->
+    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-muted" id="descriptionModalLabel">Description</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="descriptionModalBody">
+            <!-- Description will be injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script>
+    function showDescriptionModal(button) {
+        const description = button.getAttribute("data-description");
+        const name = button.getAttribute("data-name");
+        document.getElementById("descriptionModalLabel").innerText = name;
+        document.getElementById("descriptionModalBody").innerText = description;
+        const modal = new bootstrap.Modal(document.getElementById("descriptionModal"));
+        modal.show();
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

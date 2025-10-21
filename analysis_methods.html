@@ -89,6 +89,7 @@
 <a href='#specific-concerns'>Specific concerns</a>
 <a href='#interactive-report'>Interactive report</a>
 <a href='#sklearn-audit'>Sklearn audit</a>
+<a href='#sklearn-visual-analysis'>Sklearn visual analysis</a>
 <a href='#aif360'>Aif360</a>
 <a href='#optimal-transport'>Optimal transport</a>
 <a href='#bias-scan'>Bias scan</a>
@@ -142,8 +143,8 @@ ignored in the analysis. The report may also include information about built-in 
                               class="btn btn-light"
                               data-bs-toggle="tooltip"
                               data-bs-placement="top"
-                              title=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected."
-                              data-description=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected."
+                              title=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected. As an example of intersectional bias <b>[1]</b> race and gender together affect algorithmic performance of commercial facial-analysis systems; worst performance for darker-skinned women demonstrates a compounded disparity that would be missed if the analysis looked only at race or only at gender. <br><br><b>[1]</b> <i>Buolamwini, J., & Gebru, T. (2018, January). Gender shades Intersectional accuracy disparities in commercial gender classification. In Conference on fairness, accountability and transparency (pp. 77-91). PMLR.</p>"
+                              data-description=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected. As an example of intersectional bias <b>[1]</b> race and gender together affect algorithmic performance of commercial facial-analysis systems; worst performance for darker-skinned women demonstrates a compounded disparity that would be missed if the analysis looked only at race or only at gender. <br><br><b>[1]</b> <i>Buolamwini, J., & Gebru, T. (2018, January). Gender shades Intersectional accuracy disparities in commercial gender classification. In Conference on fairness, accountability and transparency (pp. 77-91). PMLR.</p>"
                               data-name="Intersections"
                               onclick="showDescriptionModal(this)">
                               <i class="bi bi-info-circle"></i> Intersections
@@ -191,6 +192,17 @@ ignored in the analysis. The report may also include information about built-in 
                               data-name="Min group size"
                               onclick="showDescriptionModal(this)">
                               <i class="bi bi-info-circle"></i> Min group size
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Whether to focus on showing numbers or showing accompanying bars for easier comparison. Prefer a number comparison to avoid being influenced by comparisons between incomparable measure values."
+                              data-description=" Whether to focus on showing numbers or showing accompanying bars for easier comparison. Prefer a number comparison to avoid being influenced by comparisons between incomparable measure values."
+                              data-name="Presentation"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Presentation
                             </button>
 <br>
 <h2 id='specific-concerns'>Specific concerns</h2>
@@ -348,8 +360,130 @@ ignored in the analysis. The report may also include information about built-in 
                               class="btn btn-light"
                               data-bs-toggle="tooltip"
                               data-bs-placement="top"
-                              title=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected."
-                              data-description=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected."
+                              title=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected. As an example of intersectional bias <b>[1]</b> race and gender together affect algorithmic performance of commercial facial-analysis systems; worst performance for darker-skinned women demonstrates a compounded disparity that would be missed if the analysis looked only at race or only at gender. <br><br><b>[1]</b> <i>Buolamwini, J., & Gebru, T. (2018, January). Gender shades Intersectional accuracy disparities in commercial gender classification. In Conference on fairness, accountability and transparency (pp. 77-91). PMLR.</p>"
+                              data-description=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected. As an example of intersectional bias <b>[1]</b> race and gender together affect algorithmic performance of commercial facial-analysis systems; worst performance for darker-skinned women demonstrates a compounded disparity that would be missed if the analysis looked only at race or only at gender. <br><br><b>[1]</b> <i>Buolamwini, J., & Gebru, T. (2018, January). Gender shades Intersectional accuracy disparities in commercial gender classification. In Conference on fairness, accountability and transparency (pp. 77-91). PMLR.</p>"
+                              data-name="Intersections"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Intersections
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Whether to compare groups pairwise, or each group to the behavior of the whole population."
+                              data-description=" Whether to compare groups pairwise, or each group to the behavior of the whole population."
+                              data-name="Compare groups"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Compare groups
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Sets up a threshold of when to consider deviation from ideal values as problematic. If nothing is considered problematic fairness is not necessarily achieved, but this is a good way to identify the most prominent biases. If value of 0 is set, all report values are shown, including those that have no ideal value."
+                              data-description=" Sets up a threshold of when to consider deviation from ideal values as problematic. If nothing is considered problematic fairness is not necessarily achieved, but this is a good way to identify the most prominent biases. If value of 0 is set, all report values are shown, including those that have no ideal value."
+                              data-name="Problematic deviation"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Problematic deviation
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Determine whether deviations less than the problematic one should be shown or not. If they are shown, the coloring scheme is adjusted to identify non-problematic values as green and the rest as either orange or red."
+                              data-description=" Determine whether deviations less than the problematic one should be shown or not. If they are shown, the coloring scheme is adjusted to identify non-problematic values as green and the rest as either orange or red."
+                              data-name="Show non problematic"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Show non problematic
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The number of top recommendations in evaluation that emulates showing the respective data samples to users when querying the trained model to give examples for each class in the dataset. Common values in the literature are 1,3,5,10."
+                              data-description=" The number of top recommendations in evaluation that emulates showing the respective data samples to users when querying the trained model to give examples for each class in the dataset. Common values in the literature are 1,3,5,10."
+                              data-name="Top recommendations"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Top recommendations
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The minimum number of samples per group that should be considered during analysis - groups with less memers are ignored."
+                              data-description=" The minimum number of samples per group that should be considered during analysis - groups with less memers are ignored."
+                              data-name="Min group size"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Min group size
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Whether to focus on showing numbers or showing accompanying bars for easier comparison. Prefer a number comparison to avoid being influenced by comparisons between incomparable measure values."
+                              data-description=" Whether to focus on showing numbers or showing accompanying bars for easier comparison. Prefer a number comparison to avoid being influenced by comparisons between incomparable measure values."
+                              data-name="Presentation"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Presentation
+                            </button>
+<br>
+<h2 id='sklearn-visual-analysis'>Sklearn visual analysis</h2>
+<p><p><img src="https://fairbench.readthedocs.io/fairbench.png" alt="Based on FairBench" style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
+
+<p>One way to evaluate the fairness of a dataset is by testing for biases using simple models with limited
+degrees of freedom. This module audits datasets by training such models provided by the
+<a href="https://scikit-learn.org/stable/index.html">scikit-learn</a> library on half of the dataset.
+The second half is then used as test data to assess predictive performance and detect classification
+or scoring biases.</p>
+
+<p>Test data are used to generate a fairness and bias report with the
+<a href="https://fairbench.readthedocs.io/">FairBench</a> library. If strong biases appear in the simple models
+that are explored, they may also persist in more complex models trained on the same data. To focus on the most
+significant biases, adjust the minimum shown deviation parameter.
+The report provides multiple types of fairness and bias assessments and can be viewed in three different formats,
+where the model card contains a subset of results but attaches to these socio-technical concerns to be taken into
+account:</p>
+
+<ol>
+<li>A summary table of results.</li>
+<li>A simplified model card with key fairness concerns.</li>
+<li>A full detailed report.</li>
+</ol>
+
+<p>The module's report summarizes how a model behaves on a provided dataset across different population groups.
+These groups are based on sensitive attributes like gender, age, and race. Each attribute can have multiple values,
+such as several genders or races. Numeric attributes, like age, are normalized to the range [0,1] and treated
+as fuzzy values, where 0 indicates membership to a fuzzy group of "small" values, and 1 indicates membership to
+a fuzzy group of "large" values. A separate set of fairness metrics is calculated for each prediction label.</p>
+
+<p>If intersectional subgroup analysis is enabled, separate subgroups are created for each combination of sensitive
+attribute values. However, if there are too many attributes, some groups will be small or empty. Empty groups are
+ignored in the analysis. The report may also include information about built-in datasets.</p>
+</p>
+<b>Parameters</b><br><button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Which simple model should be used."
+                              data-description=" Which simple model should be used."
+                              data-name="Predictor"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Predictor
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected. As an example of intersectional bias <b>[1]</b> race and gender together affect algorithmic performance of commercial facial-analysis systems; worst performance for darker-skinned women demonstrates a compounded disparity that would be missed if the analysis looked only at race or only at gender. <br><br><b>[1]</b> <i>Buolamwini, J., & Gebru, T. (2018, January). Gender shades Intersectional accuracy disparities in commercial gender classification. In Conference on fairness, accountability and transparency (pp. 77-91). PMLR.</p>"
+                              data-description=" Whether to consider only the provided groups, all non-empty group intersections, or all non-empty intersections while ignoring larger groups during analysis. This does nothing if there is only one sensitive attribute. It could be computationally intensive if too many group intersections are selected. As an example of intersectional bias <b>[1]</b> race and gender together affect algorithmic performance of commercial facial-analysis systems; worst performance for darker-skinned women demonstrates a compounded disparity that would be missed if the analysis looked only at race or only at gender. <br><br><b>[1]</b> <i>Buolamwini, J., & Gebru, T. (2018, January). Gender shades Intersectional accuracy disparities in commercial gender classification. In Conference on fairness, accountability and transparency (pp. 77-91). PMLR.</p>"
                               data-name="Intersections"
                               onclick="showDescriptionModal(this)">
                               <i class="bi bi-info-circle"></i> Intersections
@@ -755,6 +889,7 @@ Name
 Description
 Citation
 Qualitative creators
+Distribution
 <br>
 <h2 id='exposure-distance-comparison'>Exposure distance comparison</h2>
 <p><p>Compute the exposure distance between the protected and non-protected groups in the dataset and ranking.

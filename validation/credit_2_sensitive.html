@@ -1,0 +1,255 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>MAI-BIAS run</title>
+            
+        </head>
+        <body>
+            
+    <div class="container mt-4">
+        <h1 class="text-success">Croissant metadata</h1>
+        <b>Title:</b> Credit dataset with sex (X2) and marital status (X4) sensitive attributes<br/>
+        <b>Description:</b> This research aimed at the case of customers' default payments in Taiwan and compares the predictive accuracy of probability of default among six data mining methods. From the perspective of risk management, the result of predictive accuracy of the estimated probability of default will be more valuable than the binary result of classification - credible or not credible clients. Because the real probability of default is unknown, this study presented the novel Sorting Smoothing Method to estimate the real probability of default. With the real probability of default as the response variable (Y), and the predictive probability of default as the independent variable (X), the simple linear regression result (Y = A + BX) shows that the forecasting model produced by artificial neural network has the highest coefficient of determination; its regression intercept (A) is close to zero, and regression coefficient (B) to one. Therefore, among the six data mining techniques, artificial neural network is the only one that can accurately estimate the real probability of default.<br/>
+        <b>Citation:</b> The comparisons of data mining techniques for the predictive accuracy of probability of default of credit card clients, By I. Yeh, Che-hui Lien. 2009, Published in Expert systems with applications<br/>
+        <b>License:</b> Creative Commons Attribution 4.0 International (CC BY 4.0)<br/>
+        <b>Creators:</b> I. Yeh,  Che-hui Lien<br/>
+
+        <button class="btn btn-primary mb-2" onclick="copyPre()">Copy json metadata</button>
+        <pre id="json-block" style="background:#f8f9fa; border:1px solid #ccc; padding:1em; border-radius:0.5em; overflow:auto;">{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "arrayShape": "cr:arrayShape",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isArray": "cr:isArray",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "distribution": [
+    "https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients"
+  ],
+  "@language": "en",
+  "@vocab": "https://schema.org/",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "name": "Credit dataset with sex (X2) and marital status (X4) sensitive attributes",
+  "description": "This research aimed at the case of customers' default payments in Taiwan and compares the predictive accuracy of probability of default among six data mining methods. From the perspective of risk management, the result of predictive accuracy of the estimated probability of default will be more valuable than the binary result of classification - credible or not credible clients. Because the real probability of default is unknown, this study presented the novel Sorting Smoothing Method to estimate the real probability of default. With the real probability of default as the response variable (Y), and the predictive probability of default as the independent variable (X), the simple linear regression result (Y = A + BX) shows that the forecasting model produced by artificial neural network has the highest coefficient of determination; its regression intercept (A) is close to zero, and regression coefficient (B) to one. Therefore, among the six data mining techniques, artificial neural network is the only one that can accurately estimate the real probability of default.",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "citeAs": "The comparisons of data mining techniques for the predictive accuracy of probability of default of credit card clients, By I. Yeh, Che-hui Lien. 2009, Published in Expert systems with applications",
+  "creator": [
+    {
+      "name": "I. Yeh"
+    },
+    {
+      "name": " Che-hui Lien"
+    }
+  ],
+  "data": [],
+  "columns": [
+    {
+      "name": "X1",
+      "description": "Column 'X1' in the dataset. Contains 81 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X2",
+      "description": "Column 'X2' in the dataset. Contains 2 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "X3",
+      "description": "Column 'X3' in the dataset. Contains 7 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "X4",
+      "description": "Column 'X4' in the dataset. Contains 4 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "X5",
+      "description": "Column 'X5' in the dataset. Contains 56 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X6",
+      "description": "Column 'X6' in the dataset. Contains 11 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X7",
+      "description": "Column 'X7' in the dataset. Contains 11 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X8",
+      "description": "Column 'X8' in the dataset. Contains 11 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X9",
+      "description": "Column 'X9' in the dataset. Contains 11 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X10",
+      "description": "Column 'X10' in the dataset. Contains 10 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "X11",
+      "description": "Column 'X11' in the dataset. Contains 10 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "string",
+      "isSensitive": false
+    },
+    {
+      "name": "X12",
+      "description": "Column 'X12' in the dataset. Contains 22723 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X13",
+      "description": "Column 'X13' in the dataset. Contains 22346 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X14",
+      "description": "Column 'X14' in the dataset. Contains 22026 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X15",
+      "description": "Column 'X15' in the dataset. Contains 21548 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X16",
+      "description": "Column 'X16' in the dataset. Contains 21010 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X17",
+      "description": "Column 'X17' in the dataset. Contains 20604 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X18",
+      "description": "Column 'X18' in the dataset. Contains 7943 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X19",
+      "description": "Column 'X19' in the dataset. Contains 7899 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X20",
+      "description": "Column 'X20' in the dataset. Contains 7518 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X21",
+      "description": "Column 'X21' in the dataset. Contains 6937 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X22",
+      "description": "Column 'X22' in the dataset. Contains 6897 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    },
+    {
+      "name": "X23",
+      "description": "Column 'X23' in the dataset. Contains 6939 distinct values out of 30000 entries. It serves as metadata information for each entry. ",
+      "datatype": "float",
+      "isSensitive": false
+    }
+  ]
+}</pre>
+    </div>
+
+    <script>function copyPre() {
+        const pre = document.getElementById("json-block");
+        const text = pre.innerText;
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand("copy");
+            //alert("Copied!");
+        } catch (err) {
+            //alert("Failed to copy");
+        }
+        document.body.removeChild(textarea);
+    }</script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+        </body>
+        </html>
+        

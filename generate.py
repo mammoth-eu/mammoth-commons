@@ -1,4 +1,5 @@
 from mai_bias.backend.catalogue_loaders import registry
+import re
 
 
 template_prefix = """
@@ -221,7 +222,7 @@ Use the navigation links to overview datasets, models, and analysis methods.</p>
 
 
 <p>Visit our <a href="https://github.com/mammoth-eu/mammoth-commons">GitHub</a> repository
-to quickly set up a demonstrator that lets you run all these modules.<p>
+to set up a local runner for these modules. View validation data <a href="validation_data.html">here</a>.<p>
 """
 
 with open("docs/index.html", "w") as file:
@@ -231,4 +232,49 @@ with open("docs/index.html", "w") as file:
         )
         + index_content
         + template_postfix
+    )
+
+
+import os
+
+validation_dir = "docs/validation"
+validation_output = "docs/validation_data.html"
+
+if os.path.exists(validation_dir):
+    sidebar_content = ""
+    main_content = "<h1 class='display-4 text-center my-4'>Validation Data</h1>\n"
+    for filename in sorted(os.listdir(validation_dir)):
+        if filename.endswith(".html"):
+            file_path = os.path.join(validation_dir, filename)
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            section_title = os.path.splitext(filename)[0].replace("_", " ").title()
+            section_id = os.path.splitext(filename)[0].replace(" ", "-").lower()
+            sidebar_content += f"<a href='#{section_id}'>{section_title}</a>\n"
+            content = re.sub(
+                r"<h1[^>]*>.*?</h1>",
+                "",
+                content,
+                count=1,
+                flags=re.DOTALL | re.IGNORECASE,
+            ).strip()
+            main_content += (
+                f"<h2 id='{section_id}'>{section_title}</h2>\n<div>{content}</div>\n"
+            )
+
+    validation_page = (
+        template_prefix.replace("{{ title }}", "Validation Data").replace(
+            "{{ sidebar_content }}", sidebar_content
+        )
+        + main_content
+        + template_postfix
+    )
+
+    # Write combined HTML
+    with open(validation_output, "w", encoding="utf-8") as f:
+        f.write(validation_page)
+    print(f"✅ Created {validation_output} from contents of {validation_dir}")
+else:
+    print(
+        f"⚠️ Directory '{validation_dir}' does not exist, skipping validation_data.html generation."
     )
