@@ -268,12 +268,30 @@ A <a href="https://pandas.pydata.org/">pandas</a> CSV reader is employed interna
                             </button>
 <br>
 <h2 id='csv-rankings'>Csv rankings</h2>
-<p><p>This is a Loader to load .csv files with information about researchers
-The <code>Path</code> should be given relative to your locally running instance (e.g.: <i>./data/researchers/Top&#95;researchers.csv</i>)
-The <code>Delimiter</code> should match the CSV file you have (e.g.: '|')</p>
+<p><p>This is a Loader to load .csv files with information about researchers</p>
 </p>
-<b>Parameters</b><br>Path
-Delimiter
+<b>Parameters</b><br><button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Url or path relative to your locally running instance (e.g."
+                              data-description=" Url or path relative to your locally running instance (e.g."
+                              data-name="Path"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Path
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Should match the separator of your CSV file columns (e.g."
+                              data-description=" Should match the separator of your CSV file columns (e.g."
+                              data-name="Delimiter"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Delimiter
+                            </button>
 <br>
 <h2 id='researchers'>Researchers</h2>
 <p><p>This is a Loader to load .csv files with information about researchers
