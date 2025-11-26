@@ -136,7 +136,7 @@ a fuzzy group of "large" values. A separate set of fairness metrics is calculate
 
 <p>If intersectional subgroup analysis is enabled, separate subgroups are created for each combination of sensitive
 attribute values. However, if there are too many attributes, some groups will be small or empty. Empty groups are
-ignored in the analysis. The report may also include information about built-in datasets.</p>
+ignored in the analysis.</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -217,14 +217,15 @@ style="display: inline-block; padding: 10px;"> <i class="bi bi-exclamation-trian
 This computes a specific fairness concerns and does not paint a broad enough picture. Make sure that
 you explore prospective biases with other modules first, like <i>model card</i>.</span></p>
 
-<p>The assessment is conducted over sensitive attributes like gender, age, and race. Each attribute can have multiple values,
-such as several genders or races. Numeric attributes, like age, are normalized to the range [0,1] and treated
-as fuzzy values, where 0 indicates membership to a fuzzy group of "small" values, and 1 indicates membership to
-a fuzzy group of "large" values. A separate set of fairness metrics is calculated for each prediction label.</p>
+<p>The assessment is conducted over sensitive attributes like gender, age, and race. Each attribute can have
+multiple values, such as several genders or races. Numeric attributes, like age, are normalized to the range [0,1]
+and treated as fuzzy values, where 0 indicates membership to a fuzzy group of "small" values, and 1 indicates
+membership to a fuzzy group of "large" values. A separate set of fairness metrics is calculated for each prediction
+label.</p>
 
 <p>If intersectional subgroup analysis is enabled, separate subgroups are created for each combination of sensitive
 attribute values. However, if there are too many attributes, some groups will be small or empty. Empty groups are
-ignored in the analysis. The report may also include information about built-in datasets.</p>
+ignored in the analysis.</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
