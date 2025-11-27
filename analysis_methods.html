@@ -547,7 +547,7 @@ ignored in the analysis. The report may also include information about built-in 
                             </button>
 <br>
 <h2 id='aif360-metrics'>Aif360 metrics</h2>
-<p><p><img src="https://ai-fairness-360.org/" alt="Based on AIF360" style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
+<p><p><img src="https://avatars.githubusercontent.com/u/56103733?s=48&amp;v=4" alt="Based on AIF360" style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
 
 <p>This module evaluates fairness using IBM's <a href="https://aif360.readthedocs.io" target="_blank">AIF360</a> library.
 It computes standard group fairness metrics for each sensitive attribute provided. If attributes are non-binary, they are
@@ -580,6 +580,17 @@ will always be computed against the rest of the population.</span></p>
                               data-name="Unfavorable label"
                               onclick="showDescriptionModal(this)">
                               <i class="bi bi-info-circle"></i> Unfavorable label
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The maximum value of bias assessment. Common literature default is 0.1 or 0.2, but stakeholder engagement in the MAMMOth project suggests that this value should be lower for measures of bias that matter. Hence a more conservative default of 0.05 is used."
+                              data-description=" The maximum value of bias assessment. Common literature default is 0.1 or 0.2, but stakeholder engagement in the MAMMOth project suggests that this value should be lower for measures of bias that matter. Hence a more conservative default of 0.05 is used."
+                              data-name="Bias threshold"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Bias threshold
                             </button>
 <br>
 <h2 id='optimal-transport'>Optimal transport</h2>
