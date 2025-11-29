@@ -104,42 +104,61 @@
             <div class="container">
 <h1 class='display-4 text-center my-4'>Models</h1>
 <h2 id='no-model'>No model</h2>
-<p><p>Signifies that the analysis should focus solely on the fairness of the dataset.
-Not treating bias at early steps may irrevocably embed it in the dataflow in ways that are hard to catch and quantify later.</p>
+<p><p><div><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/donut.png?raw=true" alt="dataset focus" style="float: left; margin-right: 15px; height: 36px;"/></p>
+
+<h3>focus on dataset bias</h3>
+
+<p>Signifies that the analysis should focus solely on the bias/fairness of the dataset. Different means are used
+to verify the latter. Also consider alternate models that can help analyze dataset biases, like the <i>trivial
+predictor</i>. Not auditing datasets from early on in system creation may irrevocably embed their biases in
+the dataflow in ways that are hard to catch, quantify, or mitigate later.</p>
 </p>
 <h2 id='ollama-model'>Ollama model</h2>
-<p><p>References a locally provided <a href="https://ollama.com" target="_blank">ollama</a> model.
-Set up this up in the machine where MAI-BIAS runs. Here, information required to prompt that model is provided.</p>
+<p><div><img src="https://ollama.com/public/ollama.png" alt="logo" style="float: left; margin-right: 15px; height: 36px;"/>
 
+<h3>interact with ollama</h3>
+Allows interaction with a locally hosted <a href="https://ollama.com" target="_blank">ollama</a> large
+language model (LLM). The interaction can either aim to assess biases of that model, or to use it as an
+aid in discovering qualitative biases in text.
+<details><summary><i>A simple guide to get ollama running.</i></summary>
+Set up this up in the machine where MAI-BIAS runs. Here, information required to prompt that model is provided.
 <div class="wrap">
-<h2>1) Install Ollama</h2>
+<b>1) Install Ollama</b>
 <div class="grid">
 <div class="card">
-<h3>macOS (Homebrew)</h3>
+<i>macOS (Homebrew)</i>
 <pre><code>brew install ollama
 ollama --version</code></pre>
 </div>
+
 <div class="card">
-<h3>Linux (install script)</h3>
+<i>Linux (install script)</i>
 <pre><code>curl -fsSL https://ollama.com/install.sh | sh
 ollama --version</code></pre>
 </div>
+
 <div class="card">
-<h3>Windows (winget)</h3>
+<i>Windows (winget)</i>
 <pre><code>winget install Ollama.Ollama</code></pre>
 </div>
-</div>
-<h2>2) Start the service</h2>
+
+<p></div>
+<b>2) Start the service</b></p>
+
 <div class="card">
 <p>Start the local service and keep it running while you work.</p>
 <pre><code>ollama serve</code></pre>
 </div>
-<h2>3) Pull a model</h2>
+
+<p><b>3) Pull a model</b></p>
+
 <div class="card">
 <p>You only need to pull a model once; updates reuse most weights via deltas.</p>
 <pre><code>ollama pull llama3</code></pre>
 </div>
-</div>
+
+<p></div>
+</details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -165,12 +184,20 @@ ollama --version</code></pre>
                             </button>
 <br>
 <h2 id='manual-predictor'>Manual predictor</h2>
-<p><p>Lets you input comma-separated list of predictions that correspond to the data you are processing.
+<p><p><div><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/list.png?raw=true" alt="dataset focus" style="float: left; margin-right: 15px; height: 36px;"/></p>
+
+<h3>Load manual predictions</h3>
+
+<p>Manually loaded predictions may have been produced by workflows external to the toolkit.</p>
+
+<p><details><summary>How to format the predictions.</summary>
+Input comma-separated list of predictions that correspond to the data you are processing.
 This is useful so that you can export the predictions directly from your testing code. If there are no
 commas provided, this module's argument is considered to be the URL to a CSV file whose last column contains
 the predictions. Other columns are ignored, but are allowed to give you flexibility. If your dataset also
 has the last column as the prediction label (e.g., if it is loaded with auto csv) you will obtain analysis
-for a perfect predictor.</p>
+for a perfect predictor.
+</details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -185,27 +212,38 @@ for a perfect predictor.</p>
                             </button>
 <br>
 <h2 id='trivial-predictor'>Trivial predictor</h2>
-<p><p>Creates a trivial predictor that returns the most common predictive label value among provided data.
+<p><p><div><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/nofeats.png?raw=true" alt="bias focus" style="float: left; margin-right: 15px; height: 36px;"/></p>
+
+<h3>uncovers on biases obtained from representation</h3>
+
+<p>This is a deliberately biased predictor that ignores dataset features and decides on a fixed prediction based on
+the majority.</p>
+
+<p><details><summary><i>How does this work?</i></summary>
+Creates a trivial predictor that returns the most common predictive label value among provided data.
 If the label is numeric, the median is computed instead. This model servers as an informed baseline
 of what happens even for an uninformed predictor. Several kinds of class biases may exist, for example
 due to different class imbalances for each sensitive attribute dimension (e.g., for old white men
-compared to young hispanic women).</p>
+compared to young hispanic women).</details></p>
 </p>
 <h2 id='onnx'>Onnx</h2>
-<p><p><img src="https://onnx.ai/images/ONNX-Logo.svg" alt="Based on ONNX" style="background-color: #000055; float: left; margin-right: 15px; margin-top: 5px; margin-bottom: 5px; height: 40px;"/></p>
+<p><p><img src="https://onnx.ai/images/ONNX-Logo.svg" alt="Based on ONNX" style="background-color: #000055; float: left; margin-right: 15px; height: 32px;"/></p>
 
-<p>Loads an inference model stored in <a href="https://onnx.ai/">ONNx</a> format.
-This is a generic cross-platform format for representing machine learning models with a common set of operations.
-Several machine learning frameworks can export to this format.
-The loaded model should be compatible with the dataset being analysed. For example,
-the same data columns as in the dataset should be used for training on tabular data.</p>
+<h3>powered by ONNx</h3>
 
-<p>ONNx supports several different runtimes, but this loader's implementation selects
-the <code>CPUExecutionProvider</code> runtime to run on, therefore maintaining compatibility
+<p>Loads an inference model stored in the <a href="https://onnx.ai/">ONNx</a> format,
+which is a generic cross-platform way of representing AI models with a common set of operations.
+The loaded model should be compatible with the dataset being analysed, for example having been trained on
+the same tabular data columns.</p>
+
+<p><details><summary><i>Technical details and how to export a model to this format.</i></summary>
+Several machine learning frameworks can export to ONNx. The latter
+supports several different runtimes, but this module's implementation selects
+the <code>CPUExecutionProvider</code> runtime to run on to maintain compatibility
 with most machines.
 For inference in GPUs, prefer storing and loading models in formats
 that are guaranteed to maintain all features that could be included in the architectures
-of respective frameworks; this can be achieved with different model loaders.</p>
+of respective frameworks; this can be achieved with other model loaders.</p>
 
 <p>Here are some quick links on how to export ONNx models from popular frameworks:</p>
 
@@ -214,6 +252,8 @@ of respective frameworks; this can be achieved with different model loaders.</p>
 <li><a href="https://pytorch.org/tutorials/beginner/onnx/export_simple_model_to_onnx_tutorial.html">PyTorch</a></li>
 <li><a href="https://onnxruntime.ai/docs/tutorials/tf-get-started.html">TensorFlow</a></li>
 </ul>
+
+<p></details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -239,16 +279,30 @@ of respective frameworks; this can be achieved with different model loaders.</p>
                             </button>
 <br>
 <h2 id='onnx-ensemble'>Onnx ensemble</h2>
-<p><p><img src="https://raw.githubusercontent.com/arjunroyihrpa/MMM_fair/main/images/mmm-fair.png" alt="Based on MMM-Fair" style="float: left; margin-right: 5px; margin-bottom: 5px; height: 80px;"/></p>
+<p><p><img src="https://github.com/arjunroyihrpa/MMM_fair/blob/main/images/mmm-fair.png?raw=true" alt="Based on MMM-Fair" style="float: left; margin-right: 5px; height: 36px;"/></p>
 
-<p>This ONNX Ensemble Module enables predictions using a <a href="https://scikit-learn.org/stable/modules/ensemble.html" target="_blank">boosting ensemble</a> mechanism, ideal for combining multiple weak learners to improve prediction accuracy. Boosting, a powerful technique in machine learning, focuses on training a series of simple models (weak learners) – often single-depth <a href="https://scikit-learn.org/stable/modules/tree.html#classification" target="_blank">decision trees</a> – and combining them into a strong ensemble model. However, the model loader module allows any model converted to <a href="https://onnxruntime.ai/docs/tutorials/traditional-ml.html#convert-model-to-onnx">ONNX</a> format and zipped inside a directory path along with other meta-informations (if any) stored in <a href="https://numpy.org/doc/2.1/reference/generated/numpy.save.html">.npy</a> format.</p>
+<h3>powered by MMM-fair ensembling</h3>
 
-<p><b>Usage Instructions:</b> To load a model, users need to supply a zip file path. This zip file should include at least one or possibly many trained models, each saved in the ONNX format, as well as parameters, such as weights (often denoted as ‘alphas’), that define each learner’s contribution to the final model. For an example of preparing this file, please see <a href="https://github.com/mammoth-eu/mammoth-commons/blob/dev/tests/test-mfppb-onnx-ensemble.ipynb" target="_blank">our notebook</a>.</p>
+<p>Enables predictions using a <a href="https://scikit-learn.org/stable/modules/ensemble.html" target="_blank">boosting ensemble</a>
+mechanism, which combines multiple simple AI models (called weak learners)
+to obtain an improvement over their individual prediction accuracy.
+The <a href="https://github.com/arjunroyihrpa/MMM_fair">MMM-fair</a> library is used to load and process the ensemble.</p>
 
-<p>The module recomends using the <a href="https://pypi.org/project/mmm-fair/"> MMM-Fair models</a>. MMM-Fair is a fairness-aware machine learning framework designed to support high-stakes AI decision-making under competing fairness and accuracy demands. The three M’s stand for: • Multi-Objective: Optimizes across classification accuracy, balanced accuracy, and fairness (specifically, maximum group-level discrimination). • Multi-Attribute: Supports multiple protected groups (e.g., race, gender, age) simultaneously, analyzing group-specific disparities. • Multi-Definition: Evaluates and compares fairness under multiple definitions—Demographic Parity (DP), Equal Opportunity (EP), and Equalized Odds (EO).
+<p><details><summary><i>Technical details.</i></summary></p>
+
+<p>Weak learners are often <a href="https://scikit-learn.org/stable/modules/tree.html#classification" target="_blank">decision trees</a>.
+However, this module allows any model converted to <a href="https://onnxruntime.ai/docs/tutorials/traditional-ml.html#convert-model-to-onnx">ONNX</a> format and zipped inside a directory path along with other meta-informations (if any) stored in <a href="https://numpy.org/doc/2.1/reference/generated/numpy.save.html">.npy</a> format.</p>
+
+<p>To load a model, users need to supply a zip file. This should include at least one or possibly many trained models, each saved in the ONNX format, as well as parameters, such as weights (often denoted as ‘alphas’), that define each learner’s contribution to the final model. For an example of preparing this file, please see <a href="https://github.com/mammoth-eu/mammoth-commons/blob/dev/tests/test-mfppb-onnx-ensemble.ipynb" target="_blank">our notebook</a>.</p>
+
+<p>The module recommends using the <a href="https://pypi.org/project/mmm-fair/"> MMM-Fair models</a>. MMM-Fair is a fairness-aware machine learning framework designed to support high-stakes AI decision-making under competing fairness and accuracy demands. The three M’s stand for: • Multi-Objective: Optimizes across classification accuracy, balanced accuracy, and fairness (specifically, maximum group-level discrimination). • Multi-Attribute: Supports multiple protected groups (e.g., race, gender, age) simultaneously, analyzing group-specific disparities. • Multi-Definition: Evaluates and compares fairness under multiple definitions—Demographic Parity (DP), Equal Opportunity (EP), and Equalized Odds (EO).
 MMM-Fair enables developers, researchers, and decision-makers to explore the full spectrum of possible trade-offs and select the model configuration that aligns with their social or organizational goals. For theoretical understanding of MMM-Fair, it is recomended to read the <a href="https://link.springer.com/chapter/10.1007/978-3-031-18840-4_21" target="_blank">published scientific article</a> that introduced the foundation of the MMM-algorithms.</p>
 
-<p><b>Train and upload: </b> To create and integrate your own MMM-Fair model trained on your intended data, please follow the instructions given in the <a href="https://pypi.org/project/mmm-fair/" target="_blank">Pypi package guidance</a>.</p>
+<p></details></p>
+
+<p><details><summary><i>How to create an AI ensemble with MMM-fair?</i></summary>
+Create and integrate your own model on intended data follow the instructions given in the library's <a href="https://pypi.org/project/mmm-fair/" target="_blank">Pypi package guidance</a>.
+</details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -264,11 +318,12 @@ MMM-Fair enables developers, researchers, and decision-makers to explore the ful
 <br>
 <h2 id='torch'>Torch</h2>
 <p><p><img src="https://github.com/pytorch/pytorch/raw/main/docs/source/_static/img/pytorch-logo-dark.png"
-alt="Based on PyTorch" style="float: left; margin-right: 5px; margin-bottom: 5px; margin-top: 10px; height: 30px;"/></p>
+alt="Based on PyTorch" style="float: left; margin-right: 5px; height: 32px;"/></p>
 
-<p>Loads a <a href="https://pytorch.org/">pytorch</a> model that comprises a Python code initializing the
-architecture and a file of trained parameters. For safety, the architecture's
-definition is allowed to directly import only specified libraries.</p>
+<h3>powered by PyTorch</h3>
+
+<p>Loads a <a href="https://pytorch.org/">PyTorch</a> deep learning model that comprises a Python code initializing the
+architecture, and a file of trained parameters.</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -308,8 +363,8 @@ definition is allowed to directly import only specified libraries.</p>
                               class="btn btn-light"
                               data-bs-toggle="tooltip"
                               data-bs-placement="top"
-                              title=" A comma-separated list of libraries that can be imported."
-                              data-description=" A comma-separated list of libraries that can be imported."
+                              title=" A comma-separated list of libraries that can be imported. For safety, the architecture's definition is allowed to directly import only specified libraries."
+                              data-description=" A comma-separated list of libraries that can be imported. For safety, the architecture's definition is allowed to directly import only specified libraries."
                               data-name="Safe libraries"
                               onclick="showDescriptionModal(this)">
                               <i class="bi bi-info-circle"></i> Safe libraries
@@ -327,12 +382,14 @@ definition is allowed to directly import only specified libraries.</p>
                             </button>
 <br>
 <h2 id='torch2onnx'>Torch2onnx</h2>
-<p><p><img src="https://github.com/pytorch/pytorch/raw/main/docs/source/_static/img/pytorch-logo-dark.png" alt="Based on PyTorch" style="float: left; margin-right: 5px; margin-bottom: 5px; margin-top: 10px; height: 30px;"/></p>
+<p><p><img src="https://github.com/pytorch/pytorch/raw/main/docs/source/_static/img/pytorch-logo-dark.png" alt="Based on PyTorch" style="float: left; margin-right: 5px; height: 30px;"/>
+<img src="https://onnx.ai/images/ONNX-Logo.svg" alt="Based on ONNX" style="background-color: #000055; float: left; margin-right: 15px; height: 30px;"/></p>
 
-<p>Loads a <a href="https://pytorch.org/">pytorch</a> model that comprises a Python code initializing the
-architecture and a file of trained parameters, and converts into ONNX format to support processing by
-modules not supporting GPU compute. For safety, the architecture's
-definition is allowed to directly import only specified libraries.</p>
+<h3>powered by PyTorch and ONNX</h3>
+
+<p>Loads a <a href="https://pytorch.org/">PyTorch</a> AI model that comprises a Python code initializing the
+architecture, and a file of trained parameters. The result is however converted into ONNx format to support
+processing by modules that are not compatible with GPU computations.</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -394,8 +451,8 @@ definition is allowed to directly import only specified libraries.</p>
                               class="btn btn-light"
                               data-bs-toggle="tooltip"
                               data-bs-placement="top"
-                              title=" A comma-separated list of libraries that can be imported."
-                              data-description=" A comma-separated list of libraries that can be imported."
+                              title=" A comma-separated list of libraries that can be imported. For safety, the architecture's definition is allowed to directly import only specified libraries."
+                              data-description=" A comma-separated list of libraries that can be imported. For safety, the architecture's definition is allowed to directly import only specified libraries."
                               data-name="Safe libraries"
                               onclick="showDescriptionModal(this)">
                               <i class="bi bi-info-circle"></i> Safe libraries

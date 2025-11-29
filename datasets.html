@@ -104,18 +104,20 @@
             <div class="container">
 <h1 class='display-4 text-center my-4'>Datasets</h1>
 <h2 id='auto-csv'>Auto csv</h2>
-<p><p><img src="https://pandas.pydata.org/static/img/pandas_white.svg" alt="Based on Pandas" style="background-color: #000099; float: left; margin-right: 15px; margin-top: 5px; margin-bottom: 5px; height: 60px;"/></p>
+<p><p><img src="https://pandas.pydata.org/static/img/pandas_white.svg" alt="Based on Pandas" style="background-color: #000099; float: left; margin-right: 15px; margin-top: 5px; height: 36px;"/></p>
+
+<h3>powered by <a href="https://pandas.pydata.org/">pandas</a> CSV loading</h3>
 
 <p>Loads a CSV file that contains numeric, categorical, and predictive data columns.
 This automatically detects the characteristics of the dataset being loaded,
 namely the delimiter that separates the columns, and whether each column contains
-numeric or categorical data. A <a href="https://pandas.pydata.org/">pandas</a>
-CSV reader is employed internally.
-The last categorical column is used as the dataset label. To load the file using
-different options (e.g., a subset of columns, a different label column) use the
+numeric or categorical data.
+The last categorical column is used as the dataset label. To load the file maintaining
+more control over options (e.g., a subset of columns, a different label column) use the
 custom csv loader instead.</p>
 
-<p>If you want to train a model while using the same loading mechanism as this dataset,
+<p><details><summary><i>How to replicate this data loader during AI creation?</i></summary>
+If you want to train a model while using the same loading mechanism as this dataset,
 run the following Python script. This uses supporting methods from the lightweight
 mammoth-commons core to retrieve <a href="https://numpy.org/">numpy</a>
 arrays <i>X,y</i> holding dataset features and categorical labels respectively.</p>
@@ -146,7 +148,8 @@ X = X.astype(np.float32)
 y = df[cat[-1]]
 </pre>
 
-<p></small></p>
+<p></small>
+</details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -190,15 +193,13 @@ To customize the loading process (e.g., use a different target column, load a su
                             </button>
 <br>
 <h2 id='custom-csv'>Custom csv</h2>
-<p><p><img src="https://pandas.pydata.org/static/img/pandas_white.svg" alt="Based on Pandas" style="background-color: #000099; float: left; margin-right: 15px; margin-top: 5px; margin-bottom: 5px; height: 60px;"/></p>
+<p><p><img src="https://pandas.pydata.org/static/img/pandas_white.svg" alt="Based on Pandas" style="background-color: #000099; float: left; margin-right: 15px; margin-top: 5px; height: 36px;"/></p>
 
-<p>Loads a CSV file that contains numeric, categorical, and predictive data columns
-separated by a user-defined delimiter. Each row corresponds to a different data sample,
-with the first one sometimes holding column names (this is automatically detected).
-To use all data in the file and automate discovery of numerical and categorical columns,
-as well as of delimiters, use the <code>auto csv</code> loader instead. Otherwise, set here all loading
-parameters.
-A <a href="https://pandas.pydata.org/">pandas</a> CSV reader is employed internally.</p>
+<h3>powered by <a href="https://pandas.pydata.org/">pandas</a> CSV loading</h3>
+
+<p>Loads a CSV file that contains customly-specified numeric, categorical, and predictive data columns.
+Each row corresponds to a different data sample, with the first one sometimes holding column names
+(this is automatically detected).</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -595,36 +596,37 @@ to refer to the column entry.</p>
                             </button>
 <br>
 <h2 id='free-text'>Free text</h2>
-<p><p>Sets a free text that can be used by text-based AI to perform various kinds of analysis,
+<p><p><div><img src="https://ollama.com/public/ollama.png" alt="logo" style="float: left; margin-right: 15px; height: 36px;"/></p>
+
+<h3>input text or document URL</h3>
+
+<p>Sets a free text that can be used by text-based AI to perform various kinds of analysis,
 such as detecting biases and sentiment. Some modules may also use this text as a prompt
 to feed into large language models (LLMs). You may optionally provide a website's URL (starting
-with http: or https: to retrieve its textual contents.</p>
+with <i>http:</i> or <i>https:</i>) to retrieve its textual contents.</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
                               class="btn btn-light"
                               data-bs-toggle="tooltip"
                               data-bs-placement="top"
-                              title=" The text to be analyzed."
-                              data-description=" The text to be analyzed."
+                              title=" The text to be analyzed or its URL."
+                              data-description=" The text to be analyzed or its URL."
                               data-name="Text"
                               onclick="showDescriptionModal(this)">
                               <i class="bi bi-info-circle"></i> Text
                             </button>
 <br>
 <h2 id='read-any'>Read any</h2>
-<p><p><img src="https://raw.githubusercontent.com/arjunroyihrpa/MMM_fair/main/images/mmm-fair.png" alt="Based on MMM-Fair" style="float: left; margin-right: 5px; margin-bottom: 5px; height: 80px;"/></p>
+<p><p><img src="https://github.com/arjunroyihrpa/MMM_fair/blob/main/images/mmm-fair.png?raw=true" alt="Based on MMM-Fair" style="float: left; margin-right: 5px; height: 36px;"/></p>
+
+<h3>replicates <a href="https://github.com/arjunroyihrpa/MMM_fair">MMM-fair</a>'s tabular data loading</h3>
 
 <p>Loads a dataset for analysis from either a pre-loaded pandas DataFrame or a file in one of the supported formats:
 <code>.csv</code>, <code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>, <code>.xlsb</code>, <code>.odf</code>, <code>.ods</code>, <code>.json</code>, <code>.html</code>, or <code>.htm</code>.
 The module accepts either a raw DataFrame or a file path (local or URL). If a file path is provided, the data is
 automatically loaded using the appropriate pandas function based on the file extension. Basic preprocessing is applied
 to infer column types, and the specified target column is treated as the predictive label.</p>
-
-<p>To customize the loading process (e.g., load a subset of columns, handle missing values, or change column type inference),
-additional parameters or a custom loader function may be provided.
-The Data loader module is recommended to load and process local data also while training models which are intended to be tested
-using the ONNXEnsemble module.</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
