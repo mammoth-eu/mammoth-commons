@@ -104,7 +104,7 @@
             <div class="container">
 <h1 class='display-4 text-center my-4'>Models</h1>
 <h2 id='no-model'>No model</h2>
-<p><p><div><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/donut.png?raw=true" alt="dataset focus" style="float: left; margin-right: 15px; height: 36px;"/></p>
+<p><p><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/donut.png?raw=true" alt="dataset focus" style="float: left; margin-right: 15px; height: 36px;"/></p>
 
 <h3>focus on dataset bias</h3>
 
@@ -116,7 +116,7 @@ the dataflow in ways that are hard to catch, quantify, or mitigate later.</p>
 <h2 id='ollama-model'>Ollama model</h2>
 <p><p><img src="https://ollama.com/public/ollama.png" alt="logo" style="float: left; margin-right: 15px; height: 36px;"/></p>
 
-<h3>interact with ollama</h3>
+<h3>interact with an ollama LLM</h3>
 
 <p>Allows interaction with a locally hosted <a href="https://ollama.com" target="_blank">ollama</a> large
 language model (LLM). The interaction can either aim to assess biases of that model, or to use it as an
@@ -182,7 +182,7 @@ ollama --version</code></pre>
 <h2 id='manual-predictor'>Manual predictor</h2>
 <p><p><div><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/list.png?raw=true" alt="dataset focus" style="float: left; margin-right: 15px; height: 36px;"/></p>
 
-<h3>Load manual predictions</h3>
+<h3>manual predictions</h3>
 
 <p>Manually loaded predictions may have been produced by workflows external to the toolkit.</p>
 
@@ -210,7 +210,7 @@ for a perfect predictor.
 <h2 id='trivial-predictor'>Trivial predictor</h2>
 <p><p><div><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/nofeats.png?raw=true" alt="bias focus" style="float: left; margin-right: 15px; height: 36px;"/></p>
 
-<h3>uncovers on biases obtained from representation</h3>
+<h3>uncovers representation-related biases</h3>
 
 <p>This is a deliberately biased predictor that ignores dataset features and decides on a fixed prediction based on
 the majority.</p>
@@ -225,7 +225,7 @@ compared to young hispanic women).</details></p>
 <h2 id='onnx'>Onnx</h2>
 <p><p><img src="https://onnx.ai/images/ONNX-Logo.svg" alt="Based on ONNX" style="background-color: #000055; float: left; margin-right: 15px; height: 32px;"/></p>
 
-<h3>powered by ONNx</h3>
+<h3>an ONNx model</h3>
 
 <p>Loads an inference model stored in the <a href="https://onnx.ai/">ONNx</a> format,
 which is a generic cross-platform way of representing AI models with a common set of operations.
@@ -277,7 +277,7 @@ of respective frameworks; this can be achieved with other model loaders.</p>
 <h2 id='onnx-ensemble'>Onnx ensemble</h2>
 <p><p><img src="https://github.com/arjunroyihrpa/MMM_fair/blob/main/images/mmm-fair.png?raw=true" alt="Based on MMM-Fair" style="float: left; margin-right: 5px; height: 36px;"/></p>
 
-<h3>powered by MMM-fair ensembling</h3>
+<h3>a boosted ensemble of models</h3>
 
 <p>Enables predictions using a <a href="https://scikit-learn.org/stable/modules/ensemble.html" target="_blank">boosting ensemble</a>
 mechanism, which combines multiple simple AI models (called weak learners)
@@ -316,7 +316,7 @@ Create and integrate your own model on intended data follow the instructions giv
 <p><p><img src="https://github.com/pytorch/pytorch/raw/main/docs/source/_static/img/pytorch-logo-dark.png"
 alt="Based on PyTorch" style="float: left; margin-right: 5px; height: 32px;"/></p>
 
-<h3>powered by PyTorch</h3>
+<h3>a deep learning model</h3>
 
 <p>Loads a <a href="https://pytorch.org/">PyTorch</a> deep learning model that comprises a Python code initializing the
 architecture, and a file of trained parameters.</p>
@@ -381,7 +381,7 @@ architecture, and a file of trained parameters.</p>
 <p><p><img src="https://github.com/pytorch/pytorch/raw/main/docs/source/_static/img/pytorch-logo-dark.png" alt="Based on PyTorch" style="float: left; margin-right: 5px; height: 30px;"/>
 <img src="https://onnx.ai/images/ONNX-Logo.svg" alt="Based on ONNX" style="background-color: #000055; float: left; margin-right: 15px; height: 30px;"/></p>
 
-<h3>powered by PyTorch and ONNX</h3>
+<h3>a deep learning model, loaded as ONNx</h3>
 
 <p>Loads a <a href="https://pytorch.org/">PyTorch</a> AI model that comprises a Python code initializing the
 architecture, and a file of trained parameters. The result is however converted into ONNx format to support
