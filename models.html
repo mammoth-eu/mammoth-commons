@@ -114,14 +114,16 @@ predictor</i>. Not auditing datasets from early on in system creation may irrevo
 the dataflow in ways that are hard to catch, quantify, or mitigate later.</p>
 </p>
 <h2 id='ollama-model'>Ollama model</h2>
-<p><div><img src="https://ollama.com/public/ollama.png" alt="logo" style="float: left; margin-right: 15px; height: 36px;"/>
+<p><p><img src="https://ollama.com/public/ollama.png" alt="logo" style="float: left; margin-right: 15px; height: 36px;"/></p>
 
 <h3>interact with ollama</h3>
-Allows interaction with a locally hosted <a href="https://ollama.com" target="_blank">ollama</a> large
+
+<p>Allows interaction with a locally hosted <a href="https://ollama.com" target="_blank">ollama</a> large
 language model (LLM). The interaction can either aim to assess biases of that model, or to use it as an
 aid in discovering qualitative biases in text.
 <details><summary><i>A simple guide to get ollama running.</i></summary>
-Set up this up in the machine where MAI-BIAS runs. Here, information required to prompt that model is provided.
+Set up this up in the machine where MAI-BIAS runs. Here, information required to prompt that model is provided.</p>
+
 <div class="wrap">
 <b>1) Install Ollama</b>
 <div class="grid">
@@ -130,35 +132,29 @@ Set up this up in the machine where MAI-BIAS runs. Here, information required to
 <pre><code>brew install ollama
 ollama --version</code></pre>
 </div>
-
 <div class="card">
 <i>Linux (install script)</i>
 <pre><code>curl -fsSL https://ollama.com/install.sh | sh
 ollama --version</code></pre>
 </div>
-
 <div class="card">
 <i>Windows (winget)</i>
 <pre><code>winget install Ollama.Ollama</code></pre>
 </div>
-
-<p></div>
-<b>2) Start the service</b></p>
-
+</div>
+<b>2) Start the service</b>
 <div class="card">
 <p>Start the local service and keep it running while you work.</p>
 <pre><code>ollama serve</code></pre>
 </div>
-
-<p><b>3) Pull a model</b></p>
-
+<b>3) Pull a model</b>
 <div class="card">
 <p>You only need to pull a model once; updates reuse most weights via deltas.</p>
 <pre><code>ollama pull llama3</code></pre>
 </div>
+</div>
 
-<p></div>
-</details></p>
+<p></details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"

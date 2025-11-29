@@ -106,9 +106,10 @@
 <h2 id='auto-csv'>Auto csv</h2>
 <p><p><img src="https://pandas.pydata.org/static/img/pandas_white.svg" alt="Based on Pandas" style="background-color: #000099; float: left; margin-right: 15px; margin-top: 5px; height: 36px;"/></p>
 
-<h3>powered by <a href="https://pandas.pydata.org/">pandas</a> CSV loading</h3>
+<h3>load a common CSV with pandas</h3>
 
-<p>Loads a CSV file that contains numeric, categorical, and predictive data columns.
+<p>Uses <a href="https://pandas.pydata.org/">pandas</a> to load
+a CSV file that contains numeric, categorical, and predictive data columns.
 This automatically detects the characteristics of the dataset being loaded,
 namely the delimiter that separates the columns, and whether each column contains
 numeric or categorical data.
@@ -195,9 +196,10 @@ To customize the loading process (e.g., use a different target column, load a su
 <h2 id='custom-csv'>Custom csv</h2>
 <p><p><img src="https://pandas.pydata.org/static/img/pandas_white.svg" alt="Based on Pandas" style="background-color: #000099; float: left; margin-right: 15px; margin-top: 5px; height: 36px;"/></p>
 
-<h3>powered by <a href="https://pandas.pydata.org/">pandas</a> CSV loading</h3>
+<h3>load a CSV file with pandas</a></h3>
 
-<p>Loads a CSV file that contains customly-specified numeric, categorical, and predictive data columns.
+<p>Uses <a href="https://pandas.pydata.org/">pandas</a> to load
+a CSV file that contains customly-specified numeric, categorical, and predictive data columns.
 Each row corresponds to a different data sample, with the first one sometimes holding column names
 (this is automatically detected).</p>
 </p>
@@ -383,8 +385,12 @@ The <code>Delimiter</code> should match the CSV file you have (e.g.: '|')</p>
                             </button>
 <br>
 <h2 id='images'>Images</h2>
-<p><p>Loads image data from a CSV file holding their sensitive and predictive attribute
-data, as well as paths relative to a root directory. Loaded images are subjected to a Python transformation.</p>
+<p><p><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/image.png?raw=true" alt="text" style="float: left; margin-right: 15px; height: 36px;"/></p>
+
+<h3>images with metadata</h3>
+
+<p>Loads image data from a CSV file that contains their sensitive and predictive attribute
+data, as well as paths relative to a root directory. Loaded images are accompanied by a preprocessing transformation.</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -487,13 +493,23 @@ data, as well as paths relative to a root directory. Loaded images are subjected
                             </button>
 <br>
 <h2 id='image-pairs'>Image pairs</h2>
-<p><p>Loads image pairs declared in a CSV file.
+<p><p><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/images.png?raw=true" alt="text" style="float: left; margin-right: 15px; height: 36px;"/></p>
+
+<h3>pairs of images with metadata</h3>
+
+<p>Loads image pairs and tabular metadata declared in a CSV file. Images are stored in an independent location
+(to not move around large swathes of data), and must be accompanied by their preprocessing transformation. Metadata
+include prediction targets for the pair, such as the prediction labels for face verification or whether
+at least one of the images exhibits a sensitive attribute.</p>
+
+<p><details><summary><i>How to construct an image pair file?</i></summary>
 The expected format is to have the first image's identifier in the first column,
 and the second image's identifier in the second column, Sensitive attributes
 can be selected from the rest of the columns. The images identifiers read from the columns
 are transformed to loading paths by string specifications that can contain the
 symbols: {root} to refer to the root directory, {col} to refer to the column name, and {id}
-to refer to the column entry.</p>
+to refer to the column entry.
+</details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -596,7 +612,7 @@ to refer to the column entry.</p>
                             </button>
 <br>
 <h2 id='free-text'>Free text</h2>
-<p><p><div><img src="https://ollama.com/public/ollama.png" alt="logo" style="float: left; margin-right: 15px; height: 36px;"/></p>
+<p><p><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/text.png?raw=true" alt="text" style="float: left; margin-right: 15px; height: 36px;"/></p>
 
 <h3>input text or document URL</h3>
 
@@ -620,12 +636,12 @@ with <i>http:</i> or <i>https:</i>) to retrieve its textual contents.</p>
 <h2 id='read-any'>Read any</h2>
 <p><p><img src="https://github.com/arjunroyihrpa/MMM_fair/blob/main/images/mmm-fair.png?raw=true" alt="Based on MMM-Fair" style="float: left; margin-right: 5px; height: 36px;"/></p>
 
-<h3>replicates <a href="https://github.com/arjunroyihrpa/MMM_fair">MMM-fair</a>'s tabular data loading</h3>
+<h3>flexible tabular data loading</h3>
 
 <p>Loads a dataset for analysis from either a pre-loaded pandas DataFrame or a file in one of the supported formats:
 <code>.csv</code>, <code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>, <code>.xlsb</code>, <code>.odf</code>, <code>.ods</code>, <code>.json</code>, <code>.html</code>, or <code>.htm</code>.
-The module accepts either a raw DataFrame or a file path (local or URL). If a file path is provided, the data is
-automatically loaded using the appropriate pandas function based on the file extension. Basic preprocessing is applied
+The module is derived from  <a href="https://github.com/arjunroyihrpa/MMM_fair">MMM-fair</a>
+to support several data formats. Basic preprocessing is applied
 to infer column types, and the specified target column is treated as the predictive label.</p>
 </p>
 <b>Parameters</b><br><button
