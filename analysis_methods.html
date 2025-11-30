@@ -114,12 +114,18 @@
 <h1 class='display-4 text-center my-4'>Analysis</h1>
 <h2 id='card'>Card</h2>
 <p><p><img src="https://github.com/mever-team/FairBench/blob/main/docs/fairbench.png?raw=true" alt="Based on FairBench"
-style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
+style="float: left; margin-right: 5px; margin-bottom: 5px; height: 36px;"/></p>
+
+<h3>cover a broad picture of imbalances</h3>
 
 <p>Generates a fairness and bias report using the <a href="https://github.com/mever-team/FairBench">FairBench</a>
 library. This explores many kinds of bias to paint a broad picture and help you decide on what is problematic
-and what is acceptable behavior.
-The generated report can be viewed in three different formats, where the model card contains a subset of
+and what is acceptable behavior. Imbalanced distributions of benefits are uncovered to serve as points of
+discussion of real-world impact. </p>
+
+<p><details><summary><i>Details for experts</i></summary></p>
+
+<p>The generated report can be viewed in three different formats, where the model card contains a subset of
 results but attaches to these socio-technical concerns to be taken into account:</p>
 
 <ol>
@@ -137,6 +143,8 @@ a fuzzy group of "large" values. A separate set of fairness metrics is calculate
 <p>If intersectional subgroup analysis is enabled, separate subgroups are created for each combination of sensitive
 attribute values. However, if there are too many attributes, some groups will be small or empty. Empty groups are
 ignored in the analysis.</p>
+
+<p></details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -206,7 +214,10 @@ ignored in the analysis.</p>
                             </button>
 <br>
 <h2 id='specific-concerns'>Specific concerns</h2>
-<p><p><img src="https://github.com/mever-team/FairBench/blob/main/docs/fairbench.png?raw=true" alt="Based on FairBench" style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
+<p><p><img src="https://github.com/mever-team/FairBench/blob/main/docs/fairbench.png?raw=true" alt="Based on FairBench"
+style="float: left; margin-right: 5px; margin-bottom: 5px; height: 36px;"/></p>
+
+<h3>focus on a specific definition of fairness</h3>
 
 <p>Computes a fairness or bias measure that matches a specific type of numerical
 evaluation using the <a href="https://github.com/mever-team/FairBench">FairBench</a>
@@ -217,6 +228,8 @@ style="display: inline-block; padding: 10px;"> <i class="bi bi-exclamation-trian
 This computes a specific fairness concerns and does not paint a broad enough picture. Make sure that
 you explore prospective biases with other modules first, like <i>model card</i>.</span></p>
 
+<p><details><summary><i>Technical details.</i></summary></p>
+
 <p>The assessment is conducted over sensitive attributes like gender, age, and race. Each attribute can have
 multiple values, such as several genders or races. Numeric attributes, like age, are normalized to the range [0,1]
 and treated as fuzzy values, where 0 indicates membership to a fuzzy group of "small" values, and 1 indicates
@@ -226,6 +239,8 @@ label.</p>
 <p>If intersectional subgroup analysis is enabled, separate subgroups are created for each combination of sensitive
 attribute values. However, if there are too many attributes, some groups will be small or empty. Empty groups are
 ignored in the analysis.</p>
+
+<p></details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -547,7 +562,9 @@ ignored in the analysis. The report may also include information about built-in 
                             </button>
 <br>
 <h2 id='aif360-metrics'>Aif360 metrics</h2>
-<p><p><img src="https://avatars.githubusercontent.com/u/56103733?s=48&amp;v=4" alt="Based on AIF360" style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
+<p><p><img src="https://avatars.githubusercontent.com/u/56103733?s=48&amp;v=4" alt="Based on AIF360" style="float: left; margin-right: 5px; margin-bottom: 5px; height: 36px;"/></p>
+
+<h3>look into popular types of bias</h3>
 
 <p>This module evaluates fairness using IBM's <a href="https://aif360.readthedocs.io" target="_blank">AIF360</a> library.
 It computes standard group fairness metrics for each sensitive attribute provided. If attributes are non-binary, they are
@@ -629,27 +646,35 @@ which is licensed under Apache License 2.0.</i></p></p>
                             </button>
 <br>
 <h2 id='bias-scan'>Bias scan</h2>
-<p><p>This module scans your dataset to estimate the most biased attributes or combinations of attributes.
+<p><p><img src="https://avatars.githubusercontent.com/u/56103733?s=48&amp;v=4" alt="Based on AIF360" style="float: left; margin-right: 5px; margin-bottom: 5px; height: 36px;"/></p>
+
+<h3>scan for biased attributes or attribute intersections</h3>
+
+<p>This module scans your dataset to estimate the most biased attributes or combinations of attributes.
 You can use those as inputs to other modules.
 For example, gender may only show bias when combined with socioeconomic status, despite the latter not
 bein inherently sensitive. If you have already marked some
 attributes as sensitive (such as race or gender), the module will <b>exclude</b> them from the scan. This allows
 searching for additional patterns that contribute to unfair outcomes.</p>
 
-<p>A paper describing how this approach estimates biased intersection candidates in <b>linear</b> rather
-than <b>exponential</b> time is available <a href="https://arxiv.org/pdf/1611.08292">here</a>. Instead of checking
-every possible combination (which can be very time-consuming), it uses a more efficient method.</p>
-
 <p>To get started, run the module without setting any sensitive attributes. After the first scan,
 advanced users can review the results and mark any problematic attributes it identifies as sensitive.
 Then, run the scan again to uncover additional potential issues—these may be less prominent but still
 worth investigating.</p>
+
+<p><details><summary><i>Technical details</i></summary></p>
+
+<p>A paper describing how this approach estimates biased intersection candidates in <b>linear</b> rather
+than <b>exponential</b> time is available <a href="https://arxiv.org/pdf/1611.08292">here</a>. Instead of checking
+every possible combination (which can be very time-consuming), it uses a more efficient method.</p>
 
 <p>For convenience, there is a <i>discovery</i> mode available in the parameters. This automatically adds
 attributes suspected of contributing to bias to the list of ignored (already known sensitive) ones, then reruns
 the scan. While this automation helps streamline the process, it removes all attributes contributing to biased
 intersections. A domain expert may prefer to manually remove one attribute at a time by adding it to known
 sensitive attributes and rerun the module to investigate more granular effects on the results.</p>
+
+<p></details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -720,11 +745,20 @@ The analysis is conducted based on the <a href="https://github.com/gsarridis/cv-
 <h2 id='facex-regions'>Facex regions</h2>
 <p><p><img src="https://github.com/gsarridis/faceX/raw/main/images/facex.JPG" alt="Based on Facex" style="max-width: 600px;"/></p>
 
+<h3>highlight red the facial features on which a model focuses to categorize an image</h3>
+
 <p><a href="https://github.com/gsarridis/faceX">FaceX</a> is a tool designed to help you understand how
 face attribute classifiers make decisions. It
-provides clear explanations by analyzing 19 key regions of the face, such as the eyes, nose, mouth,
+analyzes 19 key face regions, such as the eyes, nose, mouth,
 hair, and skin. This method helps reveal which parts of the face the model focuses on when making
 predictions about attributes like age, gender, or race.</p>
+
+<p><span class="alert alert-warning alert-dismissible fade show" role="alert"
+style="display: inline-block; padding: 10px;"> <i class="bi bi-exclamation-triangle-fill"></i> GPU
+access is recommended as this analysis can be computationally intensive, especially with large
+datasets. </span></p>
+
+<p><details><summary><i>Why is this useful?</i></summary></p>
 
 <p>Rather than explaining each individual image separately, FaceX aggregates information across the
 entire dataset, offering a broader view of the model's behavior. It looks at how the model activates
@@ -740,12 +774,8 @@ identify potential biases or problems in how the model is interpreting the face.
 <p>Overall, with FaceX, you can quickly and easily get a better understanding of your model's
 decision-making process. This is especially useful for ensuring that your model is fair and
 transparent, and for spotting any potential biases that may
-affect its performance.</p>
-
-<p><span class="alert alert-warning alert-dismissible fade show" role="alert"
-style="display: inline-block; padding: 10px;"> <i class="bi bi-exclamation-triangle-fill"></i> GPU
-access is recommended as this analysis can be computationally intensive, especially with large
-datasets. </span></p>
+affect its performance.
+</details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -771,7 +801,11 @@ datasets. </span></p>
                             </button>
 <br>
 <h2 id='facex-embeddings'>Facex embeddings</h2>
-<p><p><a href="https://github.com/gsarridis/faceX">FaceX</a> for feature extractors is designed to help you
+<p><p><img src="https://github.com/gsarridis/faceX/raw/main/images/facex.JPG" alt="Based on Facex" style="max-width: 600px;"/></p>
+
+<h3>highlight red the facial features on which a model focuses to compare image pairs</h3>
+
+<p><a href="https://github.com/gsarridis/faceX">FaceX</a> for feature extractors is designed to help you
 understand how face verification models process
 images by comparing feature embeddings. In tasks like face recognition, models
 generate a feature vector (embedding) for each image. These embeddings capture the unique
@@ -848,11 +882,18 @@ report generates predictions at each step of the partial ensemble. This may resu
 times when the number of Pareto solutions is high.</span></p>
 </p>
 <h2 id='viz-fairness-plots'>Viz fairness plots</h2>
-<p><p><img src="https://raw.githubusercontent.com/fairlearn/fairlearn/29f6d6f67eea061ae5dae72e976f2069cb38772e/docs/static_landing_page/images/fairlearn_logo.svg" alt="Based on FairLearn" style="float: left; margin-right: 15px; margin-bottom: 5px; height: 50px;"/></p>
+<p><p><img src="https://raw.githubusercontent.com/fairlearn/fairlearn/29f6d6f67eea061ae5dae72e976f2069cb38772e/docs/static_landing_page/images/fairlearn_logo.svg" alt="Based on FairLearn" style="float: left; margin-right: 15px; height: 36px;"/></p>
+
+<h3>structured visualization of common types of bias</h3>
 
 <p>
 This module visualizes fairness metrics using the <a href="https://fairlearn.org/" target="_blank">Fairlearn</a> library and interactive Plotly charts.
 It provides visual insights into how a model performs across different groups defined by sensitive features such as gender, race, or age.
+</p>
+
+<p><details><summary><i>What to expect?</i></summary></p>
+
+<p>
 Two sets of visual outputs are processed:
 </p>
 
@@ -867,13 +908,22 @@ An explanation panel is included to define each metric and guide interpretation.
 This module is well suited for exploratory analysis, presentations, and fairness monitoring.
 It makes group disparities visible and intuitive, helping identify where further scrutiny or mitigation may be needed.
 </p>
+
+<p></details></p>
 </p>
 <h2 id='viz-fairness-report'>Viz fairness report</h2>
-<p><p><img src="https://raw.githubusercontent.com/fairlearn/fairlearn/29f6d6f67eea061ae5dae72e976f2069cb38772e/docs/static_landing_page/images/fairlearn_logo.svg" alt="Based on FairLearn" style="float: left; margin-right: 15px; margin-bottom: 5px; height: 50px;"/></p>
+<p><p><img src="https://raw.githubusercontent.com/fairlearn/fairlearn/29f6d6f67eea061ae5dae72e976f2069cb38772e/docs/static_landing_page/images/fairlearn_logo.svg" alt="Based on FairLearn" style="float: left; margin-right: 15px; height:36px;"/></p>
+
+<h3>structured report on common types of bias</h3>
 
 <p>
 This module generates a structured fairness report using the <a href="https://fairlearn.org/" target="_blank">Fairlearn</a> library.
 It assesses whether a machine learning model behaves similarly across different population groups, as defined by sensitive attributes such as gender, race, or age.
+</p>
+
+<p><details><summary><i>What to expect?</i></summary></p>
+
+<p>
 Two types of fairness metrics are considered:
 </p>
 
@@ -888,6 +938,8 @@ Each metric is briefly explained to help interpret whether the model exhibits pe
 This module is particularly useful in evaluation pipelines, audit reports, and model reviews where transparency and fairness are essential.
 It helps teams assess group-level equity in model behavior using interpretable, tabular summaries.
 </p>
+
+<p></details></p>
 </p>
 <h2 id='croissant'>Croissant</h2>
 <p><p>Generate some json dataset metadata that boostraps conversion of your datasets into the
@@ -1029,7 +1081,7 @@ on the <a href="https://github.com/Media-Bias-Group/Neural-Media-Bias-Detection-
 <h2 id='llm-audit'>Llm audit</h2>
 <p><p><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/ai.png?raw=true" alt="ai" style="float: left; margin-right: 15px; height: 36px;"/></p>
 
-<h3>use the LLM as text auditor</h3>
+<h3>use an LLM as text auditor</h3>
 
 <p>This assessment methodology sets an LLM at the role of fairness auditor and asks it to provide
 a sequence of votes, obtaining an assessment of whether given text is biased or neutral.
