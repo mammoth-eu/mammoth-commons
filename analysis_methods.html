@@ -123,7 +123,7 @@ library. This explores many kinds of bias to paint a broad picture and help you 
 and what is acceptable behavior. Imbalanced distributions of benefits are uncovered to serve as points of
 discussion of real-world impact. </p>
 
-<p><details><summary><i>Details for experts</i></summary></p>
+<p><details><summary><i>Details for experts.</i></summary></p>
 
 <p>The generated report can be viewed in three different formats, where the model card contains a subset of
 results but attaches to these socio-technical concerns to be taken into account:</p>
@@ -300,7 +300,9 @@ ignored in the analysis.</p>
 <br>
 <h2 id='interactive-report'>Interactive report</h2>
 <p><p><img src="https://github.com/mever-team/FairBench/blob/main/docs/fairbench.png?raw=true" alt="Based on FairBench"
-style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
+style="float: left; margin-right: 5px; margin-bottom: 5px; width: 36px;"/></p>
+
+<h3>for experts only - explore several biases and their intermediate quantities</h3>
 
 <p>Creates an interactive report using the FairBench library. The report creates traceable evaluations that
 you can shift through to find actual sources of unfairness.</p>
@@ -329,16 +331,21 @@ you can shift through to find actual sources of unfairness.</p>
                             </button>
 <br>
 <h2 id='sklearn-audit'>Sklearn audit</h2>
-<p><p><img src="https://github.com/mever-team/FairBench/blob/main/docs/fairbench.png?raw=true" alt="Based on FairBench" style="float: left; margin-right: 5px; margin-bottom: 5px; width: 80px;"/></p>
+<p><p><img src="https://github.com/mever-team/FairBench/blob/main/docs/fairbench.png?raw=true" alt="Based on FairBench" style="float: left; margin-right: 5px; margin-bottom: 5px; width: 36px;"/></p>
+
+<h3>report on the biases of a simple predictor</h3>
 
 <p>One way to evaluate the fairness of a dataset is by testing for biases using simple models with limited
 degrees of freedom. This module audits datasets by training such models provided by the
 <a href="https://scikit-learn.org/stable/index.html">scikit-learn</a> library on half of the dataset.
 The second half is then used as test data to assess predictive performance and detect classification
-or scoring biases.</p>
+or scoring biases. Test data are used to generate a fairness and bias report with the
+<a href="https://fairbench.readthedocs.io/">FairBench</a> library.
+</p>
 
-<p>Test data are used to generate a fairness and bias report with the
-<a href="https://fairbench.readthedocs.io/">FairBench</a> library. If strong biases appear in the simple models
+<p><details><summary><i>Details for experts.</i></summary></p>
+
+<p>If strong biases appear in the simple models
 that are explored, they may also persist in more complex models trained on the same data. To focus on the most
 significant biases, adjust the minimum shown deviation parameter.
 The report provides multiple types of fairness and bias assessments and can be viewed in three different formats,
@@ -360,6 +367,8 @@ a fuzzy group of "large" values. A separate set of fairness metrics is calculate
 <p>If intersectional subgroup analysis is enabled, separate subgroups are created for each combination of sensitive
 attribute values. However, if there are too many attributes, some groups will be small or empty. Empty groups are
 ignored in the analysis. The report may also include information about built-in datasets.</p>
+
+<p></details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -564,10 +573,10 @@ ignored in the analysis. The report may also include information about built-in 
 <h2 id='aif360-metrics'>Aif360 metrics</h2>
 <p><p><img src="https://avatars.githubusercontent.com/u/56103733?s=48&amp;v=4" alt="Based on AIF360" style="float: left; margin-right: 5px; margin-bottom: 5px; height: 36px;"/></p>
 
-<h3>look into popular types of bias</h3>
+<h3>popular types of bias</h3>
 
-<p>This module evaluates fairness using IBM's <a href="https://aif360.readthedocs.io" target="_blank">AIF360</a> library.
-It computes standard group fairness metrics for each sensitive attribute provided. If attributes are non-binary, they are
+<p>Use IBM's <a href="https://aif360.readthedocs.io" target="_blank">AIF360</a> to compute
+common group fairness metrics for each sensitive attribute provided. If attributes are non-binary, they are
 binarized into one-hot encoded columns. Only categorical attributes are allowed.</p>
 
 <p><span class="alert alert-warning alert-dismissible fade show" role="alert"
@@ -611,7 +620,13 @@ will always be computed against the rest of the population.</span></p>
                             </button>
 <br>
 <h2 id='optimal-transport'>Optimal transport</h2>
-<p><p>Creates an optimal transport evaluation based on the implementation provided by the AIF360 library.
+<p><p><img src="https://avatars.githubusercontent.com/u/56103733?s=48&amp;v=4" alt="Based on AIF360" style="float: left; margin-right: 5px; margin-bottom: 5px; height: 36px;"/></p>
+
+<h3>representational disparities in predictions</h3>
+
+<p><details><summary><i>Expert details.</i></summary></p>
+
+<p>Creates an optimal transport evaluation based on the implementation provided by the AIF360 library.
 The evaluation computes the Wasserstein distance that reflects the cost of transforming the predictive
 distributions between sensitive attribute groups.</p>
 
@@ -631,7 +646,8 @@ protected groups. If its value is close to 1, the model is biased towards this g
 
 <p><b>License</b><p><i>Parts of the above description are adapted from AIF360
 (<a href="https://github.com/Trusted-AI/AIF360">https://github.com/Trusted-AI/AIF360</a>),
-which is licensed under Apache License 2.0.</i></p></p>
+which is licensed under Apache License 2.0.</i></p>
+</details></p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
@@ -650,8 +666,8 @@ which is licensed under Apache License 2.0.</i></p></p>
 
 <h3>scan for biased attributes or attribute intersections</h3>
 
-<p>This module scans your dataset to estimate the most biased attributes or combinations of attributes.
-You can use those as inputs to other modules.
+<p>Use <a href="https://aif360.readthedocs.io" target="_blank">AIF360</a>
+to scans your dataset to estimate the most biased attributes or combinations of attributes.
 For example, gender may only show bias when combined with socioeconomic status, despite the latter not
 bein inherently sensitive. If you have already marked some
 attributes as sensitive (such as race or gender), the module will <b>exclude</b> them from the scan. This allows
@@ -743,9 +759,11 @@ The analysis is conducted based on the <a href="https://github.com/gsarridis/cv-
                             </button>
 <br>
 <h2 id='facex-regions'>Facex regions</h2>
-<p><p><img src="https://github.com/gsarridis/faceX/raw/main/images/facex.JPG" alt="Based on Facex" style="max-width: 600px;"/></p>
+<p><p><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/facex.png?raw=true" alt="facex" style="float: left; margin-right: 15px; height: 36px;"/></p>
 
-<h3>highlight red the facial features on which a model focuses to categorize an image</h3>
+<h3>facial features on which a model focuses to categorize an image</h3>
+
+<p><img src="https://github.com/gsarridis/faceX/raw/main/images/facex.JPG" alt="Based on Facex" style="max-width: 600px;"/></p>
 
 <p><a href="https://github.com/gsarridis/faceX">FaceX</a> is a tool designed to help you understand how
 face attribute classifiers make decisions. It
@@ -801,9 +819,11 @@ affect its performance.
                             </button>
 <br>
 <h2 id='facex-embeddings'>Facex embeddings</h2>
-<p><p><img src="https://github.com/gsarridis/faceX/raw/main/images/facex.JPG" alt="Based on Facex" style="max-width: 600px;"/></p>
+<p><p><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/facex.png?raw=true" alt="facex" style="float: left; margin-right: 15px; height: 36px;"/></p>
 
-<h3>highlight red the facial features on which a model focuses to compare image pairs</h3>
+<h3>facial features on which a model focuses to compare image pairs</h3>
+
+<p><img src="https://github.com/gsarridis/faceX/raw/main/images/facex.JPG" alt="Based on Facex" style="max-width: 600px;"/></p>
 
 <p><a href="https://github.com/gsarridis/faceX">FaceX</a> for feature extractors is designed to help you
 understand how face verification models process
@@ -999,7 +1019,7 @@ only <i>Gender</i> is supported.</p>
 <h2 id='augmentation-report'>Augmentation report</h2>
 <p><p><img src="https://github.com/arjunroyihrpa/MMM_fair/blob/main/images/mmm-fair.png?raw=true" alt="Based on MMM-Fair" style="float: left; margin-right: 5px; height: 36px;"/></p>
 
-<h3>investigate intersectional representation imbalances in data</h3>
+<h3>intersectional representation imbalances in data</h3>
 
 <p>This module uses the <a href="https://github.com/arjunroyihrpa/MMM_fair">MMM-fair</a> library to
 generate an interactive <a href="https://plotly.com/python/sunburst-charts/" target="_blank">sunburst pie chart</a>
@@ -1026,7 +1046,7 @@ understand how the dataset is being augmented.</p>
 <a href="https://arxiv.org/pdf/2409.05215">Link to paper</a>.
 </details></p>
 
-<p><details><summary><i>Why is this needed?</i></summar></p>
+<p><details><summary><i>Why is this needed?</i></summary></p>
 
 <p>This report provides is generated by MAI-BIAS to generate an overview of dataset imbalances across
 the intersection of sensitive attributes and prediction targets using the MMM-Fair library.
