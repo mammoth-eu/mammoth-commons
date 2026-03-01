@@ -70,7 +70,7 @@
         .intro p { font-size: 1.1rem; max-width: 800px; margin: 1rem auto; }
 
         /* --- Toolkit Highlight --- */
-        #toolkit,  #install {
+        section {
             background: white;
             border: 1px solid var(--border-color);
             border-radius: 8px;
@@ -107,6 +107,7 @@
             padding: 1.5rem;
             background: var(--bg-light);
             transition: transform 0.2s;
+            position: relative; padding-top: 30px;margin-top:30px
         }
 
         .card:hover {
@@ -115,18 +116,19 @@
         }
 
         .card h3 {
-            margin-top: 0;
+            margin-top: 10px;
             font-size: 1.1rem;
         }
 
         .tag {
             display: inline-block;
-            font-size: 0.8rem;
-            padding: 2px 8px;
-            border-radius: 12px;
+            font-size: 0.7rem;
+            padding: 2px 4px;
+            border-radius: 8px;
             background: #e2e6ea;
             color: #555;
-            margin-bottom: 10px;
+            float:right;
+            margin-top:3px;
         }
 
         /* --- Learning Material --- */
@@ -249,8 +251,8 @@
           }
 
           .note {
-            background: #f9f9f9;
-            border-left: 4px solid #ccc;
+            background: #f9f9ee;
+            border-left: 4px solid #ccb;
             padding: 10px;
             margin: 15px 0;
             font-size: 0.9em;
@@ -303,17 +305,19 @@
         <p>Develop fairer AI systems operating in the wild. Get started with our tools.</p>
     </header>
 
+    <img src="https://github.com/mammoth-eu/mammoth-commons/raw/dev/mai_bias/logo.png" alt="logo" style="width:500px;display:block;margin:auto">
+
     <main class="container">
 
         <!-- SECTION: MAI-BIAS Toolkit (The App) -->
         <section id="toolkit">
             <div class="toolkit-header">
-                <h2>🔬 MAI-BIAS toolkit</h2>
+                <h2>MAI-BIAS toolkit</h2>
             </div>
             <p>
-                A fairness assessment and bias mitigation app. It loads datasets and models, and lets you
-                analyze them through a simple standardized UI.
-                It contains modules from MAMMOth partners and third-party libraries.
+                Work with our fairness assessment and bias mitigation toolkit app.
+                This loads datasets and models, and lets you
+                analyze them through a simple standardized interface.
             </p>
 
             <!-- Demo Image -->
@@ -324,10 +328,10 @@
 
         <section id="install">
             <div class="toolkit-header">
-                <h2>🔬 Install now</h2>
+                <h2>Install now</h2>
             </div>
 
-            <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <p style="margin-top: 1rem; font-size: 1rem;">
                 <i>Choose your needs: fast work on local data, or easy sharing of results via your organization's server?</i>
             </p>
 
@@ -391,13 +395,11 @@
 
         <!-- NEW SECTION: Catalogue Gateway -->
         <section id="modules">
-            <h2>🗂 Module catalogue</h2>
+            <h2>Module catalogue</h2>
             <p>
                 Explore available toolkit modules that you can use immediately
-                after <a href="#install">installing</a>.
-                These are combined to run applicable types of analysis
-                on your models and data. Learn how to add your own modules in
-                <a href="https://github.com/mammoth-eu/mammoth-commons/blob/dev/CONTRIBUTING.md" target="_blank">contributor guidelines</a>.
+                after <a href="#install">installing</a> to analyze model and data fairness.
+
             </p>
 
             <div class="software-grid">
@@ -425,74 +427,124 @@
                     </div>
                 </div>
             </div>
+
+            <p class="note">
+                Learn how to add your own modules in
+                <a href="https://github.com/mammoth-eu/mammoth-commons/blob/dev/CONTRIBUTING.md" target="_blank">contributor guidelines</a>.
+            </p>
         </section>
 
 
 
         <!-- SECTION: Software -->
         <section id="software">
-            <h2>🦣 Software</h2>
-            <p>Get direct access to a comprehensive suite of Python libraries and tools across multiple modalities:
-                tabular data, computer vision, graphs / networks, text. These support MAI-BIAS modules.</p>
+            <h2>Software</h2>
+            <p>Access the software tools involved in developing toolkit modules. These tools can be used in your projects.</p>
 
             <div class="software-grid">
                 <!-- General / Multi-Modal -->
                 <div class="card">
-                    <span class="tag">General-purpose</span>&nbsp;<span class="tag">Library</span>
-                    <h3><a href="https://github.com/mever-team/FairBench">FairBench</a></h3>
+                    <img src="https://github.com/mever-team/FairBench/blob/main/docs/fairbench.png?raw=true"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/mever-team/FairBench">FairBench</a><span class="tag">Any data</span><span class="tag">Library</span></h3>
                     <p>A comprehensive AI fairness exploration library with >300 standardized measures.
-                    It can evaluate all modalities, including text generation.
+                    It can assess biases for any modality, including generated text.
                     </p>
                 </div>
 
                 <div class="card">
-                    <span class="tag">General-purpose</span>&nbsp;<span class="tag">Library</span>
-                    <h3><a href="https://github.com/arjunroyihrpa/MMM_fair">MMM-fair</a></h3>
-                    <p>A library that supports high-stakes AI decision-making under competing fairness and accuracy demands.</p>
+                    <img src="https://github.com/arjunroyihrpa/MMM_fair/blob/main/images/mmm-fair.png?raw=true"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/arjunroyihrpa/MMM_fair">MMM-fair</a><span class="tag">Any data</span><span class="tag">Library</span></h3>
+                    A library that supports high-stakes AI decision-making under competing fairness and accuracy demands.
                 </div>
 
                 <div class="card">
-                    <span class="tag">General-purpose</span>&nbsp;<span class="tag">ALgorithm</span>
-                    <h3><a href="https://github.com/arjunroyihrpa/FairBranch">FairBranch</a></h3>
+                    <img src="https://github.com/mammoth-eu/mammoth-commons/raw/dev/mai_bias/logo.png"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/arjunroyihrpa/FairBranch">FairBranch</a><span class="tag">Any data</span><span class="tag">Algorithm</span></h3>
                     <p>Implementation of FairBranch pipelines for vision and tabular modalities.</p>
                 </div>
 
                 <!-- Tabular -->
                 <div class="card">
-                    <span class="tag">Tabular data</span>&nbsp;<span class="tag">Algorithm</span>
-                    <h3><a href="https://github.com/arjunroyihrpa/Multi-Fairness-under-Class-Imbalance">MBFPP</a></h3>
-                    <p>Implementation of the work Multi-Fairness-under-Class-Imbalance.</p>
+                    <img src="https://github.com/mammoth-eu/mammoth-commons/raw/dev/mai_bias/logo.png"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/arjunroyihrpa/Multi-Fairness-under-Class-Imbalance">MBFPP</a><span class="tag">Tabular data</span><span class="tag">Algorithm</span></h3>
+                    <p>Implementation of the work on multi-fairness under class imbalance.</p>
                 </div>
 
                 <!-- Visual -->
                 <div class="card">
-                    <span class="tag">Visual data</span>
-                    <h3><a href="https://github.com/mever-team/vb-mitigator">VB-Mitigator</a></h3>
+                    <img src="https://github.com/mever-team/vb-mitigator/raw/main/assets/vb-mitigator%20logo_250.png"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/mever-team/vb-mitigator">VB-Mitigator</a><span class="tag">Vision</span><span class="tag">Algorithm</span></h3>
                     <p>Implementation and evaluation of existing and new visual bias mitigation methods.</p>
                 </div>
 
                 <div class="card">
-                    <span class="tag">Computer vision</span>&nbsp;<span class="tag">Algorithm</span>
-                    <h3><a href="https://github.com/gsarridis/FLAC">FLAC</a></h3>
-                    <p>Implementation of the model for Fairness-Aware Representation Learning by Suppressing Attribute-Class Associations.</p>
+                    <img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/facex.png?raw=true"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/mever-team/vb-mitigator">FaceX</a><span class="tag">Vision</span><span class="tag">Algorithm</span></h3>
+                    <p>Understanding face attribute classifiers through summary model explanations</p>
                 </div>
 
                 <div class="card">
-                    <span class="tag">Computer vision</span>&nbsp;<span class="tag">Dataset</span>
-                    <h3><a href="https://github.com/gebaltso/SDFD">SDFD</a></h3>
-                    <p>The Stable Diffusion Face-image Dataset. It captures broad facial diversity (demographics, biometrics, non-permanent traits).</p>
+                    <img src="https://github.com/mammoth-eu/mammoth-commons/raw/dev/mai_bias/logo.png"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/gsarridis/FLAC">FLAC</a><span class="tag">Vision</span><span class="tag">Algorithm</span></h3>
+                    <p>Implementation of a model for fairness-aware representation learning by suppressing attribute-class associations.</p>
+                </div>
+
+                <div class="card">
+                    <img src="https://github.com/gebaltso/SDFD/raw/main/examplesSDFD.png?raw=true"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/gebaltso/SDFD">SDFD</a><span class="tag">Vision</span><span class="tag">Dataset</span></h3>
+                    <p>A synthetic face image dataset that captures broad facial diversity (demographics, biometrics, non-permanent traits).</p>
                 </div>
 
                 <!-- Graphs -->
                 <div class="card">
-                    <span class="tag">Graphs / networks</span>&nbsp;<span class="tag">Library</span>
-                    <h3><a href="https://github.com/CSHVienna/NetworkInequalities">NetIn</a></h3>
+                    <img src="https://github.com/CSHVienna/NetworkInequalities/raw/main/docs/source/netin-logo.png?raw=true"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/CSHVienna/NetworkInequalities">NetIn</a><span class="tag">Networks</span><span class="tag">Library</span></h3>
                     <p>A library of methods to study network inequalities.</p>
                 </div>
 
                 <div class="card">
-                    <span class="tag">Graphs / networks</span>&nbsp;<span class="tag">Algorithm</span>
-                    <h3><a href="https://github.com/MKLab-ITI/pygrank-f">pygrank-f</a></h3>
+                    <img src="https://github.com/CSHVienna/hyper_fair/blob/main/logo.png?raw=true"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/CSHVienna/NetworkInequalities">HyperFair</a><span class="tag">Networks</span><span class="tag">Library</span></h3>
+                    <p>A Python library for generating, evaluating, and improving rankings under fairness constraints.</p>
+                </div>
+
+
+                <div class="card">
+                    <img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/graph.png?raw=true"
+                         alt="icon"
+                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+
+                    <h3><a href="https://github.com/MKLab-ITI/pygrank-f">pygrank-f</a><span class="tag">Networks</span><span class="tag">Algorithm</span></h3>
                     <p>Implementation of node ranking debiasing in large graphs.</p>
                 </div>
             </div>
@@ -501,7 +553,7 @@
 
         <!-- SECTION: Learning Material -->
         <section id="learning">
-            <h2>📒 Training material for AI creators</h2>
+            <h2>Training material for AI creators</h2>
             <div class="learning-list">
                 <div class="learning-item">
                     <a href="https://github.com/mammoth-eu/FairnessDefinitionGuide"><strong>AI Fairness Definition Guide</strong></a>
