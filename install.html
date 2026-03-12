@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAI-BIAS portal</title>
+    <style>
+        /* (Keep your existing CSS styles here) */
+        /* --- General Styles --- */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e67e22;
+            --bg-light: #f8f9fa;
+            --text-color: #333;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        ul { list-style: none; padding: 0; }
+
+        /* --- Navigation --- */
+        nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; color: white; }
+
+        .nav-links { display: flex; gap: 20px; }
+        a { color: #ecf0f1; font-weight: 500; text-decoration: none; }
+        a:hover { color: var(--accent-color); }
+
+        .card a { text-decoration: none; color: var(--secondary-color); transition: color 0.2s; }
+        .card a:hover { color: var(--primary-color); }
+
+        /* --- Layout --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        section { margin-bottom: 4rem; scroll-margin-top: 80px; }
+        h1, h2, h3 { color: var(--primary-color); }
+
+        /* --- Hero / Intro --- */
+        .intro {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+        .intro p { font-size: 1.1rem; max-width: 800px; margin: 1rem auto; }
+
+        /* --- Toolkit Highlight --- */
+        section {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent-color);
+        }
+        .toolkit-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+        .toolkit-links { margin-top: 1.5rem; display: flex; gap: 15px; }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .btn:hover { background-color: var(--secondary-color); color: white; }
+
+        .demo-gif { margin-top: 20px; max-width: 100%; border-radius: 8px; border: 1px solid #ccc; }
+
+
+        /* --- Software Grid --- */
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            transition: transform 0.2s;
+            position: relative; padding-top: 30px;margin-top:30px
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 4px;
+            border-radius: 8px;
+            background: #e2e6ea;
+            color: #555;
+            float:right;
+            margin-top:3px;
+        }
+
+        /* --- Learning Material --- */
+        .learning-list { display: flex; flex-direction: column; gap: 15px; }
+        .learning-item {
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+        .learning-item::before {
+            content: "📘";
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        footer a { color: var(--accent-color); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .toolkit-links { flex-direction: column; }
+        }
+
+
+        <!-- Styles for the Tabs -->
+        <style>
+          .mammoth-tabs {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin-top:40px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+          }
+
+          /* Tab Navigation */
+          .tab-nav {
+            background: #f4f4f4;
+            border-bottom: 1px solid #ddd;
+            overflow: hidden;
+          }
+
+          .tab-btn {
+            background: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 24px;
+            transition: 0.3s;
+            font-size: 16px;
+            color: #555;
+            font-weight: 500;
+            width: 200px;
+            text-align: left;
+          }
+
+          .tab-btn:hover {
+            background-color: #e0e0e0;
+            color: #000;
+          }
+
+          .tab-btn.active {
+            background-color: #fff;
+            color: #000;
+            border-bottom: 2px solid #fff; /* Hides the border to merge with content */
+            font-weight: bold;
+            margin-bottom: -1px;
+          }
+
+          /* Tab Content */
+          .tab-content {
+            display: none;
+            padding-left: 5px;
+            padding-right: 5px;
+            background-color: #fff;
+            animation: fadeEffect 0.4s;
+          }
+
+          .tab-content.active {
+            display: block;
+          }
+
+          @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+          }
+
+          /* Text and Code Styling */
+          .instruction-text {
+            line-height: 1.6;
+            margin-bottom: 15px;
+          }
+
+          .instruction-list {
+            margin-bottom: 15px;
+            padding-left: 20px;
+          }
+
+          .code-block {
+            background: #2d2d2d;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            margin-bottom: 15px;
+            overflow-x: auto;
+          }
+
+          .note {
+            background: #f9f9ee;
+            border-left: 4px solid #ccb;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 0.9em;
+            color: #555;
+          }
+
+          /* GitHub Button at bottom of tabs */
+          .tab-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: right;
+          }
+
+          .btn-github {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #24292e;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+          }
+
+          .btn-github:hover {
+            background-color: #444d56;
+          }
+
+    </style>
+</head>
+<body>
+
+    <!-- Top Menu -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="index.html">MAI-BIAS</a></div>
+            <div class="nav-links">
+                <a href="#install">Install</a>
+                <a href="#gallery">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Introduction -->
+    <header class="intro">
+        <h1>MAI-BIAS toolkit</h1>
+        <p>Your companion for AI fairness in the wild.</p>
+    </header>
+
+    <main class="container">
+
+        <section id="install">
+            <h2>Install</h2>
+            <p style="margin-top: 1rem; font-size: 1rem;">
+                <i>Choose your needs: fast work on local data, or easily share results via your organization's server.</i>
+            </p>
+            <div class="mammoth-tabs">
+              <div class="tab-nav">
+                <button class="tab-btn active" onclick="openMammothTab(event, 'Local')">Run locally</button>
+                <button class="tab-btn" onclick="openMammothTab(event, 'Server')">Server setup</button>
+              </div>
+              <div id="Local" class="tab-content active">
+                <p class="instruction-text">
+                  Requires Python 3.11 in your systems. Most modules also work in later versions too.
+                    Use the following boostrapping command to download and run the autostart script <i>mai_bias.sh</i>
+                    in an empty directory:</p>
+                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/mammoth-eu/mammoth-commons/dev/mai_bias.sh -o mai_bias.sh && chmod +x mai_bias.sh && ./mai_bias.sh</div>
+
+                <p class="note">The toolkit's modules install more dependencies on-demand.
+                    For some deep learning modules, this may take a while the first time.
+                    Troubleshoot common errors or report issues in the local runner's <a href="https://github.com/mammoth-eu/mammoth-commons" target="_blank">repository</a>.</p>
+              </div>
+
+              <!-- TAB 2: SERVER SETUP -->
+              <div id="Server" class="tab-content">
+                <p class="instruction-text">
+                    Open a terminal in an empty directory and use the following curl command to download and
+                    run the bootstrap script <i>install.sh</i>.
+                    If you are on Windows, manually install docker first and set up the toolkit server in WSL.
+                </p>
+                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/mammoth-eu/mammoth-toolkit-releases/dev/install.sh -o install.sh && bash install.sh</div>
+
+                <p class="note">
+                    Default credentials and how to stop, restart, or update the server are shown when the server launches.
+                    Installation sets up a kubernetes environment may take a while. Docker images are downloaded in the server.
+                    Troubleshoot common errors or report issues in the server's <a href="https://github.com/mammoth-eu/mammoth-toolkit-releases" target="_blank">repository</a>.
+                </p>
+              </div>
+
+            </div>
+            <script>
+              function openMammothTab(evt, tabName) {
+                evt.preventDefault();
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tab-content");
+                for (i = 0; i < tabcontent.length; i++) {
+                  tabcontent[i].style.display = "none";
+                  tabcontent[i].classList.remove("active");
+                }
+                tablinks = document.getElementsByClassName("tab-btn");
+                for (i = 0; i < tablinks.length; i++) {
+                  tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(tabName).style.display = "block";
+                document.getElementById(tabName).classList.add("active");
+                evt.currentTarget.className += " active";
+              }
+            </script>
+        </section>
+
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div style="overflow-x:auto; white-space:nowrap; padding-bottom:8px;max-width: 1000px;;margin:auto">
+              <img src="screenshot1.png"
+                   alt="Screenshot 1"
+                   style="height:300px; display:inline-block; margin-right:12px;">
+              <img src="screenshot2.png"
+                   alt="Screenshot 2"
+                   style="height:300px; display:inline-block; margin-right:12px;">
+              <img src="screenshot3.png"
+                   alt="Screenshot 3"
+                   style="height:300px; display:inline-block; margin-right:12px;">
+              <img src="screenshot4.png"
+                   alt="Screenshot 4"
+                   style="height:300px; display:inline-block; margin-right:12px;">
+              <img src="screenshot5.png"
+                   alt="Screenshot 5"
+                   style="height:300px; display:inline-block;">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; This material has been developed by the MAMMOth EU project.</p>
+        <p>
+            <a href="https://github.com/mammoth-eu">GitHub</a>&nbsp;|
+            <a href="https://mammoth-ai.eu">Website</a>
+        </p>
+    </footer>
+
+</body>
+</html>

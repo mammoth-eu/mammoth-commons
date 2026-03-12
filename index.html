@@ -24,9 +24,6 @@
             padding: 0;
             background-color: #fff;
         }
-
-        a { text-decoration: none; color: var(--secondary-color); transition: color 0.2s; }
-        a:hover { color: var(--primary-color); }
         ul { list-style: none; padding: 0; }
 
         /* --- Navigation --- */
@@ -51,8 +48,14 @@
         .logo { font-size: 1.5rem; font-weight: bold; color: white; }
 
         .nav-links { display: flex; gap: 20px; }
-        .nav-links a { color: #ecf0f1; font-weight: 500; }
-        .nav-links a:hover { color: var(--accent-color); }
+        a { color: #ecf0f1; font-weight: 500; text-decoration: none;  }
+        a:hover { color: var(--accent-color); }
+
+        .card a { text-decoration: none; color: var(--secondary-color); transition: color 0.2s; }
+        .card a:hover { color: var(--primary-color); }
+
+        .learning-item a { text-decoration: none; color: var(--secondary-color); transition: color 0.2s; }
+        .learning-item a:hover { color: var(--primary-color); }
 
         /* --- Layout --- */
         .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
@@ -252,7 +255,7 @@
 
           .note {
             background: #f9f9ee;
-            border-left: 4px solid #ccb;
+            border: 1px solid #ccb;
             padding: 10px;
             margin: 15px 0;
             font-size: 0.9em;
@@ -292,14 +295,11 @@
             <div class="logo">MAI-BIAS</div>
             <div class="nav-links">
                 <a href="#toolkit">Toolkit</a>
-                <a href="#modules">Modules</a>
                 <a href="#software">Software</a>
                 <a href="#learning">Training</a>
             </div>
         </div>
     </nav>
-
-    <!-- Introduction -->
     <header class="intro">
         <h1>Welcome to the MAI-BIAS portal!</h1>
         <p>Develop fairer AI systems operating in the wild. Get started with our tools.</p>
@@ -308,19 +308,15 @@
     <img src="https://github.com/mammoth-eu/mammoth-commons/raw/dev/mai_bias/logo.png" alt="logo" style="width:500px;display:block;margin:auto">
 
     <main class="container">
-
-        <!-- SECTION: MAI-BIAS Toolkit (The App) -->
         <section id="toolkit">
             <div class="toolkit-header">
                 <h2>Our toolkit</h2>
             </div>
             <p>
-                The MAI-BIAS toolkit is a fairness assessment and bias mitigation app that brings together
-                software by both our partners and third parties.
-                The toolkit lets you load datasets and models, and analyze them through a simple standardized interface.
+                The MAI-BIAS toolkit is a low-code fairness assessment and bias mitigation app. It brings together
+                software by both our partners and third parties to load datasets and models, and analyze them
+                through a standardized interface.
             </p>
-
-            <!-- Demo Image -->
             <div style="text-align: center; padding: 10px; border-radius: 8px;">
                 <div class="player">
                   <iframe width="640" height="360"
@@ -333,111 +329,47 @@
                 </div>
             </div>
 
-            <p style="margin-top: 1rem; font-size: 1rem;">
-                <i>Choose your needs: fast work on local data, or easily share results via your organization's server.</i>
-            </p>
-
-            <!-- Tab Container -->
-            <div class="mammoth-tabs">
-              <div class="tab-nav">
-                <button class="tab-btn active" onclick="openMammothTab(event, 'Local')">Run locally</button>
-                <button class="tab-btn" onclick="openMammothTab(event, 'Server')">Server setup</button>
-              </div>
-              <div id="Local" class="tab-content active">
-                <p class="instruction-text">
-                  Requires Python 3.11 in your systems. Most modules also work in later versions too.
-                    Use the following boostrapping command to download and run the autostart script <i>mai_bias.sh</i>
-                    in an empty directory:</p>
-                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/mammoth-eu/mammoth-commons/dev/mai_bias.sh -o mai_bias.sh && chmod +x mai_bias.sh && ./mai_bias.sh</div>
-
-                <p class="note">The toolkit's modules install more dependencies on-demand.
-                    For some deep learning modules, this may take a while the first time.
-                    Troubleshoot common errors or report issues in the local runner's <a href="https://github.com/mammoth-eu/mammoth-commons" target="_blank">repository</a>.</p>
-              </div>
-
-              <!-- TAB 2: SERVER SETUP -->
-              <div id="Server" class="tab-content">
-                <p class="instruction-text">
-                    Open a terminal in an empty directory and use the following curl command to download and
-                    run the bootstrap script <i>install.sh</i>.
-                    If you are on Windows, manually install docker first and set up the toolkit server in WSL.
-                </p>
-                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/mammoth-eu/mammoth-toolkit-releases/dev/install.sh -o install.sh && bash install.sh</div>
-
-                <p class="note">
-                    Default credentials and how to stop, restart, or update the server are shown when the server launches.
-                    Installation sets up a kubernetes environment may take a while. Docker images are downloaded in the server.
-                    Troubleshoot common errors or report issues in the server's <a href="https://github.com/mammoth-eu/mammoth-toolkit-releases" target="_blank">repository</a>.
-                </p>
-              </div>
-
+            <div class="learning-list">
+                <div class="learning-item">
+                    <a href="install.html"><strong>Install locally or in a server</strong></a>
+                </div>
+                <div class="learning-item">
+                    <a href="quickstart.html"><strong>Assess a dataset in 10 clicks</strong></a>
+                </div>
+                <div class="learning-item">
+                    <a href="examples.html"><strong>Share results with non-technical people: examples</strong></a>
+                </div>
             </div>
-            <script>
-              function openMammothTab(evt, tabName) {
-                evt.preventDefault();
-                var i, tabcontent, tablinks;
-                tabcontent = document.getElementsByClassName("tab-content");
-                for (i = 0; i < tabcontent.length; i++) {
-                  tabcontent[i].style.display = "none";
-                  tabcontent[i].classList.remove("active");
-                }
-                tablinks = document.getElementsByClassName("tab-btn");
-                for (i = 0; i < tablinks.length; i++) {
-                  tablinks[i].className = tablinks[i].className.replace(" active", "");
-                }
-                document.getElementById(tabName).style.display = "block";
-                document.getElementById(tabName).classList.add("active");
-                evt.currentTarget.className += " active";
-              }
-            </script>
-
-        </section>
 
 
-        <!-- NEW SECTION: Catalogue Gateway -->
-        <section id="modules">
-            <h2>Module catalogue</h2>
-            <p>
-                Explore MAI-BIAS modules. Use those immediately
-                after installing the toolkit to analyze model and data fairness.
 
-            </p>
+            <div class="note">
 
-            <div class="software-grid">
-                <!-- Card 1: Datasets -->
-                <div class="card">
-                    <div>
-                        <h3><a href="datasets.html">🗄️ Dataset loaders</a></h3>
-                        <p>Load local datasets or automatically use public ones used in fairness literature.</p>
+                <p style="margin-bottom:-20px">Out-of-the-box support for many data types, technology stacks, and fairness concerns. The toolkit adjusts to your setting!</p>
+                <div class="software-grid">
+                    <div class="card">
+                        <div>
+                            <h3><a href="datasets.html">🗄️ Dataset loaders</a></h3>
+                            <p>Load local datasets or automatically use public ones used in fairness literature.</p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Card 2: Models -->
-                <div class="card">
-                    <div>
-                        <h3><a href="models.html">🧮 Model loaders</a></h3>
-                        <p>Import a wide range of trained machine learning models or other data science algorithms.</p>
+                    <div class="card">
+                        <div>
+                            <h3><a href="models.html">🧮 Model loaders</a></h3>
+                            <p>Import a wide range of trained machine learning models or other data science algorithms.</p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Card 3: Analysis -->
-                <div class="card">
-                    <div>
-                        <h3><a href="analysis_methods.html">🔬 Fairness analysis</a></h3>
-                        <p>Metrics, visualizations, and summaries for quantifying and mitigating disparities.</p>
+                    <div class="card">
+                        <div>
+                            <h3><a href="analysis_methods.html">🔬 Fairness analysis</a></h3>
+                            <p>Metrics, visualizations, and summaries for quantifying and mitigating disparities.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <p class="note">
-                Learn how to add your own modules in
-                <a href="https://github.com/mammoth-eu/mammoth-commons/blob/dev/CONTRIBUTING.md" target="_blank">contributor guidelines</a>.
-            </p>
         </section>
 
-
-
-        <!-- SECTION: Software -->
         <section id="software">
             <h2>Reuse our software</h2>
             <p>Apply our bias detection and mitigation code in your projects independently. Software listed here also
@@ -539,7 +471,6 @@
                     <h3><a href="https://github.com/CSHVienna/hyper_fair">HyperFair</a><span class="tag">Networks</span><span class="tag">Library</span></h3>
                     <p>A Python library for generating, evaluating, and improving rankings under fairness constraints.</p>
                 </div>
-
 
                 <div class="card">
                     <img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/graph.png?raw=true"
