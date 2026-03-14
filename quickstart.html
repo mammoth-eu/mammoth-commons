@@ -5,20 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAI-BIAS portal</title>
     <style>
-        .scale-wrap {
-            width: 100%;
-            overflow: hidden;
-            max-height: 80%;
-        }
-        .scale-wrap iframe {
-            transform: scale(0.5);
-            transform-origin: top left;
-            width: 200%;
-            height: 1000px;
-            border: 0;
-        }
-
-
         /* (Keep your existing CSS styles here) */
         /* --- General Styles --- */
         :root {
@@ -54,6 +40,7 @@
 
         .nav-container {
             max-width: 1100px;
+            width: 90%:
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -311,7 +298,7 @@
     <!-- Introduction -->
     <header class="intro">
         <h1>Quickstart</h1>
-        <p>Analyze the bias of a dataset in less than 10 clicks.<br>Add a few more to assess a combined dataset and model.</p>
+        <p>Investigate a dataset's biases in 10 clicks.<br>Add a few more to assess a combined dataset and model.</p>
     </header>
 
     <main class="container">
@@ -319,19 +306,18 @@
         <section>
             <h2>Requirements</h2>
             <p>This tutorial assumes that you have the MAI-BIAS toolkit already installed and a dataset available.
-                Find installation instructions <a href="install.html">here</a>, and we will use files from the bank
-                dataset from our integration test data <a href="https://github.com/mammoth-eu/mammoth-commons/tree/dev/data/bank">here</a>.
-                You can use any other url or -if you are running the local runner- local file too. Everything shown
-                below is for the local runner.
-            </p>
+            Find installation instructions <a href="install.html">here</a>, and we will use files from the bank
+            dataset from our integration test data <a href="https://github.com/mammoth-eu/mammoth-commons/tree/dev/data/bank">here</a>.
+            You can use any other url or -if you are running the local runner- local file too. Everything shown
+            below is for the local runner.</p>
         </section>
 
         <section>
             <h2>Hello!</h2>
 
             Open the MAI-BIAS toolkit.
-            The local runner starts from a place where all pasts results are shown like below.
-            If this is your first time running the toolkit, you will only see the large button at the top.
+            The local runner starts from a place where all past results are shown like below.
+            If this is your first time, you will only see the large button at the top.
             <b>Click</b> that button to start a new analysis. Or click on one of the past analyses to view it,
             or on the <code>+</code> button to rerun something (with potentially altered parameters).
 
@@ -343,28 +329,31 @@
         <section>
             <h2>Dataset</h2>
             <p>Starting a new analysis moves you to a dataset loading screen. You need to first tell the toolkit
-                what kind of data you are loading, as each may require different protocols. <b>Click</b> on the
-                kind of data you have, though in our case <code>tabular data with common formatting</code> that
-                we will use is preselected. At the bottom of this page, you need to input various parameters
-                related to your data, such as which exact file the dataset is stored in.</p>
+            what kind of data you are loading, as each may require different protocols. <b>Click</b> on the
+            kind of data you have, though in our case <code>tabular data with common formatting</code> that
+            we will use is preselected. At the bottom of this page, you need to input various parameters
+            related to your data, such as which exact file the dataset is stored in.</p>
             <p>In more complicated datasets, more options are required. For example, in computer vision it is
-                convenient to store shared images in one folder but accompanying metadata somewhere else. Experts
-                can usually find more loading options
-                under the <code>for experts</code> button. AFind more information about available options and parameters
-                through all <code>!</code> buttons,  and get some non-technical insights about responsibly creating fair
-                AI through the <code>responsibility</code> button.
+            convenient to store shared images in one folder but accompanying metadata somewhere else. Experts
+            can usually find more loading options
+            under the <code>for experts</code> button. AFind more information about available options and parameters
+            through all <code>!</code> buttons,  and get some non-technical insights about responsibly creating fair
+            AI through the <code>responsibility</code> button.</p>
             <p>For now, though, just <b>click</b> on the dataset path, which is the only information mandated by our
-                selected dataset loader, and paste the following online path:
-                <pre>https://raw.githubusercontent.com/mammoth-eu/mammoth-commons/refs/heads/dev/data/bank/bank-full.csv</pre>
-                You can also use other URLs or use the yellow <code>...</code> button to browse through your file system.
-                Once you input your dataset <b>click</b> <code>next</code>.
-            </p>
+            selected dataset loader, and paste the following online path:
+            <pre>https://raw.githubusercontent.com/mammoth-eu/mammoth-commons/refs/heads/dev/data/bank/bank-full.csv</pre>
+            You can also use other URLs or use the yellow <code>...</code> button to browse through your file system.
+            Once you input your dataset <b>click</b> <code>next</code>.</p>
             <img src="screenshot3.png" alt="screenshot" style="width:80%;display:block;margin:auto">
             <b>Click count: 4</b> (actually 3 but let us not cheat with the preselected options)
         </section>
 
         <section>
             <h2>Model</h2>
+            <p>Moving to next steps shows a progress bar about loading and -the first time you run each module-
+            installation of missing software. You will be notified about issues like missing files (in which case you
+            can fix them and try again), but if everything is alright
+            the toolkit moves to the next screen for selecting an AI model.</p>
             <p>Similarly to before, we need to <b>click</b> on the kind of model we are analyzing.
             Options like the preselected default can help analyze plain datasets by
             indicating that you have no models, or by leveraging well-understood models.</p>
@@ -398,10 +387,14 @@
 
         <section>
             <h2>Results</h2>
-            <p>That's it! You are now seeing the outcomes of fairness analysis. This a summary judgement
-            that tells you whether -or how many- biases have been found alongside some basic information
-            about the technologies and sensitive attributes involved. At the bottom you can find various
-            tabs that contain more information, and are suited for different kinds of users. </p>
+            <p>That's it! You are now seeing the outcomes of fairness analysis. This starts with a short
+            phrase that is summary judgment of whether -or how many- biases have been found. This is presented
+            alongside some information about the sensitive attributes analyzed, as well as the date and the
+            main technologies involved in the analysis itself.</p>
+            <p>Underneath, you can find various
+            tabs that contain more details, and are suited for different kinds of users. </p>
+            <p>Use the <code>save and share</code> button on top to export the analysis outcome as a
+            file. That can be shared with others to open in their browser.</p>
             <img src="screenshot1.png" alt="screenshot" style="width:80%;display:block;margin:auto">
         </section>
 
