@@ -4,292 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAI-BIAS portal</title>
-    <style>
-        /* (Keep your existing CSS styles here) */
-        /* --- General Styles --- */
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e67e22;
-            --bg-light: #f8f9fa;
-            --text-color: #333;
-            --border-color: #ddd;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-        }
-        ul { list-style: none; padding: 0; }
-
-        /* --- Navigation --- */
-        nav {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo { font-size: 1.5rem; font-weight: bold; color: white; }
-
-        .nav-links { display: flex; gap: 20px; }
-        a { color: #ecf0f1; font-weight: 500; text-decoration: none;  }
-        a:hover { color: var(--accent-color); }
-
-        .card a { text-decoration: none; color: var(--secondary-color); transition: color 0.2s; }
-        .card a:hover { color: var(--primary-color); }
-
-        .learning-item a { text-decoration: none; color: var(--secondary-color); transition: color 0.2s; }
-        .learning-item a:hover { color: var(--primary-color); }
-
-        /* --- Layout --- */
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
-        section { margin-bottom: 4rem; scroll-margin-top: 80px; }
-        h1, h2, h3 { color: var(--primary-color); }
-
-        /* --- Hero / Intro --- */
-        .intro {
-            text-align: center;
-            padding: 3rem 1rem;
-            background-color: var(--bg-light);
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 2rem;
-        }
-        .intro p { font-size: 1.1rem; max-width: 800px; margin: 1rem auto; }
-
-        /* --- Toolkit Highlight --- */
-        section {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--accent-color);
-        }
-        .toolkit-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
-        .toolkit-links { margin-top: 1.5rem; display: flex; gap: 15px; }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-        .btn:hover { background-color: var(--secondary-color); color: white; }
-
-        .demo-gif { margin-top: 20px; max-width: 100%; border-radius: 8px; border: 1px solid #ccc; }
-
-
-        /* --- Software Grid --- */
-        .software-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            transition: transform 0.2s;
-            position: relative; padding-top: 30px;margin-top:30px
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            margin-top: 10px;
-            font-size: 1.1rem;
-        }
-
-        .tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            padding: 2px 4px;
-            border-radius: 8px;
-            background: #e2e6ea;
-            color: #555;
-            float:right;
-            margin-top:3px;
-        }
-
-        /* --- Learning Material --- */
-        .learning-list { display: flex; flex-direction: column; gap: 15px; }
-        .learning-item {
-            padding: 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-        }
-        .learning-item::before {
-            content: "📘";
-            margin-right: 15px;
-            font-size: 1.2rem;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-        footer a { color: var(--accent-color); }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .toolkit-links { flex-direction: column; }
-        }
-
-
-        <!-- Styles for the Tabs -->
-        <style>
-          .mammoth-tabs {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 800px;
-            margin-top:40px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            overflow: hidden;
-          }
-
-          /* Tab Navigation */
-          .tab-nav {
-            background: #f4f4f4;
-            border-bottom: 1px solid #ddd;
-            overflow: hidden;
-          }
-
-          .tab-btn {
-            background: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 24px;
-            transition: 0.3s;
-            font-size: 16px;
-            color: #555;
-            font-weight: 500;
-            width: 200px;
-            text-align: left;
-          }
-
-          .tab-btn:hover {
-            background-color: #e0e0e0;
-            color: #000;
-          }
-
-          .tab-btn.active {
-            background-color: #fff;
-            color: #000;
-            border-bottom: 2px solid #fff; /* Hides the border to merge with content */
-            font-weight: bold;
-            margin-bottom: -1px;
-          }
-
-          /* Tab Content */
-          .tab-content {
-            display: none;
-            padding-left: 5px;
-            padding-right: 5px;
-            background-color: #fff;
-            animation: fadeEffect 0.4s;
-          }
-
-          .tab-content.active {
-            display: block;
-          }
-
-          @keyframes fadeEffect {
-            from {opacity: 0;}
-            to {opacity: 1;}
-          }
-
-          /* Text and Code Styling */
-          .instruction-text {
-            line-height: 1.6;
-            margin-bottom: 15px;
-          }
-
-          .instruction-list {
-            margin-bottom: 15px;
-            padding-left: 20px;
-          }
-
-          .code-block {
-            background: #2d2d2d;
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            white-space: pre-wrap;
-            margin-bottom: 15px;
-            overflow-x: auto;
-          }
-
-          .note {
-            background: #f9f9ee;
-            border: 1px solid #ccb;
-            padding: 10px;
-            margin: 15px 0;
-            font-size: 0.9em;
-            color: #555;
-          }
-
-          /* GitHub Button at bottom of tabs */
-          .tab-footer {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            text-align: right;
-          }
-
-          .btn-github {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #24292e;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-          }
-
-          .btn-github:hover {
-            background-color: #444d56;
-          }
-
-    </style>
+    <style>style.css</style>
 </head>
 <body>
-
-    <!-- Top Menu -->
     <nav>
         <div class="nav-container">
             <div class="logo">MAI-BIAS</div>
@@ -330,42 +47,17 @@
             </div>
 
             <div class="learning-list">
-                <div class="learning-item">
-                    <a href="install.html"><strong>Install locally or in a server</strong></a>
-                </div>
-                <div class="learning-item">
-                    <a href="quickstart.html"><strong>Assess a dataset in 10 clicks</strong></a>
-                </div>
-                <div class="learning-item">
-                    <a href="examples.html"><strong>Share results with non-technical people: examples</strong></a>
-                </div>
+                <a href="install.html"><span>Install locally or in a server</span></a>
+                <a href="quickstart.html"><span>Assess a dataset in 10 clicks</span></a>
+                <a href="examples.html"><span>Share results with non-technical people: examples</span></a>
             </div>
 
-
-
             <div class="note">
-
-                <p style="margin-bottom:-20px">Out-of-the-box support for many data types, technology stacks, and fairness concerns. The toolkit adjusts to your setting!</p>
-                <div class="software-grid">
-                    <div class="card">
-                        <div>
-                            <h3><a href="datasets.html">🗄️ Dataset loaders</a></h3>
-                            <p>Load local datasets or automatically use public ones used in fairness literature.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <h3><a href="models.html">🧮 Model loaders</a></h3>
-                            <p>Import a wide range of trained machine learning models or other data science algorithms.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <h3><a href="analysis_methods.html">🔬 Fairness analysis</a></h3>
-                            <p>Metrics, visualizations, and summaries for quantifying and mitigating disparities.</p>
-                        </div>
-                    </div>
-                </div>
+                <p>The toolkit adjusts to your setting with out-of-the-box support for many
+                <a href="datasets.html">data types</a>, <a href="models.html">models</a>, and
+                <a href="analysis_methods.html">fairness concerns</a>.
+                Follow the links to browse through
+                our module catalogue.</p>
             </div>
 
         </section>
@@ -488,12 +180,8 @@
         <section id="learning">
             <h2>Training material for AI creators</h2>
             <div class="learning-list">
-                <div class="learning-item">
-                    <a href="https://github.com/mammoth-eu/FairnessDefinitionGuide"><strong>AI Fairness Definition Guide</strong></a>
-                </div>
-                <div class="learning-item">
-                    <a href="https://arjunroyihrpa.github.io/My-Tutorials-FairML/"><strong>Fairness-aware ML Tutorials</strong></a>
-                </div>
+                <a href="https://github.com/mammoth-eu/FairnessDefinitionGuide"><strong>AI Fairness Definition Guide</strong></a>
+                <a href="https://arjunroyihrpa.github.io/My-Tutorials-FairML/"><strong>Fairness-aware ML Tutorials</strong></a>
             </div>
         </section>
 
