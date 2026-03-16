@@ -319,6 +319,14 @@
 
     <main class="container">
         <section>
+            <h2>Check for a specific bias</h2>
+            <p>Consider any dataset and predictive model that can parse its data. You can compute a standardized measure
+            of bias by choosing parameters from several options. This measure aims to assess whether business benefits,
+            such as model accuracy (how correct the system is) are equalized for all population groups. This includes
+            intersectional groups (e.g., Black Women is one of the intersections of gender and race).</p>
+            <p>In this case, use the <i>specific concerns</i> module to make a bias assessment like the following.
+            We provide a default threshold for the assessment obtained through MAMMOth's co-creation process, but
+            this needs to be adjusted in new social or legal contexts based on stakeholder feedback.</p>
             <div class="scale-wrap">
                 <iframe src="assets/example3.html"
                         title="Specific concern"
@@ -327,6 +335,21 @@
         </section>
 
         <section>
+            <h2>Analyze a model's bias</h2>
+            <p>Given a reasonably trustworthy dataset that serves as ground truth,
+            you can use it to assess the biases of an AI model. Here we run a model
+            card summary on one such model. This explores hundreds of potential biases
+            across pairwise comparisons of sensitive attribute intersections, as well as
+            performance measures and benefits to safeguard in the population.</p>
+            <p>Not all found issues should necessarily be prohibitive in each setting,
+            especially since -mathematically- it is impossible to mitigate
+            all conceivable definitions of bias at the same time.</p>
+            <p>We also compute a business benefit measure
+            summarizing model performance, for example that correlates to business revenue.
+            This is typically accuracy, though here we used expert options to designate high
+            precision as desired (not erring in positive classifications). Typically, one
+            can investigate system variations to get a sense of trade-offs between performance
+            and fairness.</p>
             <div class="scale-wrap">
                 <iframe src="assets/example1.html"
                         title="Model bias example"
@@ -335,6 +358,16 @@
         </section>
 
         <section>
+            <h2>Audit a dataset for representational imbalances</h2>
+            <p>Biased datasets are problematic themselves, as too extreme ones cannot be offset by models
+            without drastic concessions in predictive accuracy (or in safeguarding other kinds of business benefits).
+            Furthermore, if models take no bias mitigation action, dataset biases can be encoded or even amplified
+            during real-world usage.</p>
+            <p>For this reason, MAI-BIAS offers various means of auditing datasets. Here we show the outcome of
+            checking for representational imbalances, especially those that occur due to the intersection of multiple
+            sensitive and predictive attributes; excessive specialization may make some societal subgroups too small
+            or empty. This particular analysis both visualizes the intersectional imbalances, and provides
+            means of mitigating these biases in the <code>for experts</code> tab.</p>
             <div class="scale-wrap">
             <div class="scale-wrap">
                 <iframe src="assets/example2.html"
