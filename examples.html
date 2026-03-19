@@ -18,286 +18,9 @@
             border: 0;
         }
 
-
-        /* (Keep your existing CSS styles here) */
-        /* --- General Styles --- */
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e67e22;
-            --bg-light: #f8f9fa;
-            --text-color: #333;
-            --border-color: #ddd;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-        }
-
-        ul { list-style: none; padding: 0; }
-
-        /* --- Navigation --- */
-        nav {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo { font-size: 1.5rem; font-weight: bold; color: white; }
-
-        .nav-links { display: flex; gap: 20px; }
-        a { color: #ecf0f1; font-weight: 500; text-decoration: none; }
-        a:hover { color: var(--accent-color); }
-
-        .card a { text-decoration: none; color: var(--secondary-color); transition: color 0.2s; }
-        .card a:hover { color: var(--primary-color); }
-
-        /* --- Layout --- */
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
-        section { margin-bottom: 4rem; scroll-margin-top: 80px; }
-        h1, h2, h3 { color: var(--primary-color); }
-
-        /* --- Hero / Intro --- */
-        .intro {
-            text-align: center;
-            padding: 3rem 1rem;
-            background-color: var(--bg-light);
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 2rem;
-        }
-        .intro p { font-size: 1.1rem; max-width: 800px; margin: 1rem auto; }
-
-        /* --- Toolkit Highlight --- */
-        section {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--accent-color);
-        }
-        .toolkit-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
-        .toolkit-links { margin-top: 1.5rem; display: flex; gap: 15px; }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-        .btn:hover { background-color: var(--secondary-color); color: white; }
-
-        .demo-gif { margin-top: 20px; max-width: 100%; border-radius: 8px; border: 1px solid #ccc; }
-
-
-        /* --- Software Grid --- */
-        .software-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            transition: transform 0.2s;
-            position: relative; padding-top: 30px;margin-top:30px
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            margin-top: 10px;
-            font-size: 1.1rem;
-        }
-
-        .tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            padding: 2px 4px;
-            border-radius: 8px;
-            background: #e2e6ea;
-            color: #555;
-            float:right;
-            margin-top:3px;
-        }
-
-        /* --- Learning Material --- */
-        .learning-list { display: flex; flex-direction: column; gap: 15px; }
-        .learning-item {
-            padding: 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-        }
-        .learning-item::before {
-            content: "📘";
-            margin-right: 15px;
-            font-size: 1.2rem;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-        footer a { color: var(--accent-color); }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .toolkit-links { flex-direction: column; }
-        }
-
-
-        <!-- Styles for the Tabs -->
-        <style>
-          .mammoth-tabs {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 800px;
-            margin-top:40px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            overflow: hidden;
-          }
-
-          /* Tab Navigation */
-          .tab-nav {
-            background: #f4f4f4;
-            border-bottom: 1px solid #ddd;
-            overflow: hidden;
-          }
-
-          .tab-btn {
-            background: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 24px;
-            transition: 0.3s;
-            font-size: 16px;
-            color: #555;
-            font-weight: 500;
-            width: 200px;
-            text-align: left;
-          }
-
-          .tab-btn:hover {
-            background-color: #e0e0e0;
-            color: #000;
-          }
-
-          .tab-btn.active {
-            background-color: #fff;
-            color: #000;
-            border-bottom: 2px solid #fff; /* Hides the border to merge with content */
-            font-weight: bold;
-            margin-bottom: -1px;
-          }
-
-          /* Tab Content */
-          .tab-content {
-            display: none;
-            padding-left: 5px;
-            padding-right: 5px;
-            background-color: #fff;
-            animation: fadeEffect 0.4s;
-          }
-
-          .tab-content.active {
-            display: block;
-          }
-
-          @keyframes fadeEffect {
-            from {opacity: 0;}
-            to {opacity: 1;}
-          }
-
-          /* Text and Code Styling */
-          .instruction-text {
-            line-height: 1.6;
-            margin-bottom: 15px;
-          }
-
-          .instruction-list {
-            margin-bottom: 15px;
-            padding-left: 20px;
-          }
-
-          .code-block {
-            background: #2d2d2d;
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            white-space: pre-wrap;
-            margin-bottom: 15px;
-            overflow-x: auto;
-          }
-
-          .note {
-            background: #f9f9ee;
-            border-left: 4px solid #ccb;
-            padding: 10px;
-            margin: 15px 0;
-            font-size: 0.9em;
-            color: #555;
-          }
-
-          /* GitHub Button at bottom of tabs */
-          .tab-footer {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            text-align: right;
-          }
-
-          .btn-github {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #24292e;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-          }
-
-          .btn-github:hover {
-            background-color: #444d56;
-          }
-
     </style>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -314,19 +37,22 @@
     <header class="intro">
         <h1>Fairness Analysis Examples</h1>
         <p>These are exported from the MAI-BIAS toolkit and can be viewed in the browser, as you are doing now.
-            Details accompany the verdict. Always be mindful of fairness-washing!</p>
+        Methodological and computational details accompany the verdict to help experts get a deeper picture.
+        Always be mindful of fairness-washing!</p>
     </header>
 
     <main class="container">
         <section>
             <h2>Check for a specific bias</h2>
-            <p>Consider any dataset and predictive model that can parse its data. You can compute a standardized measure
-            of bias by choosing parameters from several options. This measure aims to assess whether business benefits,
+            <p>Consider any dataset and predictive model that is able to process such data. You can compute a
+            <a href="https://zenodo.org/records/10799073">standardized measure of bias</a>
+            by choosing parameters from several options. This measure aims to assess whether business benefits,
             such as model accuracy (how correct the system is) are equalized for all population groups. This includes
             intersectional groups (e.g., Black Women is one of the intersections of gender and race).</p>
-            <p>In this case, use the <i>specific concerns</i> module to make a bias assessment like the following.
+            <p>To compute a standardized measure, use the <i>specific concerns</i> module to make an assessment like the following.
             We provide a default threshold for the assessment obtained through MAMMOth's co-creation process, but
-            this needs to be adjusted in new social or legal contexts based on stakeholder feedback.</p>
+            this needs to be adjusted in new social or legal contexts based on stakeholder feedback. Other expert
+            parameters include the type of predictive benefits to be safeguarded, how these are compared, etc.</p>
             <div class="scale-wrap">
                 <iframe src="assets/example3.html"
                         title="Specific concern"
@@ -336,14 +62,14 @@
 
         <section>
             <h2>Analyze a model's bias</h2>
-            <p>Given a reasonably trustworthy dataset that serves as ground truth,
-            you can use it to assess the biases of an AI model. Here we run a model
+            <p>Given a reasonably trustworthy dataset (that at most encoudes unintended biases)
+            that serves as ground truth, you can use it to assess the biases of an AI model. Here we run a model
             card summary on one such model. This explores hundreds of potential biases
             across pairwise comparisons of sensitive attribute intersections, as well as
             performance measures and benefits to safeguard in the population.</p>
-            <p>Not all found issues should necessarily be prohibitive in each setting,
-            especially since -mathematically- it is impossible to mitigate
-            all conceivable definitions of bias at the same time.</p>
+            <p>Not all found issues are deal-breakers in each setting,
+            especially since it is mathematically impossible to mitigate
+            all conceivable definitions of bias simultaneously.</p>
             <p>We also compute a business benefit measure
             summarizing model performance, for example that correlates to business revenue.
             This is typically accuracy, though here we used expert options to designate high
@@ -359,8 +85,9 @@
 
         <section>
             <h2>Audit a dataset for representational imbalances</h2>
-            <p>Biased datasets are problematic themselves, as too extreme ones cannot be offset by models
-            without drastic concessions in predictive accuracy (or in safeguarding other kinds of business benefits).
+            <p>Biased datasets are problematic themselves, as extreme biases cannot be offset by models
+            withoutζ
+                concessions in predictive accuracy (or in safeguarding other kinds of business benefits).
             Furthermore, if models take no bias mitigation action, dataset biases can be encoded or even amplified
             during real-world usage.</p>
             <p>For this reason, MAI-BIAS offers various means of auditing datasets. Here we show the outcome of
@@ -368,7 +95,6 @@
             sensitive and predictive attributes; excessive specialization may make some societal subgroups too small
             or empty. This particular analysis both visualizes the intersectional imbalances, and provides
             means of mitigating these biases in the <code>for experts</code> tab.</p>
-            <div class="scale-wrap">
             <div class="scale-wrap">
                 <iframe src="assets/example2.html"
                         title="Data bias example"
