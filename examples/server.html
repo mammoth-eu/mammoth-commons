@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAI-BIAS portal</title>
+    <style>
+        .scale-wrap {
+            width: 100%;
+            overflow: hidden;
+            max-height: 500px;
+        }
+        .scale-wrap iframe {
+            transform: scale(0.5);
+            transform-origin: top left;
+            width: 200%;
+            height: 1000px;
+            border: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="../index.html">MAI-BIAS</a></div>
+            <div class="nav-links">
+            </div>
+        </div>
+    </nav>
+
+    <header class="intro">
+        <h1>Run from a Server</h1>
+        <p>Here are video demonstrations for running fairness analysis through your browser.<br>
+        Follow along in the public playground at <a href="https://mammoth-demo.com/">https://mammoth-demo.com</a>. Credentials below.
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Login to the playground</h2>
+            <p>Visit our public playground at <a href="https://mammoth-demo.com/">https://mammoth-demo.com</a>.
+            Use the following credentials. Do not worry; these are meant for <b>public use</b> and are <i>not</i> a security leak:
+            </p>
+            <pre>username: demo_user_simple
+password: password_8_demo_user99</pre>
+            <b>Do not analyze private or personal data in the public playground. Results can be viewed by anyone.</b>
+        </section>
+        <section>
+            <h2>Have private data?</h2>
+            <p>You can install the MAI-BIAS toolkit in one of your organization's servers to retain data ownership.
+            This includes hiding your data from anyone else. The instructions
+            <a href="../install.html" style="color: var(--secondary-color)">here</a> can let your organization
+            set up.
+            Similar pipelines are also supported by the local runner to process locally stored data;
+            audit a dataset <a href="quickstart.html" style="color: var(--secondary-color)">here</a>,
+            and investigate a model <a href="model.html" style="color: var(--secondary-color)">here</a>.
+            </p>
+        </section>
+
+        <section>
+            <div style="text-align: center; padding: 10px; border-radius: 8px;">
+                <div class="player">
+                  <iframe style="width:100%;aspect-ratio:16/9;"
+                          src="https://www.youtube.com/embed/umFqgCkbrRk"
+                          title="MAI-BIAS demo"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen>
+                  </iframe>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+            <div style="text-align: center; padding: 10px; border-radius: 8px;">
+                <div class="player">
+                  <iframe style="width:100%;aspect-ratio:16/9;"
+                          src="https://www.youtube.com/embed/Ll2fl4DJxho"
+                          title="MAI-BIAS demo"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen>
+                  </iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; This material has been developed by the MAMMOth EU project.</p>
+        <p><a href="https://github.com/mammoth-eu">GitHub</a>&nbsp;| <a href="https://mammoth-ai.eu">Website</a></p>
+    </footer>
+</body>
+</html>
