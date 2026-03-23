@@ -41,24 +41,59 @@
 
     <main class="container">
         <section>
+            <h2>Requirements</h2>
+            <p>This tutorial assumes that you have the MAI-BIAS toolkit already installed and a dataset available.
+            Find installation instructions <a href="../install.html" style="color: var(--secondary-color)">here</a>, and we will use files from the bank
+            dataset from our integration test data <a href="https://github.com/mammoth-eu/mammoth-commons/tree/dev/data/bank">here</a>.
+            You can use any other url or -if you are running the local runner- local file too. Everything shown
+            below is for the local runner.</p>
+            <p>To run an LLM you need to install ollama, which is a service for running LLMs privately in your machine,
+            or in the cloud (cloud running is also secure). Find instructions in their website
+            [here](https://ollama.com/download). You can create a free account to access cloud models.
+            <i>We are NOT in any collaboration with ollama.</i></p>
+        </section>
+
+        <section>
             <h2>Text</h2>
-            <img src="../screenshot18.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <p>If you select to input text as your data, you can either write something yourself or paste a publicly
+            available web link to analyze (beware that some sites have protection against sharing such links).
+            In this case, we paste a new article about the 2026 war on Iran. That you can paste links can be learned
+            by clicking on the <code>i</code> button next to the dataset's <code>text</code> parameter.</p>
+            <img src="../screenshots/screenshot18.png" alt="screenshot" style="width:80%;display:block;margin:auto">
         </section>
 
         <section>
             <h2>Model</h2>
-            <img src="../screenshot20.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <p>After clicking <code>next</code>, you are moved to selecting an LLM to run.
+            We will use <code>llama3.2:latest</code>, which is a model with 3 billion paramters and is locally hosted
+            by ollama mentioned in the requirements above. Install this model through ollama and you are ready to use
+            the LLM module. The default model and address where ollama runs are normally hidden, but here we clicked
+            on <code>for experts</code> to be able to change them. Different models may create different assessments.
+            The module's information alongside instructions to set up ollama can be foun by clicking the
+            <code>i</code> next to the module name.</p>
+            <img src="../screenshots/screenshot20.png" alt="screenshot" style="width:80%;display:block;margin:auto">
         </section>
 
         <section>
-            <h2>Analysis parameters</h2>
-            <img src="../screenshot21.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <h2>Use the model as an auditor</h2>
+            <p>We next use the select language model as a fairness auditor.
+            Details of how this works are described in the module's
+            information, which is shown by clicking on the <code>i</code> button. Briefly, a more robust
+            analysis is obtained by making many letting the model cast several votes on a verdict,
+            accompanied by explanation. Then, factuality is improved by keeping only the majority vote and meshing
+            together only contributing explanations.</p>
+            <img src="../screenshots/screenshot21.png" alt="screenshot" style="width:80%;display:block;margin:auto">
         </section>
 
         <section>
             <h2>Results</h2>
+            <p>After clicking <code>next</code> a progress bar shows the voting process. Once that finishes,
+            an outcome like the one below is presented. This may vary slightly if you rerun the model, but
+            the verdict and main areas of focus remain largely the same. The final result has both the model's
+            self-reported <code>reasoning</code>, as well as <code>action points</code> on how the text should
+            be adjusted to mitigate bias.</p>
             <p>An interactive version of these results can be found <a href="share.html">here</a>.</p>
-            <img src="../screenshot22.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <img src="../screenshots/screenshot22.png" alt="screenshot" style="width:80%;display:block;margin:auto">
         </section>
     </main>
 

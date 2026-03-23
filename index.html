@@ -67,35 +67,35 @@
                 <p>Click on any screenshot to enlarge it.</p>
                 <div class="screenshot-gallery">
                     <div class="gallery-item" onclick="openLightbox(0)">
-                        <img src="screenshot1.png" alt="Dataset analysis results">
+                        <img src="screenshots/screenshot1.png" alt="Dataset analysis results">
                         <div class="overlay"><span>Dataset analysis results</span></div>
                     </div>
                     <div class="gallery-item" onclick="openLightbox(0)">
-                        <img src="screenshot8.png" alt="Specific concerns">
+                        <img src="screenshots/screenshot8.png" alt="Specific concerns">
                         <div class="overlay"><span>Specific concerns</span></div>
                     </div>
                     <div class="gallery-item" onclick="openLightbox(0)">
-                        <img src="screenshot7.png" alt="Dataset augmentation">
+                        <img src="screenshots/screenshot7.png" alt="Dataset augmentation">
                         <div class="overlay"><span>Dataset augmentation</span></div>
                     </div>
                     <div class="gallery-item" onclick="openLightbox(0)">
-                        <img src="screenshot6.png" alt="Important face regions">
+                        <img src="screenshots/screenshot6.png" alt="Important face regions">
                         <div class="overlay"><span>Important face regions</span></div>
                     </div>
                     <div class="gallery-item" onclick="openLightbox(1)">
-                        <img src="screenshot2.png" alt="Main menu">
+                        <img src="screenshots/screenshot2.png" alt="Main menu">
                         <div class="overlay"><span>Main menu</span></div>
                     </div>
                     <div class="gallery-item" onclick="openLightbox(2)">
-                        <img src="screenshot3.png" alt="Set dataset">
+                        <img src="screenshots/screenshot3.png" alt="Set dataset">
                         <div class="overlay"><span>Choose a data type</span></div>
                     </div>
                     <div class="gallery-item" onclick="openLightbox(3)">
-                        <img src="screenshot4.png" alt="Set model">
+                        <img src="screenshots/screenshot4.png" alt="Set model">
                         <div class="overlay"><span>Set model</span></div>
                     </div>
                     <div class="gallery-item" onclick="openLightbox(4)">
-                        <img src="screenshot5.png" alt="Sensitive attributes">
+                        <img src="screenshots/screenshot5.png" alt="Sensitive attributes">
                         <div class="overlay"><span>Sensitive attributes</span></div>
                     </div>
                 </div>
@@ -176,15 +176,6 @@
                 </div>
 
                 <div class="card">
-                    <img src="https://private-user-images.githubusercontent.com/33315386/564666304-744e3f66-ef46-4665-abed-1123fa67b144.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzM5MTU4NTksIm5iZiI6MTc3MzkxNTU1OSwicGF0aCI6Ii8zMzMxNTM4Ni81NjQ2NjYzMDQtNzQ0ZTNmNjYtZWY0Ni00NjY1LWFiZWQtMTEyM2ZhNjdiMTQ0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMzE5VDEwMTkxOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY4NzBiZWIyMWJmYjkyZTc1OTBhYTE4M2UwYzgyMWJiMzZkOTBlZTQyOGFhMGE0MDY2MjlkOTY1ZjU0Y2VhNjYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Ock48nnxkDtUaF-U-pHh4Tm7ckztuA7QieNgcgpBc6Q"
-                         alt="icon"
-                         style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
-
-                    <h3><a href="https://github.com/gsarridis/FLAC">FLAC</a><span class="tag">Vision</span><span class="tag">Algorithm</span></h3>
-                    <p>Implementation of a model for fairness-aware representation learning by suppressing attribute-class associations.</p>
-                </div>
-
-                <div class="card">
                     <img src="https://github.com/gebaltso/SDFD/raw/main/examplesSDFD.png?raw=true"
                          alt="icon"
                          style="height: 50px; position: absolute; left: 50%; transform: translateX(-50%); top: -25px;border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
@@ -255,7 +246,6 @@
 
 
     <script>
-        // Tab functionality
         function openMammothTab(evt, tabName) {
             evt.preventDefault();
             var i, tabcontent, tablinks;
@@ -272,9 +262,15 @@
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.className += " active";
         }
-
-        // Lightbox functionality
-        const images = ['screenshot1.png', 'screenshot2.png', 'screenshot3.png', 'screenshot4.png', 'screenshot5.png'];
+        const images = [
+            'screenshots/screenshot1.png',
+            'screenshots/screenshot8.png',
+            'screenshots/screenshot7.png',
+            'screenshots/screenshot6.png',
+            'screenshots/screenshot2.png',
+            'screenshots/screenshot3.png',
+            'screenshots/screenshot4.png',
+            'screenshots/screenshot5.png'];
         let currentIndex = 0;
 
         function openLightbox(index) {
@@ -282,7 +278,6 @@
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
             const counter = document.getElementById('lightbox-counter');
-
             img.src = images[index];
             counter.textContent = `${index + 1} / ${images.length}`;
             lightbox.classList.add('active');

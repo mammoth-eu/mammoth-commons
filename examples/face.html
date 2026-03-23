@@ -65,9 +65,9 @@
             depicting humans).</p>
             <p>In general, model creators or data
             owners are responsible for providing information like the above to non-technical people.
-            Once inputted once, you can create variations of the same run so that you do not need to
+            Once inputted, you can create variations of the same run so that you do not need to
             re-enter information.</p>
-            <img src="../screenshot14.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <img src="../screenshots/screenshot14.png" alt="screenshot" style="width:80%;display:block;margin:auto">
         </section>
 
         <section>
@@ -77,20 +77,35 @@
             depicting humans).</p>
             <p>In general, model creators or data
             owners are responsible for providing information like the above to non-technical people.
-            Once inputted once, you can create variations of the same run so that you do not need to
+            Once inputted, you can create variations of the same run so that you do not need to
             re-enter information.</p>
-            <img src="../screenshot15.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <img src="../screenshots/screenshot15.png" alt="screenshot" style="width:80%;display:block;margin:auto">
         </section>
 
         <section>
             <h2>Analysis parameters</h2>
-            <img src="../screenshot16.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <p>AI models are comprised of multiple layers, with each potentially focusing on different
+            aspects of the image. You can select from these modules by providing its name within the
+            machine learning infrastructure, or selecting it by clicking on the <code>...</code> button,
+            as shown below.</p>
+            <p>Layers presented on top are responsible for reading the image and extracting simple visual ques,
+            whereas layers presented near the bottom of this list are responsible for extracting high-level visual
+            features and eventually making predictions. For this particular model, layers
+            are further organized into groups, and we select the second to last, as this contains the finally
+            extracted visual features. Incidentally, the last layer is responsible for making the prediction.</p>
+            <img src="../screenshots/screenshot16.png" alt="screenshot" style="width:80%;display:block;margin:auto">
         </section>
 
         <section>
             <h2>Results</h2>
+            <p>The central result of our analysis is a heatmap of face regions, where certain areas or accessories
+            are colored red if the model focuses on them a lot, and blue otherwise. There is no unique judgment
+            that can be made, as these results are qualitative, but you can get a sense on whether the model focuses
+            on important features for the task at hand and therefore uncover unwanted biases in reasoning. For example,
+            a model may focus primarily on image backgrounds, which is a tell-tale sign of environment biases.
+            To help judge what exactly is being perceived, example patches from the dataset's images accompany then heatmap.</p>
             <p>An interactive version of these results can be found <a href="share.html">here</a>.</p>
-            <img src="../screenshot17.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <img src="../screenshots/screenshot17.png" alt="screenshot" style="width:80%;display:block;margin:auto">
         </section>
 
     </main>
