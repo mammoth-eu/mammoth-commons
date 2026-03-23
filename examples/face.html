@@ -63,6 +63,13 @@
             <p>From the runner's starting screen, start a new analysis.
             The dataset selection screen opens, and we will load a dataset of human faces (you can use any dataset
             depicting humans).</p>
+            <p>The dataset should follow the typical image dataset structure, i.e., a root directory 
+            that provides access to all image files and an annotation file containing the relative 
+            paths for each sample along with the corresponding labels.
+            For instance, a widely used face image dataset is 
+            <a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">CelebA</a>, 
+            where the root directory is <code>celeba/img_align_celeba</code> and the annotation 
+            file is <code>celeba/list_attr_celeba.txt</code>.</p>            
             <p>In general, model creators or data
             owners are responsible for providing information like the above to non-technical people.
             Once inputted, you can create variations of the same run so that you do not need to
@@ -75,6 +82,12 @@
             <p>From the runner's starting screen, start a new analysis.
             The dataset selection screen opens, and we will load a dataset of human faces (you can use any dataset
             depicting humans).</p>
+            <p> The model should follow the typical PyTorch format, consisting of:
+                (i) a state dictionary 
+                (<a href="https://docs.pytorch.org/tutorials/beginner/saving_loading_models.html#what-is-a-state-dict">what is a state_dict</a>) 
+                that contains all the model weights, and 
+                (ii) a Python file defining the model class 
+        (<a href="https://docs.pytorch.org/tutorials/beginner/saving_loading_models.html#example">example</a>).</p>            
             <p>In general, model creators or data
             owners are responsible for providing information like the above to non-technical people.
             Once inputted, you can create variations of the same run so that you do not need to
