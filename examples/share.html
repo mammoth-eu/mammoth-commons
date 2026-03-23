@@ -20,14 +20,14 @@
 
     </style>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
     <!-- Top Menu -->
     <nav>
         <div class="nav-container">
-            <div class="logo"><a href="index.html">MAI-BIAS</a></div>
+            <div class="logo"><a href="../index.html">MAI-BIAS</a></div>
             <div class="nav-links">
             </div>
         </div>
@@ -35,8 +35,8 @@
 
     <!-- Introduction -->
     <header class="intro">
-        <h1>Fairness Analysis Examples</h1>
-        <p>These are exported from the MAI-BIAS toolkit and can be viewed in the browser, as you are doing now.
+        <h1>Our Analysis</h1>
+        <p>Examples shown here are exported from the MAI-BIAS toolkit and can be viewed in the browser, as you are doing now.
         Methodological and computational details accompany the verdict to help experts get a deeper picture.
         Always be mindful of fairness-washing!</p>
     </header>
@@ -54,7 +54,7 @@
             this needs to be adjusted in new social or legal contexts based on stakeholder feedback. Other expert
             parameters include the type of predictive benefits to be safeguarded, how these are compared, etc.</p>
             <div class="scale-wrap">
-                <iframe src="assets/example3.html"
+                <iframe src="../assets/example3.html"
                         title="Specific concern"
                         allowfullscreen></iframe>
             </div>
@@ -77,7 +77,7 @@
             can investigate system variations to get a sense of trade-offs between performance
             and fairness.</p>
             <div class="scale-wrap">
-                <iframe src="assets/example1.html"
+                <iframe src="../assets/example1.html"
                         title="Model bias example"
                         allowfullscreen></iframe>
             </div>
@@ -86,8 +86,7 @@
         <section>
             <h2>Audit a dataset for representational imbalances</h2>
             <p>Biased datasets are problematic themselves, as extreme biases cannot be offset by models
-            withoutζ
-                concessions in predictive accuracy (or in safeguarding other kinds of business benefits).
+            without concessions in predictive accuracy (or in safeguarding other kinds of business benefits).
             Furthermore, if models take no bias mitigation action, dataset biases can be encoded or even amplified
             during real-world usage.</p>
             <p>For this reason, MAI-BIAS offers various means of auditing datasets. Here we show the outcome of
@@ -96,11 +95,50 @@
             or empty. This particular analysis both visualizes the intersectional imbalances, and provides
             means of mitigating these biases in the <code>for experts</code> tab.</p>
             <div class="scale-wrap">
-                <iframe src="assets/example2.html"
+                <iframe src="../assets/example2.html"
                         title="Data bias example"
                         allowfullscreen></iframe>
             </div>
 
+        </section>
+
+
+        <section>
+            <h2>Face region importance</h2>
+            <p>When it comes down to computer vision models, it is often desire-able to check whether their
+            means of making predictions conform to human intuition. For example, if a model makes assessment based
+            on proxy visual features often correlated with sensitive attribute value (e.g., wearing earrings as a proxy
+            of gender) it can be considered biased. Or models may pick up on unrelated features, like image
+            backgrounds.</p>
+            <p>One of MAI-BIAS modules can be used to investigate how computer vision models focus on facial features.
+            These are shown as a heatmap, in which red areas indicate more focus and blue areas indicate indifference.
+            Characteristic image regions are shown underneath for each area. Interpreting this result is done
+            qualitatively.</p>
+
+            <div class="scale-wrap">
+                <iframe src="../assets/example4.html"
+                        title="Face region importance"
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+
+
+        <section>
+            <h2>Uncover biases in text</h2>
+            <p>The advent of large language models (LLMs) has created a wave of malicious actors that leverage them
+            to promote malicious opinions and disinformation. Furthermore, when these models are used to generate text,
+            they may encode biases and stereotypes of their training datasets.</p>
+            <p>Yet, the same models can also help uncover biases in human-generated or LLM-generated text. One challenge
+            in doing so is mitigating the effect of hallucinations (information that LLMs consider factual but
+            is not) as well as the fact that outputs could vary depending on small input changes.</p>
+            <p>Some MAI-BIAS modules can be used to assess LLMs or use them to audit textual biases. Below is
+            a report where a model developed in 2023 is used to uncover biases in a news report on the 2026 war
+            on Iran.</p>
+            <div class="scale-wrap">
+                <iframe src="../assets/example7.html"
+                        title="Text biases"
+                        allowfullscreen></iframe>
+            </div>
         </section>
 
 

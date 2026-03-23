@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAI-BIAS portal</title>
+    <style>
+        .scale-wrap {
+            width: 100%;
+            overflow: hidden;
+            max-height: 500px;
+        }
+        .scale-wrap iframe {
+            transform: scale(0.5);
+            transform-origin: top left;
+            width: 200%;
+            height: 1000px;
+            border: 0;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <!-- Top Menu -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="../index.html">MAI-BIAS</a></div>
+            <div class="nav-links">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Introduction -->
+    <header class="intro">
+        <h1>Fairness Analysis Examples</h1>
+        <p>These are exported from the MAI-BIAS toolkit and can be viewed in the browser, as you are doing now.
+        Methodological and computational details accompany the verdict to help experts get a deeper picture.
+        Always be mindful of fairness-washing!</p>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Model assessment across many measures</h2>
+            <p></p>
+            <div class="scale-wrap">
+                <iframe src="../assets/example5.html"
+                        title="Model assessment across many measures"
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; This material has been developed by the MAMMOth EU project.</p>
+        <p>
+            <a href="https://github.com/mammoth-eu">GitHub</a>&nbsp;|
+            <a href="https://mammoth-ai.eu">Website</a>
+        </p>
+    </footer>
+
+</body>
+</html>

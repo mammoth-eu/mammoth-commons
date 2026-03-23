@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAI-BIAS portal</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo"><a href="index.html">MAI-BIAS</a></div>
+            <div class="logo"><a href="../index.html">MAI-BIAS</a></div>
         </div>
     </nav>
     <header class="intro">
         <h1>Quickstart</h1>
-        <p>Investigate a dataset's biases in 10 clicks.<br>Add a few more to assess a combined dataset and model.</p>
+        <p>Investigate a dataset's biases in 10 clicks.</p>
     </header>
     <main class="container">
         <section>
             <h2>Requirements</h2>
             <p>This tutorial assumes that you have the MAI-BIAS toolkit already installed and a dataset available.
-            Find installation instructions <a href="install.html">here</a>, and we will use files from the bank
+            Find installation instructions <a href="../install.html" style="color: var(--secondary-color)">here</a>, and we will use files from the bank
             dataset from our integration test data <a href="https://github.com/mammoth-eu/mammoth-commons/tree/dev/data/bank">here</a>.
             You can use any other url or -if you are running the local runner- local file too. Everything shown
             below is for the local runner.</p>
@@ -35,7 +35,7 @@
             <b>Click</b> that button to start a new analysis. Or click on one of the past analyses to view it,
             or on the <code>+</code> button to rerun something (with potentially altered parameters).
 
-            <img src="screenshot2.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <img src="../screenshot2.png" alt="screenshot" style="width:80%;display:block;margin:auto">
 
             <b>Click count: 1</b>
         </section>
@@ -58,12 +58,12 @@
             <pre>https://raw.githubusercontent.com/mammoth-eu/mammoth-commons/refs/heads/dev/data/bank/bank-full.csv</pre>
             You can also use other URLs or use the yellow <code>...</code> button to browse through your file system.
             Once you input your dataset <b>click</b> <code>next</code>.</p>
-            <img src="screenshot3.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <img src="../screenshot3.png" alt="screenshot" style="width:80%;display:block;margin:auto">
             <b>Click count: 4</b> (actually 3 but let us not cheat with the preselected options)
         </section>
 
         <section>
-            <h2>Model</h2>
+            <h2>No model: focus on the dataset</h2>
             <p>Moving to next steps shows a progress bar about loading and -the first time you run each module-
             installation of missing software. You will be notified about issues like missing files (in which case you
             can fix them and try again), but if everything is alright
@@ -72,7 +72,7 @@
             Options like the preselected default can help analyze plain datasets by
             indicating that you have no models, or by leveraging well-understood models.</p>
             <p><b>Click</b> <code>next</code> to continue.</p>
-            <img src="screenshot4.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <img src="../screenshot4.png" alt="screenshot" style="width:80%;display:block;margin:auto">
             <b>Click count: 6</b>
         </section>
 
@@ -95,7 +95,7 @@
             will complain about them. But not this one. Finally,
             consider another <b>click</b> on <code>run</code> to perform the analysis.
             </p>
-            <img src="screenshot5.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <img src="../screenshot5.png" alt="screenshot" style="width:80%;display:block;margin:auto">
             <b>Click count: 10</b>
         </section>
 
@@ -109,9 +109,8 @@
             tabs that contain more details, and are suited for different kinds of users. </p>
             <p>Use the <code>save and share</code> button on top to export the analysis outcome as a
             file. That can be shared with others to open in their browser.</p>
-            <img src="screenshot1.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+            <img src="../screenshot1.png" alt="screenshot" style="width:80%;display:block;margin:auto">
         </section>
-
 
     </main>
 

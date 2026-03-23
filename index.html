@@ -19,7 +19,7 @@
     </nav>
     <header class="intro">
         <h1>Welcome to the MAI-BIAS portal!</h1>
-        <p>Develop fairer AI systems operating in the wild. Get started with our tools.</p>
+        <p>Audit bias and develop fairer AI systems in the wild. Get started with our tools.</p>
     </header>
 
     <img src="https://github.com/mammoth-eu/mammoth-commons/raw/dev/mai_bias/icons/mai_bias.png" alt="logo" style="width:250px;display:block;margin:auto">
@@ -29,23 +29,15 @@
             <div class="toolkit-header">
                 <h2>Our toolkit</h2>
             </div>
-            <p>
-                The MAI-BIAS toolkit is a low-code fairness assessment and bias mitigation app.
-                It contains 40+ modules from our partners and third parties, accessible through a
-                standardized interface. Here are some of the things you can do:<br>
-                <br>• 📊 <b>Audit a dataset</b> for imbalances and intersectional biases.
-                <br>• 🗂️ Load models from <b>various formats</b>, like ONNX and Torch serialization.
-                <br>• 📈 Get a report on an AI model's bias that accounts for <b>hundreds of metrics</b>.
-                <br>• 👁️ See which <b>face regions</b> contribute to the decisions of a computer‑vision model.
-                <br>• 📝 Use LLMs to analyze <b>textual biases</b>.
-                <br>• 📚 Run analysis with popular <b>third‑party libraries</b>, like FairLearn and AIF360, and view well‑organized results.
-                <br>• 🔧 Discover <b>bias‑mitigation</b> datasets and methods with code recommendations.
-                <br>• 📣 <b>Share findings</b> with policymakers and non-experts.
-            </p>
+            <p>The MAI-BIAS toolkit is a low-code fairness assessment and bias mitigation app.
+            It contains 40+ modules from our partners and third parties, accessible through a
+            standardized interface. It adjusts to your setting with out-of-the-box support for many
+            <a href="datasets.html">data types</a>, <a href="models.html">models</a>, and
+            <a href="analysis_methods.html">fairness concerns</a>.</p>
             <div style="text-align: center; padding: 10px; border-radius: 8px;">
                 <div class="player">
                   <iframe style="width:100%;aspect-ratio:16/9;"
-                          src="https://www.youtube.com/embed/R4LiMB8_p3c?autoplay=1"
+                          src="https://www.youtube.com/embed/Ezz74cwzcxw"
                           title="MAI-BIAS demo"
                           frameborder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -54,27 +46,68 @@
                 </div>
             </div>
 
+            <p>How to ...</p>
             <div class="learning-list">
                 <a href="install.html"><span>Install locally or in a server</span></a>
-                <a href="quickstart.html"><span>Audit a dataset in 10 clicks</span></a>
-                <a href="examples.html"><span>Share findings with non-technical people: examples</span></a>
+                <a href="examples/quickstart.html"><span><span>Audit</span> a dataset in 10 clicks.</span></a>
+                <a href="examples/model.html">Investigate and summarize hundreds of model biases.</span></a>
+                <a href="examples/face.html"><span><span>Find face regions</span> influencing the decisions of vision models.</span></a>
+                <a href="examples/text.html"><span><span>Analyze text</span> biases with robustified LLMs. Example on a news feed.</span></a>
             </div>
 
-            <div class="note">
-                <p>The toolkit adjusts to your setting with out-of-the-box support for many
-                <a href="datasets.html">data types</a>, <a href="models.html">models</a>, and
-                <a href="analysis_methods.html">fairness concerns</a>.
-                Follow the links to browse through
-                our module catalogue.</p>
+            <p>Everyone can explore results, including policymakers and non-experts. Examples:</p>
+            <div class="learning-list">
+                <a href="examples/share.html">From our tools.</a>
+                <a href="examples/thirdparty.html"><span>From integrated FairLearn and AIF360 analysis.</span></a>
+            </div>
+        </section>
+        <section>
+            <h2>Toolkit gallery</h2>
+            <div id="gallery">
+                <p>Click on any screenshot to enlarge it.</p>
+                <div class="screenshot-gallery">
+                    <div class="gallery-item" onclick="openLightbox(0)">
+                        <img src="screenshot1.png" alt="Dataset analysis results">
+                        <div class="overlay"><span>Dataset analysis results</span></div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(0)">
+                        <img src="screenshot8.png" alt="Specific concerns">
+                        <div class="overlay"><span>Specific concerns</span></div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(0)">
+                        <img src="screenshot7.png" alt="Dataset augmentation">
+                        <div class="overlay"><span>Dataset augmentation</span></div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(0)">
+                        <img src="screenshot6.png" alt="Important face regions">
+                        <div class="overlay"><span>Important face regions</span></div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(1)">
+                        <img src="screenshot2.png" alt="Main menu">
+                        <div class="overlay"><span>Main menu</span></div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(2)">
+                        <img src="screenshot3.png" alt="Set dataset">
+                        <div class="overlay"><span>Choose a data type</span></div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(3)">
+                        <img src="screenshot4.png" alt="Set model">
+                        <div class="overlay"><span>Set model</span></div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(4)">
+                        <img src="screenshot5.png" alt="Sensitive attributes">
+                        <div class="overlay"><span>Sensitive attributes</span></div>
+                    </div>
+                </div>
             </div>
 
+
             <div class="note">
-                <p>Want to add your own modules or report an issue? Find how to contribute in the GitHub of the
+                <p>Want to add your own modules or report an issue? Visit the GitHub repositories of the
                 <a href="https://github.com/mammoth-eu/mammoth-commons">local runner</a>
                 or <a href="https://github.com/mammoth-eu/mammoth-toolkit-releases">server runner</a>.
                 </p>
             </div>
-
         </section>
 
         <section id="software">
@@ -202,6 +235,14 @@
 
     </main>
 
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="prevSlide(event)" aria-label="Previous">&#10094;</button>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <button class="lightbox-nav lightbox-next" onclick="nextSlide(event)" aria-label="Next">&#10095;</button>
+        <div class="lightbox-counter"><span id="lightbox-counter"></span></div>
+    </div>
+
     <footer>
         <p>&copy; This material has been developed by the MAMMOth EU project.</p>
         <p>
@@ -210,5 +251,81 @@
         </p>
     </footer>
 
+
+
+
+    <script>
+        // Tab functionality
+        function openMammothTab(evt, tabName) {
+            evt.preventDefault();
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.className += " active";
+        }
+
+        // Lightbox functionality
+        const images = ['screenshot1.png', 'screenshot2.png', 'screenshot3.png', 'screenshot4.png', 'screenshot5.png'];
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const counter = document.getElementById('lightbox-counter');
+
+            img.src = images[index];
+            counter.textContent = `${index + 1} / ${images.length}`;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.classList.contains('lightbox') ||
+                event.target.classList.contains('lightbox-close')) {
+                const lightbox = document.getElementById('lightbox');
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function prevSlide(event) {
+            event.stopPropagation();
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIndex];
+            document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        function nextSlide(event) {
+            event.stopPropagation();
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIndex];
+            document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide({ stopPropagation: () => {} });
+            } else if (e.key === 'ArrowRight') {
+                nextSlide({ stopPropagation: () => {} });
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAI-BIAS portal</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="../index.html">MAI-BIAS</a></div>
+        </div>
+    </nav>
+    <header class="intro">
+        <h1>Model Investigation</h1>
+        <p>Quickly compute and summarize hundreds of model biases.</p>
+    </header>
+    <main class="container">
+        <section>
+            <h2>Requirements</h2>
+            <p>This tutorial assumes that you have the MAI-BIAS toolkit already installed and a dataset and model available.
+            Find installation instructions <a href="../install.html" style="color: var(--secondary-color)">here</a>, and we will use files
+            from our integration test data <a href="https://github.com/mammoth-eu/mammoth-commons/tree/dev/data">here</a>.
+            You can use other urls or -if you are running the local runner- local files too. Everything shown
+            below is for the local runner.</p>
+            <p>It is also assumed that you have some basic familiarity with the local runner's concepts. If
+            unsure, read first how to audit a dataset in 10 clicks here
+            <a href="quickstart.html" style="color: var(--secondary-color)">here</a>.</p>
+
+            <details>
+                <summary><b>Here is how the investigated model was created. You can also train your own.</b></summary>
+
+                <p>The model is created using sklearn and saved into ONNX format. You can follow instructions
+                of how to export in that format under the <code>i</code> information button when selecting
+                the namesake model loader. The example here is more concrete. Do note that training below
+                does not take into account any notion of fairness, and may thus create excessively biased models.
+                For more information on the dataset see the data selection step.</p>
+
+                <p>First install some basic libraries like <i>pandas</i>, <i>sklearn</i>, and <i>skl2onnx</i> in
+                a Python environment. We will train a logistic regression model and will pack a categorical attribute
+                preprocessor within the model instead of creating one-hot encodings of categorical labels; both options
+                are supported from the ONNX model loader later, so the more complicated option is showcased.</p>
+
+                <code><pre>import pandas as pd
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+from skl2onnx import convert_sklearn
+from skl2onnx.common.data_types import FloatTensorType, StringTensorType
+
+df = pd.read_csv("bank.csv", sep=";")
+df = df.dropna() # drop rows with NA
+
+X = df.drop("y", axis=1)
+y = (df["y"] == "yes").astype(int)
+
+numeric_features = [
+    "age",
+    "balance",
+    "day",
+    "duration",
+    "campaign",
+    "pdays",
+    "previous",
+]
+categorical_features = [
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "poutcome",
+]
+
+numeric_transformer = Pipeline(steps=[("scaler", StandardScaler())])
+
+categorical_transformer = Pipeline(steps=[("onehot", OneHotEncoder(handle_unknown="ignore"))])
+preprocessor = ColumnTransformer(
+    transformers=[
+        ("num", numeric_transformer, numeric_features),
+        ("cat", categorical_transformer, categorical_features),
+    ]
+)
+clf = Pipeline(steps=[("preprocessor", preprocessor), ("model", LogisticRegression(max_iter=200))])
+clf.fit(X, y)
+</pre></code>
+
+<p>We now export the trained classifier into a <i>bank_model.onnx</i> file.</p>
+
+<code><pre>initial_types = []
+for col in numeric_features:
+    initial_types.append((col, FloatTensorType([None, 1])))
+for col in categorical_features:
+    initial_types.append((col, StringTensorType([None, 1])))
+onnx_model = convert_sklearn(clf, initial_types=initial_types)
+with open("bank_model.onnx", "wb") as f:
+    f.write(onnx_model.SerializeToString())
+                </pre></code>
+            </details>
+        </section>
+
+        <section>
+            <h2>Dataset</h2>
+            <p>From the runner's starting screen, start a new analysis.
+            The dataset selection screen opens, and we will load a CSV stored in this online Path:
+            <pre>https://raw.githubusercontent.com/mammoth-eu/mammoth-commons/refs/heads/dev/data/bank/bank-full.csv</pre>
+            <p>The above is the Bank dataset for loan approvals given certain individual attributes. Those
+            are stored in tabular data format; that is, data rows correspond to persons and columns correspond to
+            attributes. Importantly, AI models may leverage a subset of tabular datasets, in
+            which case we need specify the custom formating.</p>
+            <p>Actually, this dataset also deviates from the typical CSV specifications in that
+            it employs a custom delimiter symbol for separating attribute columns within the raw data.
+            So we need to click on the <code>for experts</code> button to also show the respective option. Click
+            on <code>find</code> to automatically adjust the delimiters.</p>
+            <p>
+            The trained model that we will use in the next step, also makes the following selections, of which
+            numeric attributes are those quantified as numbers, categorical attributes are discrete labels (e.g.,
+            marital status can be married, single, divorced) and the label is the name of the attribute being predicted,
+            which in this case corresponds to granting a loan or not:
+            <pre>
+            numeric attributes: age, balance, day, duration, campaign, pdays, previous
+            categorical attributes: job, marital, education, default, housing, loan, contact, month, poutcome
+            label: y
+            </pre>
+            </p>
+            <p>In general, model creators or data
+            owners are responsible for providing information like the above to non-technical people.
+            Once inputted once, you can create variations of the same run so that you do not need to
+            re-enter information.</p>
+            <img src="../screenshot9.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+        </section>
+
+        <section>
+            <h2>Model</h2>
+            <p>Moving to next the next step, we can now input our model. You can see how a model created from the
+            sklearn library was saved into ONNX format in this page's preparations. The result can be retrieved
+            from the following URL (or give a local path to your own model) after selecting the appropriate model
+            loader for ONNX models:
+            <pre>https://github.com/mammoth-eu/mammoth-commons/raw/refs/heads/dev/data/bank_model.onnx</pre></p>
+            <p>Reminder that you can always see more information for MAI-BIAS modules by clicking on the <code>i</code>
+            button in their line. This is done for our chosen loader in the screenshot below.</p>
+            <img src="../screenshot10.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+        </section>
+
+        <section>
+            <h2>Analysis</h2>
+            <p>Finally, <b>click</b> on the kind of analysis you want to conduct. Available
+            options depend on the model and dataset types you have selected. Analyzing the bias
+            of a dataset alone is tougher than that of a dataset plus model (where you can check
+            for imbalances) so the options are more limited here.
+            </p>
+            <p>Like previously, there may be options <code>for experts</code> that help heavily customize
+            the analysis. Looking at those is important at this juncture to avoid fairness washing with
+            deceptively positive assessments. Most modules err on the side of strictness for common cases,
+            but default parameters can in no way account for every situation.</p>
+            <p>A parameter that always appears is designating sensitive attributes from your dataset.
+            Often, including now, you can <b>click</b> on <code>...</code> and then <b>click</b> on attributes
+            you want to analyze. Or you could write them by hand as a comma-separated list.
+            Contrary to many frameworks, you can select multiple attributes, and many modules account for
+            their intersectionality too. You may also have numerical sensitive attributes, though a few modules
+            will complain about them. But not this one. Finally,
+            consider another <b>click</b> on <code>run</code> to perform the analysis.
+            </p>
+            <img src="../screenshot11.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+        </section>
+
+        <section>
+            <h2>Results</h2>
+            <p>That's it! You are now seeing the outcomes of fairness analysis. This starts with a short
+            phrase that is summary judgment of whether -or how many- biases have been found. This is presented
+            alongside some information about the sensitive attributes analyzed, as well as the date and the
+            main technologies involved in the analysis itself.</p>
+            <p>Underneath, you can find various
+            tabs that contain more details, and are suited for different kinds of users. </p>
+            <p>Use the <code>save and share</code> button on top to export the analysis outcome as a
+            file. That can be shared with others to open in their browser.</p>
+            <img src="../screenshot12.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+        </section>
+
+
+        <section>
+            <h2>Where are the measures?</h2>
+            <p>This tutorial claimed that it would assess hundreds of measures. So where are they?
+            To help maintain a clean overview, they are hidden under the <code>for experts</code>
+            segment. Click on this and you will see lots of measures.</p>
+            <p>Overall, each cell in the resulting table is a standardized measures of bias or fairness.
+            They are computed by separating each population group or intersectional subgroup and computing
+            a basic measures of algorithmic benefits, such as making predictions for the group with high
+            accuracy, high true positive rate, and so on. Open the <code>distributions per group</code> mode of
+            Expert results to see all computations. Continuous-valued sensitive attributes are also supported through
+            fuzzy group membership computations.</p>
+            <p>Base measures are organized as rows. Then, each kind of them is converted to several aggregate
+            assessments that give an intuition over its distribution imbalances. For example, the minimum value
+            across groups is column <code>min</code>, and the maximum difference between groups is <code>maxdiff</code>.
+            There is a legend for measures and reduction strategies on top.</p>
+
+            <i>Some measure values are not shown because they are judged fully non-problematic based on an expert
+            threshold in the analysis module's parameters (this is conservatively strict). More details can be viewed
+            under the report's <code>methodology</code> tab.</i>
+
+            <img src="../screenshot13.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; This material has been developed by the MAMMOth EU project.</p>
+        <p>
+            <a href="https://github.com/mammoth-eu">GitHub</a>&nbsp;|
+            <a href="https://mammoth-ai.eu">Website</a>
+        </p>
+    </footer>
+</body>
+</html>

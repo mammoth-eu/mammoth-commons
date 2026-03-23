@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAI-BIAS portal</title>
+    <style>
+        .scale-wrap {
+            width: 100%;
+            overflow: hidden;
+            max-height: 500px;
+        }
+        .scale-wrap iframe {
+            transform: scale(0.5);
+            transform-origin: top left;
+            width: 200%;
+            height: 1000px;
+            border: 0;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <!-- Top Menu -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="../index.html">MAI-BIAS</a></div>
+            <div class="nav-links">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Introduction -->
+    <header class="intro">
+        <h1>Third-Party Analysis</h1>
+        <p>Here are some examples of analysis that uses the toolkit to run integrated third-party libraries.
+        Results from those libraries have been adapted to our presentation format, which means that summaries
+        are also the first entrance point.</p>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>AIF360 popular metrics</h2>
+            <p>The analysis below computes all fairness metrics provided by the AIF360 library's core
+            given a model and dataset. These metrics are often used in both research literature and in
+            practical applications.</p>
+            <p><b>As an older fairness framework, AIF360 lacks some features.</b> For example, it does not
+            support intersectional of sensitive attributes, and focuses on supporting ad-hoc instead of
+            standardized exploration. The side-by-side comparison between multiple sensitive
+            attributes with multiple values is a generalization engineered by MAI-BIAS.</p>
+            <div class="scale-wrap">
+                <iframe src="../assets/example6.html"
+                        title="AIF360 popular metrics"
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; This material has been developed by the MAMMOth EU project.</p>
+        <p>
+            <a href="https://github.com/mammoth-eu">GitHub</a>&nbsp;|
+            <a href="https://mammoth-ai.eu">Website</a>
+        </p>
+    </footer>
+
+</body>
+</html>

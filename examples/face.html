@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAI-BIAS portal</title>
+    <style>
+        .scale-wrap {
+            width: 100%;
+            overflow: hidden;
+            max-height: 500px;
+        }
+        .scale-wrap iframe {
+            transform: scale(0.5);
+            transform-origin: top left;
+            width: 200%;
+            height: 1000px;
+            border: 0;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <!-- Top Menu -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><a href="../index.html">MAI-BIAS</a></div>
+            <div class="nav-links">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Introduction -->
+    <header class="intro">
+        <h1>Facial Explanations</h1>
+        <p>Find face regions influencing the decisions of vision models.</p>
+    </header>
+
+
+    <main class="container">
+        <section>
+            <h2>Requirements</h2>
+            <p>This tutorial assumes that you have the MAI-BIAS toolkit already installed and a computer vision dataset
+            and model available.
+            Find installation instructions <a href="../install.html" style="color: var(--secondary-color)">here</a>, and we will use a toy model
+            and dataset from our integration test data
+            <a href="https://github.com/mammoth-eu/mammoth-commons/tree/dev/data">here</a>.
+            You can use other urls or -if you are running the local runner- local files too. Everything shown
+            below is for the local runner.</p>
+            <p><b>Some technical terms are involved</b>; these will be explained, but realistically running
+            computer vision experiments requires obtaining a dataset and understanding how it is structured.
+            Expert instructions, like those below, can usually cover this.
+            It is also assumed that you have some basic familiarity with the local runner.
+            If unsure, read first how to audit a tabular dataset in 10 clicks here
+            <a href="quickstart.html" style="color: var(--secondary-color)">here</a>.</p>
+        </section>
+
+        <section>
+            <h2>Dataset</h2>
+            <p>From the runner's starting screen, start a new analysis.
+            The dataset selection screen opens, and we will load a dataset of human faces (you can use any dataset
+            depicting humans).</p>
+            <p>In general, model creators or data
+            owners are responsible for providing information like the above to non-technical people.
+            Once inputted once, you can create variations of the same run so that you do not need to
+            re-enter information.</p>
+            <img src="../screenshot14.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+        </section>
+
+        <section>
+            <h2>Model</h2>
+            <p>From the runner's starting screen, start a new analysis.
+            The dataset selection screen opens, and we will load a dataset of human faces (you can use any dataset
+            depicting humans).</p>
+            <p>In general, model creators or data
+            owners are responsible for providing information like the above to non-technical people.
+            Once inputted once, you can create variations of the same run so that you do not need to
+            re-enter information.</p>
+            <img src="../screenshot15.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+        </section>
+
+        <section>
+            <h2>Analysis parameters</h2>
+            <img src="../screenshot16.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+        </section>
+
+        <section>
+            <h2>Results</h2>
+            <p>An interactive version of these results can be found <a href="share.html">here</a>.</p>
+            <img src="../screenshot17.png" alt="screenshot" style="width:80%;display:block;margin:auto">
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; This material has been developed by the MAMMOth EU project.</p>
+        <p>
+            <a href="https://github.com/mammoth-eu">GitHub</a>&nbsp;|
+            <a href="https://mammoth-ai.eu">Website</a>
+        </p>
+    </footer>
+
+</body>
+</html>
