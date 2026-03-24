@@ -987,7 +987,7 @@ report generates predictions at each step of the partial ensemble. This may resu
 times when the number of Pareto solutions is high.</span></p>
 </p>
 <h2 id='viz-fairness-plots'>Viz fairness plots</h2>
-<p><p><img src="https://raw.githubusercontent.com/fairlearn/fairlearn/29f6d6f67eea061ae5dae72e976f2069cb38772e/docs/static_landing_page/images/fairlearn_logo.svg" alt="Based on FairLearn" style="float: left; margin-right: 15px; height: 36px;"/></p>
+<p><p><img src="https://raw.githubusercontent.com/fairlearn/fairlearn/29f6d6f67eea061ae5dae72e976f2069cb38772e/docs/static_landing_page/images/fairlearn_logo.svg" alt="Based on FairLearn" style="float: left; margin-right: 15px; height:36px;"/></p>
 
 <h3>structured visualization of common types of bias</h3>
 
@@ -999,23 +999,33 @@ It provides visual insights into how a model performs across different groups de
 <p><details><summary><i>What to expect?</i></summary></p>
 
 <p>
-Two sets of visual outputs are processed:
+Two sets of visual outputs are produced:
 </p>
 
 <ul>
-<li><strong>Group-wise metrics</strong>: Shown as grouped bar charts, these display performance metrics (e.g., false positive rate) across subgroups.</li>
-<li><strong>Scalar metrics</strong>: Displayed as horizontal bar charts, these summarize disparities (e.g., equal opportunity difference) in a compact, interpretable format.</li>
+<li><strong>Group-wise metrics</strong>: Grouped bar charts displaying performance metrics (e.g., false positive rate) across subgroups.</li>
+<li><strong>Scalar metrics</strong>: Horizontal bar charts summarizing disparities (e.g., equal opportunity difference) in a compact, interpretable format.</li>
 </ul>
 
 <p>
 Interactive charts allow users to hover for precise values, compare metrics between groups, and quickly identify fairness gaps.
-An explanation panel is included to define each metric and guide interpretation.
 This module is well suited for exploratory analysis, presentations, and fairness monitoring.
-It makes group disparities visible and intuitive, helping identify where further scrutiny or mitigation may be needed.
 </p>
 
 <p></details></p>
 </p>
+<b>Parameters</b><br><button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Threshold for flagging bias. Difference metrics (e.g. demographic_parity_difference) above this value, or ratio metrics (e.g. demographic_parity_ratio) falling below 0.8, are counted as problematic. Default is 0.2."
+                              data-description=" Threshold for flagging bias. Difference metrics (e.g. demographic_parity_difference) above this value, or ratio metrics (e.g. demographic_parity_ratio) falling below 0.8, are counted as problematic. Default is 0.2."
+                              data-name="Problematic deviation"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Problematic deviation
+                            </button>
+<br>
 <h2 id='viz-fairness-report'>Viz fairness report</h2>
 <p><p><img src="https://raw.githubusercontent.com/fairlearn/fairlearn/29f6d6f67eea061ae5dae72e976f2069cb38772e/docs/static_landing_page/images/fairlearn_logo.svg" alt="Based on FairLearn" style="float: left; margin-right: 15px; height:36px;"/></p>
 
@@ -1046,6 +1056,18 @@ It helps teams assess group-level equity in model behavior using interpretable, 
 
 <p></details></p>
 </p>
+<b>Parameters</b><br><button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Threshold for flagging bias. Difference metrics (e.g. demographic_parity_difference) above this value, or ratio metrics (e.g. demographic_parity_ratio) falling below 0.8, are counted as problematic. Default is 0.2."
+                              data-description=" Threshold for flagging bias. Difference metrics (e.g. demographic_parity_difference) above this value, or ratio metrics (e.g. demographic_parity_ratio) falling below 0.8, are counted as problematic. Default is 0.2."
+                              data-name="Problematic deviation"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Problematic deviation
+                            </button>
+<br>
 <h2 id='croissant'>Croissant</h2>
 <p><p><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/croissant.png?raw=true"
 alt="croissant" style="float: left; margin-right: 15px; height: 36px;"/></p>
