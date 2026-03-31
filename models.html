@@ -90,6 +90,7 @@
 <a href='#manual-predictor'>Manual predictor</a>
 <a href='#trivial-predictor'>Trivial predictor</a>
 <a href='#onnx'>Onnx</a>
+<a href='#from-sklearn'>From sklearn</a>
 <a href='#onnx-ensemble'>Onnx ensemble</a>
 <a href='#torch'>Torch</a>
 <a href='#torch2onnx'>Torch2onnx</a>
@@ -275,6 +276,50 @@ of respective frameworks; this can be achieved with other model loaders.</p>
                               data-name="Trained with sensitive"
                               onclick="showDescriptionModal(this)">
                               <i class="bi bi-info-circle"></i> Trained with sensitive
+                            </button>
+<br>
+<h2 id='from-sklearn'>From sklearn</h2>
+<p><p><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/list.png?raw=true"
+alt="dataset focus" style="float: left; margin-right: 15px; height: 36px;"/></p>
+
+<h3>assess an sklearn architecture (experimental)</h3>
+
+<p>Checks whether biases can be discovered on an sklearn architecture. For simple architectures,
+a more in-depth analysis can be gleaned by selecting no model and performing an sklearn audit
+of the dataset.</p>
+</p>
+<b>Parameters</b><br><button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The model's architecture."
+                              data-description=" The model's architecture."
+                              data-name="Architecture"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Architecture
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" The fraction of data samples to be considered part of the training set."
+                              data-description=" The fraction of data samples to be considered part of the training set."
+                              data-name="Fraction of training set"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Fraction of training set
+                            </button>
+<button
+                              type="button"
+                              class="btn btn-light"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title=" Whether model training included the sensitive attributes that will be analysed in the next step or not. Including those attributes could help mitigate bias for some bias-aware training algorithms. Leave checked if you just trained the model with all available attributes."
+                              data-description=" Whether model training included the sensitive attributes that will be analysed in the next step or not. Including those attributes could help mitigate bias for some bias-aware training algorithms. Leave checked if you just trained the model with all available attributes."
+                              data-name="Train with sensitive"
+                              onclick="showDescriptionModal(this)">
+                              <i class="bi bi-info-circle"></i> Train with sensitive
                             </button>
 <br>
 <h2 id='onnx-ensemble'>Onnx ensemble</h2>
