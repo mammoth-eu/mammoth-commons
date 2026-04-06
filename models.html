@@ -90,7 +90,7 @@
 <a href='#manual-predictor'>Manual predictor</a>
 <a href='#trivial-predictor'>Trivial predictor</a>
 <a href='#onnx'>Onnx</a>
-<a href='#from-sklearn'>From sklearn</a>
+<a href='#popular-architecture'>Popular architecture</a>
 <a href='#onnx-ensemble'>Onnx ensemble</a>
 <a href='#torch'>Torch</a>
 <a href='#torch2onnx'>Torch2onnx</a>
@@ -278,15 +278,22 @@ of respective frameworks; this can be achieved with other model loaders.</p>
                               <i class="bi bi-info-circle"></i> Trained with sensitive
                             </button>
 <br>
-<h2 id='from-sklearn'>From sklearn</h2>
+<h2 id='popular-architecture'>Popular architecture</h2>
 <p><p><img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/list.png?raw=true"
 alt="dataset focus" style="float: left; margin-right: 15px; height: 36px;"/></p>
 
-<h3>assess an sklearn architecture (experimental)</h3>
+<h3>assess a well-known architecture</h3>
 
-<p>Checks whether biases can be discovered on an sklearn architecture. For simple architectures,
-a more in-depth analysis can be gleaned by selecting no model and performing an sklearn audit
-of the dataset.</p>
+<p>Checks whether biases can be discovered on some well-known architecture when trained/finetuned
+on the provided dataset. For simple architectures, a more in-depth analysis can be gleaned by
+selecting no model and performing an sklearn audit of the dataset. Contrary to that pipeline,
+this module is interested in the bias of the architecture given the dataset, and provides more complicated
+architectures, including foundational models. </p>
+
+<p>Do note that this modules assessment includes model construction and inference with default parameters.
+For different model parameters or lesser known architectures, use the custom architecture option (or open
+a request for incorporating that architecture in this in the mammoth-commons repository).
+</p>
 </p>
 <b>Parameters</b><br><button
                               type="button"
