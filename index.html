@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAI-BIAS portal</title>
     <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-******"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+
 </head>
 <body>
     <nav>
@@ -26,7 +33,7 @@
     <a href="https://github.com/mammoth-eu/mammoth-commons"><img src="https://github.com/mammoth-eu/mammoth-commons/raw/dev/mai_bias/icons/mai_bias.png" alt="logo" style="width:250px;display:block;margin:auto"></a><br>
     <div style="display:flex;margin:auto;justify-content: center;margin-top:-50px">
         <a href="https://github.com/mammoth-eu/mammoth-commons"><img src="https://github.com/mammoth-eu/mammoth-commons/raw/refs/heads/dev/stars-mammoth-badge.svg" alt="stats"></a>
-        &nbsp;<a href="https://pepy.tech/projects/mai-bias"><img src="https://static.pepy.tech/personalized-badge/mai-bias?period=total&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=BLUE&left_text=local+toolkit+installations" alt="PyPI Downloads"></a>
+        &nbsp;<a href="https://pepy.tech/projects/mai-bias"><img src="https://static.pepy.tech/personalized-badge/mai-bias?period=total&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=BLUE&left_text=local+toolkit+downloads" alt="PyPI Downloads"></a>
     </div>
     <main class="container">
         <section id="toolkit">
@@ -37,8 +44,8 @@
             <p>The MAI-BIAS toolkit is a low-code fairness assessment and bias mitigation app.
             It contains 40+ modules from our partners and third parties, accessible through a
             standardized interface. It adjusts to your setting with out-of-the-box support for many
-            <a href="datasets.html">data types</a>, <a href="models.html">models</a>, and
-            <a href="analysis_methods.html">fairness concerns</a>.</p>
+            <a href="datasets.html" style="color: var(--secondary-color)">data types</a>, <a href="models.html" style="color: var(--secondary-color)">models</a>, and
+            <a href="analysis_methods.html" style="color: var(--secondary-color)">fairness concerns</a>.</p>
             <div style="text-align: center; padding: 10px; border-radius: 8px;">
                 <div class="player">
                   <iframe style="width:100%;aspect-ratio:16/9;"
@@ -53,23 +60,40 @@
 
             <p>How to ...</p>
             <div class="learning-list">
-                <a href="install.html"><span>Install locally or in a server.</span></a>
-                <a href="examples/quickstart.html"><span><span>Audit</span> a dataset in 10 clicks.</span></a>
-                <a href="examples/model.html">Investigate and summarize hundreds of model biases.</span></a>
-                <a href="examples/face.html"><span><span>Find face regions</span> influencing the decisions of vision models.</span></a>
-                <a href="examples/text.html"><span><span>Analyze text</span> biases with robustified LLMs. Example on a news feed.</span></a>
+                <a href="install.html">
+                    <i class="fa-solid fa-download" style="font-size: 3rem;text-align:center!important;width:100%;margin-bottom:10px;margin-top:10px"></i>
+                    <span>Install locally or in a server.</span></a>
+                <a href="examples/quickstart.html"><span>
+                    <i class="fa-solid fa-computer-mouse" style="font-size: 3rem;text-align:center!important;width:100%;margin-bottom:10px;margin-top:10px"></i>
+                    <br><span>Audit</span> a dataset in 10 clicks.</span>
+                    </a>
+                <a href="examples/model.html">
+                    <i class="fa-solid fa-microscope" style="font-size: 3rem;text-align:center!important;width:100%;margin-bottom:10px;margin-top:10px"></i>
+                    Investigate and summarize hundreds of model biases.</span></a>
+            </div>
+            <div class="learning-list" style="margin-top:10px">
+                <a href="examples/face.html"><span>
+                    <i class="fa-solid fa-puzzle-piece" style="font-size: 3rem;text-align:center!important;width:100%;margin-bottom:10px;margin-top:10px"></i>
+                    <span>Find face regions</span> influencing the decisions of vision models.</span></a>
+                <a href="examples/text.html">
+                    <i class="fa-solid fa-newspaper" style="font-size: 3rem;text-align:center!important;width:100%;margin-bottom:10px;margin-top:10px"></i>
+                    <span><span>Find text</span> biases with robustified LLMs. Example on a news feed.</span></a>
+                <a href="https://github.com/mammoth-eu/mammoth-commons/issues">
+                    <i class="fa-solid fa-user-pen" style="font-size: 3rem;text-align:center!important;width:100%;margin-bottom:10px;margin-top:10px"></i>
+                    <span><span>Contribute</span> with comments, issues, or your own modules.</span></a>
             </div>
 
-            <p>Everyone can explore results, including policymakers and non-experts. <b>Interactive examples:</b></p>
+            <p>Are you a non-coder? Everyone can explore results, including policymakers and non-experts.</p>
             <div class="learning-list">
-                <a href="examples/share.html">From our tools.</a>
-                <a href="examples/thirdparty.html"><span>From integrated FairLearn and AIF360 analysis.</span></a>
-                <a href="examples/server.html"><span>Are you a non-coder? Your organization can still help you analyze fairness (videos+public playground).</span></a>
-            </div>
-
-            <div class="note">
-                <p>Want to comment, add your own modules, report an issue, or become a contributor? Reach out in <a href="https://github.com/mammoth-eu/mammoth-commons/issues">GitHub issues</a>.<br>
-                </p>
+                <a href="examples/share.html">
+                    <i class="fa-solid fa-toolbox" style="font-size: 3rem;text-align:center!important;width:100%;margin-bottom:10px;margin-top:10px"></i>
+                    Tinker with interactive results.</a>
+                <a href="examples/thirdparty.html">
+                    <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 3rem;text-align:center!important;width:100%;margin-bottom:10px;margin-top:10px"></i>
+                    <span>Examples from integrated FairLearn and AIF360 libraries.</span></a>
+                <a href="examples/server.html">
+                    <i class="fa-solid fa-user-group" style="font-size: 3rem;text-align:center!important;width:100%;margin-bottom:10px;margin-top:10px"></i>
+                    <span>Use your organization's setup (videos & public playground).</span></a>
             </div>
         </section>
         <section>
@@ -259,9 +283,15 @@
         <!-- SECTION: Learning Material -->
         <section id="learning">
             <h2>Training material for AI creators</h2>
-            <div class="learning-list">
-                <a href="https://github.com/mammoth-eu/FairnessDefinitionGuide"><strong>AI Fairness Definition Guide</strong></a>
-                <a href="https://arjunroyihrpa.github.io/My-Tutorials-FairML/"><strong>Fairness-aware ML Tutorials</strong></a>
+            <div style="display:flex;flex-direction:row;gap:1rem">
+                <div class="card" style="width:30%;padding:2px">
+                <a href="https://github.com/mammoth-eu/FairnessDefinitionGuide">
+                    <img src="https://github.com/mammoth-eu/FairnessDefinitionGuide/raw/master/Cover.png" alt="AI Fairness Definition Guide" style="width:100%;margin:auto">
+                </a></div>
+                <div class="card" style="width:30%;padding:2px">
+                <a href="https://arjunroyihrpa.github.io/My-Tutorials-FairML/">
+                    <img src="screenshots/tutorials.png" alt="Fairness-aware ML Tutorials" style="width:100%;margin:auto">
+                </a></div>
             </div>
         </section>
 
