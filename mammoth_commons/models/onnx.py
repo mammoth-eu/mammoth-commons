@@ -92,7 +92,8 @@ class ONNX(Predictor):
                     )
 
         try:
-            return sess.run([label_name], feed)[0]
+            ret = sess.run([label_name], feed)[0]
+            return ret
         except InvalidArgument as e:
             raise Exception(
                 "The ONNX loader encountered an error matching this dataset with the model.<br><br>"

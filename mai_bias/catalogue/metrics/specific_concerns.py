@@ -38,6 +38,7 @@ def specific_concerns(
         "Min",
         "Max",
         "Weighted mean",
+        "Max difference",
         "Max relative difference",
         "Max betweeness area",
         "Standard deviation x2",
@@ -107,17 +108,14 @@ def specific_concerns(
         "Positive rate": "pr",
         "Area under curve": "auc",
     }
+    vs_all = compare_groups != "vsall"
     fb_reductions = {
         "Min": "min",
         "Max": "max",
         "Weighted mean": "wmean",
-        "Max difference": "maxdiff" if compare_groups != "vsall" else "largestmaxdiff",
-        "Max relative difference": (
-            "maxrel" if compare_groups != "vsall" else "largestmaxrel"
-        ),
-        "Max betweeness area": (
-            "maxbarea" if compare_groups != "vsall" else "largestmaxbarea"
-        ),
+        "Max difference": "maxdiff" if vs_all else "largestmaxdiff",
+        "Max relative difference": "maxrel" if vs_all else "largestmaxrel",
+        "Max betweeness area": "maxbarea" if vs_all else "largestmaxbarea",
         "Standard deviation x2": "stdx2",
         "Gini coefficient": "gini",
     }
