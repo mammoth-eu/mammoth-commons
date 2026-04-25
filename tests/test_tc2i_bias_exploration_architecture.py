@@ -12,7 +12,7 @@ def test_bias_exploration():
         data_auto_csv, popular_model_architecture, model_card, croissant
     ) as env:
         dataset = env.data_auto_csv("data/bank.csv")
-        model = env.popular_architecture()
+        model = env.popular_model_architecture()
         env.model_card(dataset, model, sensitive=["marital"]).show()
 
 

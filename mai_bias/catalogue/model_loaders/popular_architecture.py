@@ -12,6 +12,7 @@ def popular_model_architecture(
     ] = "Logistic regression",
     fraction_of_training_set: float = 0.2,
     train_with_sensitive: bool = True,
+    experiment_seed: int = 0,
 ) -> SklearnValidator:
     """
     <img src="https://github.com/mammoth-eu/mammoth-commons/blob/dev/docs/icons/list.png?raw=true"
@@ -32,6 +33,7 @@ def popular_model_architecture(
         architecture: The model's architecture.
         fraction_of_training_set: The fraction of data samples to be considered part of the training set.
         train_with_sensitive: Whether model training included the sensitive attributes that will be analysed in the next step or not. Including those attributes could help mitigate bias for some bias-aware training algorithms. Leave checked if you just trained the model with all available attributes.
+        experiment_seed: A random number seed for training-test data splitting to ensure that the split is the same.
     """
     fraction_of_training_set = float(fraction_of_training_set)
 
@@ -42,6 +44,7 @@ def popular_model_architecture(
             require_install=("scikit-learn",),
             fraction_of_training_set=fraction_of_training_set,
             train_with_sensitive=train_with_sensitive,
+            random_state=experiment_seed,
         )
 
     if architecture == "Decision tree":
@@ -51,6 +54,7 @@ def popular_model_architecture(
             require_install=("scikit-learn",),
             fraction_of_training_set=fraction_of_training_set,
             train_with_sensitive=train_with_sensitive,
+            random_state=experiment_seed,
         )
 
     if architecture == "tabicl":
@@ -60,6 +64,7 @@ def popular_model_architecture(
             require_install=("tabicl",),
             fraction_of_training_set=fraction_of_training_set,
             train_with_sensitive=train_with_sensitive,
+            random_state=experiment_seed,
         )
 
     assert (
