@@ -10,8 +10,9 @@ _default_python = "3.12"
 _default_packages = ()  # appended to ["mammoth_commons[deployment]"]
 
 
-def install_package(package, record_file="installed.txt"):
+def install_package(package, record_file=".cache/installed.txt"):
     command_line = f"{sys.executable} -m pip install {package}"
+    os.makedirs(os.path.dirname(record_file), exist_ok=True)
     if not os.path.exists(record_file):
         open(record_file, "w").close()
     with open(record_file, "r") as f:

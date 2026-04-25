@@ -247,11 +247,12 @@ def add_plot_distribution(fig, df, protected_attribute, target_column, row, col)
     from plotly.subplots import make_subplots
 
     # Calculate counts for each group
-    counts_tab = pd.crosstab(df[protected_attribute], df[target_column])
+    tmp_df = df.drop_duplicates(subset=[protected_attribute, target_column])
+    counts_tab = pd.crosstab(tmp_df[protected_attribute], tmp_df[target_column])
 
     # Calculate percentages for text labels inside bars
     cross_tab_pct = (
-        pd.crosstab(df[protected_attribute], df[target_column], normalize="index") * 100
+        pd.crosstab(tmp_df[protected_attribute], tmp_df[target_column], normalize="index") * 100
     )
 
     # Get target class values and create a color mapping

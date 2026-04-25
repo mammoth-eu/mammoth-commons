@@ -124,7 +124,8 @@ pip install --upgrade mai_bias && ok || fail
 # ----------- Step 5: Launch Foreground (Logged) -----------
 step "3/3" "Running MAI-BIAS (with log)"
 draw_mammoth_front
-LOG_FILE="$APP_DIR/log.txt"
+mkdir -p "$APP_DIR/.cache"
+LOG_FILE="$APP_DIR/.cache/log.txt"
 echo -e "${YELLOW}Starting MAI-BIAS — output is also being logged to $LOG_FILE${RESET}"
 echo -e "${CYAN}Press Ctrl+C to stop.${RESET}\n"
 

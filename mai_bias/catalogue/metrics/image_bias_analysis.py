@@ -1,5 +1,3 @@
-from plotly.graph_objs.layout import Margin
-
 from mammoth_commons.datasets import ImageLike
 from mammoth_commons.models import EmptyModel
 from mammoth_commons.exports import HTML, Markdown, simplified_formatter
