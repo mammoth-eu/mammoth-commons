@@ -252,7 +252,10 @@ def add_plot_distribution(fig, df, protected_attribute, target_column, row, col)
 
     # Calculate percentages for text labels inside bars
     cross_tab_pct = (
-        pd.crosstab(tmp_df[protected_attribute], tmp_df[target_column], normalize="index") * 100
+        pd.crosstab(
+            tmp_df[protected_attribute], tmp_df[target_column], normalize="index"
+        )
+        * 100
     )
 
     # Get target class values and create a color mapping
